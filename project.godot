@@ -6,6 +6,7 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
+<<<<<<< HEAD
 config_version=4
 
 [application]
@@ -34,3 +35,12 @@ common/enable_pause_aware_picking=true
 [rendering]
 
 environment/default_environment="res://default_env.tres"
+=======
+config_version=5
+
+[application]
+
+config/name="PutuDodge"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+>>>>>>> cd215482e036941fe62f3261b194f23e824fa664
