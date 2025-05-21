@@ -1,10 +1,9 @@
-# Add this to your projectile script (extends Area2D)
-
+# UPDATED PROJECTILE
 extends Area2D
 
-@export var min_speed := 500.0
-@export var max_speed := 900.0
-var speed := 700.0
+var min_speed := 400.0
+var max_speed := 600.0
+var speed := 500.0
 var direction := Vector2.ZERO
 
 func _ready():
@@ -16,6 +15,12 @@ func _ready():
 	
 	# Add projectile to "projectiles" group for easy access
 	add_to_group("projectiles")
+
+# New method to set custom speed range from spawner
+func set_speed_range(new_min_speed: float, new_max_speed: float):
+	min_speed = new_min_speed
+	max_speed = new_max_speed
+	speed = randf_range(min_speed, max_speed)
 
 func set_direction_to_target(target_pos: Vector2):
 	direction = (target_pos - global_position).normalized()

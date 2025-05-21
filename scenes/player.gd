@@ -48,7 +48,7 @@ func _on_player_died():
 	
 	get_tree().reload_current_scene()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var input_vector = joystick.get_input_direction()
 	velocity = input_vector * speed
 	move_and_slide()
