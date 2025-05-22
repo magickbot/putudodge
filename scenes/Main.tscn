@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=12 format=3 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/spawner.tscn" id="1_rarhs"]
 [ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/Pixel Heart Sprite Sheet 16x16.png" id="2_0bbpv"]
@@ -9,6 +9,33 @@
 [ext_resource type="PackedScene" uid="uid://dp4kaefds5tx3" path="res://scenes/pingpong.tscn" id="7_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://db210h5k2vfdb" path="res://scenes/baseball.tscn" id="7_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://dcmyog85pwc64" path="res://scenes/volleyball.tscn" id="9_q8u5g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcsgt"]
+bg_color = Color(0.648663, 0.49473, 0.961565, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94386, 0.747491, 0.707859, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_vcsgt"]
+font_size = 5
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcsgt"]
+size = Vector2(1152, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
+size = Vector2(3, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
+size = Vector2(3, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
+size = Vector2(1152, 3)
 
 [node name="Main" type="Node2D"]
 
@@ -46,6 +73,38 @@ texture = ExtResource("2_0bbpv")
 region_enabled = true
 region_rect = Rect2(0, 0, 16.1547, 16)
 
+[node name="DeathPopup" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DeathPopup"]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 234.34
+offset_right = 733.0
+offset_bottom = 384.34
+theme_override_styles/panel = SubResource("StyleBoxFlat_vcsgt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DeathPopup/Panel"]
+layout_mode = 0
+offset_left = -257.0
+offset_top = 31.66
+offset_right = -82.0
+offset_bottom = 51.66
+scale = Vector2(4.91301, 3.56)
+
+[node name="Label" type="Label" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
+layout_mode = 2
+text = "YOU foken died trash dogshit human being stop playing there is no hope"
+label_settings = SubResource("LabelSettings_vcsgt")
+
+[node name="Button" type="Button" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Restart your misery"
+
 [node name="Player" parent="." instance=ExtResource("2_rarhs")]
 position = Vector2(581, 306)
 
@@ -64,3 +123,31 @@ projectile_scene = ExtResource("7_nxtc6")
 
 [node name="volleyball_spawner" parent="." instance=ExtResource("1_rarhs")]
 projectile_scene = ExtResource("9_q8u5g")
+
+[node name="Wall" type="Node2D" parent="."]
+
+[node name="WallTop" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallTop"]
+position = Vector2(576, -2)
+shape = SubResource("RectangleShape2D_vcsgt")
+
+[node name="WallLeft" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallLeft"]
+position = Vector2(-1.5, 324)
+shape = SubResource("RectangleShape2D_c01mt")
+
+[node name="WallRight" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallRight"]
+position = Vector2(1153.5, 324)
+shape = SubResource("RectangleShape2D_nxtc6")
+
+[node name="WallBottom" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallBottom"]
+position = Vector2(576, 649.5)
+shape = SubResource("RectangleShape2D_jlsqs")
+
+[connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]

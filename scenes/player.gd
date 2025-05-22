@@ -14,8 +14,9 @@ signal health_changed(new_health)
 signal player_died
 
 func _ready():
-	# update_lives_ui()
 	current_health = max_health
+	health_changed.connect(_on_health_changed)
+	_on_health_changed(current_health)  # Initialize UI on start
 	
 func take_damage():
 	if is_invulnerable:
@@ -44,14 +45,20 @@ func _on_player_died():
 	
 	print("Player died! Restarting game...")
 	
-	await get_tree().create_timer(1.5).timeout
-	
-	get_tree().reload_current_scene()
+	var death_popup = get_node("/root/Main/CanvasLayer/DeathPopup")
+	death_popup.visible = true
 
 func _physics_process(_delta):
 	var input_vector = joystick.get_input_direction()
 	velocity = input_vector * speed
 	move_and_slide()
+	
+func _on_health_changed(new_health):
+	# Loop through the hearts and update visibility
+	for i in range(life_container.get_child_count()):
+		var heart = life_container.get_child(i)
+		heart.visible = i < new_health
+
 
 # func update_lives_ui():
 	# for i in range(max_lives):
@@ -73,3 +80,7 @@ func _physics_process(_delta):
 # func _input(event):
 	# if event.is_action_pressed("ui_accept"):
 		# take_damage()
+
+
+func _on_button_pressed() -> void:
+	get_tree().reload_current_scene()
