@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=6 format=3 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/spawner.tscn" id="1_rarhs"]
 [ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/Pixel Heart Sprite Sheet 16x16.png" id="2_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://bkcgh8avstrjh" path="res://scenes/player.tscn" id="2_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cy5241v818q86" path="res://scenes/joystick.tscn" id="3_vcsgt"]
+[ext_resource type="PackedScene" uid="uid://ddhuc1vj0bkkk" path="res://scenes/tennis_ball.tscn" id="5_vcsgt"]
 
 [node name="Main" type="Node2D"]
 
@@ -45,3 +46,7 @@ region_rect = Rect2(0, 0, 16.1547, 16)
 position = Vector2(581, 306)
 
 [node name="spawner" parent="." instance=ExtResource("1_rarhs")]
+
+[node name="tennis_spawner" parent="." instance=ExtResource("1_rarhs")]
+position = Vector2(111, 434)
+projectile_scene = ExtResource("5_vcsgt")
