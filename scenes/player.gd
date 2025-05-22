@@ -14,8 +14,9 @@ signal health_changed(new_health)
 signal player_died
 
 func _ready():
-	# update_lives_ui()
 	current_health = max_health
+	health_changed.connect(_on_health_changed)
+	_on_health_changed(current_health)  # Initialize UI on start
 	
 func take_damage():
 	if is_invulnerable:
@@ -52,6 +53,13 @@ func _physics_process(_delta):
 	var input_vector = joystick.get_input_direction()
 	velocity = input_vector * speed
 	move_and_slide()
+	
+func _on_health_changed(new_health):
+	# Loop through the hearts and update visibility
+	for i in range(life_container.get_child_count()):
+		var heart = life_container.get_child(i)
+		heart.visible = i < new_health
+
 
 # func update_lives_ui():
 	# for i in range(max_lives):
