@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=16 format=3 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/spawner.tscn" id="1_rarhs"]
 [ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/Pixel Heart Sprite Sheet 16x16.png" id="2_0bbpv"]
@@ -149,5 +149,8 @@ shape = SubResource("RectangleShape2D_nxtc6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallBottom"]
 position = Vector2(576, 649.5)
 shape = SubResource("RectangleShape2D_jlsqs")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
 
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
