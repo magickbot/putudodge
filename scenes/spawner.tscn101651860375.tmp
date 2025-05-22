@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ytm16td4s2ss"]
+
+[ext_resource type="Script" uid="uid://kwd84bagdhbc" path="res://scenes/spawner.gd" id="1_2vbf6"]
+[ext_resource type="PackedScene" uid="uid://ctv8ey3ggiup3" path="res://scenes/projectile.tscn" id="2_ik2nu"]
+
+[node name="spawner" type="Node2D" groups=["spawner"]]
+script = ExtResource("1_2vbf6")
+projectile_scene = ExtResource("2_ik2nu")

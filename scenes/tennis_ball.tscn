@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bnonuco81qilk" path="res://assets/tennis_ball.png" id="2_056kc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w1a78"]
+radius = 8.0
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_yv6bk")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w1a78")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_056kc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.75, 0.75)
-shape = SubResource("CircleShape2D_w1a78")
