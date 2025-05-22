@@ -1,10 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=12 format=3 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/spawner.tscn" id="1_rarhs"]
 [ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/Pixel Heart Sprite Sheet 16x16.png" id="2_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://bkcgh8avstrjh" path="res://scenes/player.tscn" id="2_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cy5241v818q86" path="res://scenes/joystick.tscn" id="3_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://ddhuc1vj0bkkk" path="res://scenes/tennis_ball.tscn" id="5_vcsgt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcsgt"]
+bg_color = Color(0.648663, 0.49473, 0.961565, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94386, 0.747491, 0.707859, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_vcsgt"]
+font_size = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vcsgt"]
 size = Vector2(1152, 4)
@@ -54,6 +69,38 @@ texture = ExtResource("2_0bbpv")
 region_enabled = true
 region_rect = Rect2(0, 0, 16.1547, 16)
 
+[node name="DeathPopup" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DeathPopup"]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 234.34
+offset_right = 733.0
+offset_bottom = 384.34
+theme_override_styles/panel = SubResource("StyleBoxFlat_vcsgt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DeathPopup/Panel"]
+layout_mode = 0
+offset_left = -257.0
+offset_top = 31.66
+offset_right = -82.0
+offset_bottom = 51.66
+scale = Vector2(4.91301, 3.56)
+
+[node name="Label" type="Label" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
+layout_mode = 2
+text = "YOU foken died trash dogshit human being stop playing there is no hope"
+label_settings = SubResource("LabelSettings_vcsgt")
+
+[node name="Button" type="Button" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Restart your misery"
+
 [node name="Player" parent="." instance=ExtResource("2_rarhs")]
 position = Vector2(581, 306)
 
@@ -88,3 +135,5 @@ shape = SubResource("RectangleShape2D_nxtc6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallBottom"]
 position = Vector2(576, 649.5)
 shape = SubResource("RectangleShape2D_jlsqs")
+
+[connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
