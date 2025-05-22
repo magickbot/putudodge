@@ -9,8 +9,8 @@ var is_invulnerable := false
 
 @onready var joystick = get_node("/root/Main/CanvasLayer/Joystick")
 @onready var life_container = get_node("/root/Main/CanvasLayer/LifeContainer")
-
 @onready var camera = get_node("/root/Main/Camera2D")
+@onready var sprite = $Sprite2D 
 
 
 signal health_changed(new_health)
@@ -55,11 +55,10 @@ func _on_player_died():
 
 func _physics_process(delta):
 	var input_vector = joystick.get_input_direction()
-	print("Input vector:", input_vector)
 	velocity = input_vector * speed
-	print("Velocity:", velocity)
 	move_and_slide()
-
+	if velocity.x != 0:
+		sprite.flip_h = velocity.x < 0  
 
 
 func _on_health_changed(new_health):
