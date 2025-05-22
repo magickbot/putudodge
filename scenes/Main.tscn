@@ -1,10 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=10 format=3 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/spawner.tscn" id="1_rarhs"]
 [ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/Pixel Heart Sprite Sheet 16x16.png" id="2_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://bkcgh8avstrjh" path="res://scenes/player.tscn" id="2_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cy5241v818q86" path="res://scenes/joystick.tscn" id="3_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://ddhuc1vj0bkkk" path="res://scenes/tennis_ball.tscn" id="5_vcsgt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcsgt"]
+size = Vector2(1152, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
+size = Vector2(3, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
+size = Vector2(3, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
+size = Vector2(1152, 3)
 
 [node name="Main" type="Node2D"]
 
@@ -50,3 +62,29 @@ position = Vector2(581, 306)
 [node name="tennis_spawner" parent="." instance=ExtResource("1_rarhs")]
 position = Vector2(111, 434)
 projectile_scene = ExtResource("5_vcsgt")
+
+[node name="Wall" type="Node2D" parent="."]
+
+[node name="WallTop" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallTop"]
+position = Vector2(576, -2)
+shape = SubResource("RectangleShape2D_vcsgt")
+
+[node name="WallLeft" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallLeft"]
+position = Vector2(-1.5, 324)
+shape = SubResource("RectangleShape2D_c01mt")
+
+[node name="WallRight" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallRight"]
+position = Vector2(1153.5, 324)
+shape = SubResource("RectangleShape2D_nxtc6")
+
+[node name="WallBottom" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallBottom"]
+position = Vector2(576, 649.5)
+shape = SubResource("RectangleShape2D_jlsqs")
