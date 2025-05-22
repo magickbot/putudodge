@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcmyog85pwc64"]
+
+[ext_resource type="Script" uid="uid://x1q7pqva83jm" path="res://scenes/volleyball.gd" id="1_lfbie"]
+[ext_resource type="Texture2D" uid="uid://dpgn21k6poxrc" path="res://assets/volleyball.png" id="1_usari"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lfbie"]
+radius = 16.0
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_lfbie")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lfbie")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_usari")
