@@ -13,7 +13,7 @@ config_version=5
 [application]
 
 config/name="putudodge"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="uid://pa6xgli1utih"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
 
