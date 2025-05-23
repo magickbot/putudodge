@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjlb05fvo5fd1"
-path="res://.godot/imported/SmallHandleFilled.png-668810b81ca1a8a5207b53b40f4229aa.ctex"
+uid="uid://5um33jfpxvxr"
+path="res://.godot/imported/placeholderBG.jpg-1879ae797723bb962fcf061b3d109d1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/SmallHandleFilled.png"
-dest_files=["res://.godot/imported/SmallHandleFilled.png-668810b81ca1a8a5207b53b40f4229aa.ctex"]
+source_file="res://assets/sprites/ui/placeholderBG.jpg"
+dest_files=["res://.godot/imported/placeholderBG.jpg-1879ae797723bb962fcf061b3d109d1d.ctex"]
 
 [params]
 

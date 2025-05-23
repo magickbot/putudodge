@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcaota6m5qaj5"
-path="res://.godot/imported/baseball.png-1102f68e19ee8bfdf66a7ae32953bcd3.ctex"
+uid="uid://dpgn21k6poxrc"
+path="res://.godot/imported/volleyball.png-aa29031bd2850708d4ade5a179abaf76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/baseball.png"
-dest_files=["res://.godot/imported/baseball.png-1102f68e19ee8bfdf66a7ae32953bcd3.ctex"]
+source_file="res://assets/sprites/projectiles/volleyball.png"
+dest_files=["res://.godot/imported/volleyball.png-aa29031bd2850708d4ade5a179abaf76.ctex"]
 
 [params]
 

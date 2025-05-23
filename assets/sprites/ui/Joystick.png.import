@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq84vfhmuqjf7"
-path="res://.godot/imported/Pixel Heart Sprite Sheet 16x16.png-cc8819368d25ced6595851ec6cbc020a.ctex"
+uid="uid://dtmwa1s3ufxtv"
+path="res://.godot/imported/Joystick.png-93a96e303a797b9ccbf536739b770225.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Pixel Heart Sprite Sheet 16x16.png"
-dest_files=["res://.godot/imported/Pixel Heart Sprite Sheet 16x16.png-cc8819368d25ced6595851ec6cbc020a.ctex"]
+source_file="res://assets/sprites/ui/Joystick.png"
+dest_files=["res://.godot/imported/Joystick.png-93a96e303a797b9ccbf536739b770225.ctex"]
 
 [params]
 

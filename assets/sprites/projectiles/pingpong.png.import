@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnonuco81qilk"
-path="res://.godot/imported/tennis_ball.png-0987e343a1105a0aca74d8669f4437cb.ctex"
+uid="uid://clpgvfbcawji3"
+path="res://.godot/imported/pingpong.png-03061895c67af3fd20e36cc4a00f033d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tennis_ball.png"
-dest_files=["res://.godot/imported/tennis_ball.png-0987e343a1105a0aca74d8669f4437cb.ctex"]
+source_file="res://assets/sprites/projectiles/pingpong.png"
+dest_files=["res://.godot/imported/pingpong.png-03061895c67af3fd20e36cc4a00f033d.ctex"]
 
 [params]
 

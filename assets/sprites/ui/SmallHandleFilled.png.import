@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnhcgraf46nxv"
-path="res://.godot/imported/Dogs.png-a5af1a1c3409bc133feb110c4f3964bc.ctex"
+uid="uid://bjlb05fvo5fd1"
+path="res://.godot/imported/SmallHandleFilled.png-521103e60f767ce94c92098ac1664bfe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Dogs.png"
-dest_files=["res://.godot/imported/Dogs.png-a5af1a1c3409bc133feb110c4f3964bc.ctex"]
+source_file="res://assets/sprites/ui/SmallHandleFilled.png"
+dest_files=["res://.godot/imported/SmallHandleFilled.png-521103e60f767ce94c92098ac1664bfe.ctex"]
 
 [params]
 

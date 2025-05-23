@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpgn21k6poxrc"
-path="res://.godot/imported/volleyball.png-3604261aa317aae74fedf040c16b1131.ctex"
+uid="uid://dq84vfhmuqjf7"
+path="res://.godot/imported/Pixel Heart Sprite Sheet 16x16.png-b11cc90ea72a6a7565e062b3f8de6a1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/volleyball.png"
-dest_files=["res://.godot/imported/volleyball.png-3604261aa317aae74fedf040c16b1131.ctex"]
+source_file="res://assets/sprites/ui/Pixel Heart Sprite Sheet 16x16.png"
+dest_files=["res://.godot/imported/Pixel Heart Sprite Sheet 16x16.png-b11cc90ea72a6a7565e062b3f8de6a1a.ctex"]
 
 [params]
 

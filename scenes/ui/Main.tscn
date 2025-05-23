@@ -1,15 +1,15 @@
 [gd_scene load_steps=16 format=3 uid="uid://c7aer2gm3ia2k"]
 
-[ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/spawner.tscn" id="1_rarhs"]
-[ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/Pixel Heart Sprite Sheet 16x16.png" id="2_0bbpv"]
-[ext_resource type="PackedScene" uid="uid://bkcgh8avstrjh" path="res://scenes/player.tscn" id="2_rarhs"]
-[ext_resource type="Script" uid="uid://ccu33m72jiaud" path="res://scenes/timer.gd" id="3_lhr70"]
-[ext_resource type="PackedScene" uid="uid://cy5241v818q86" path="res://scenes/joystick.tscn" id="3_vcsgt"]
-[ext_resource type="PackedScene" uid="uid://dhn1ygmy2wrm" path="res://scenes/basketball.tscn" id="5_c01mt"]
-[ext_resource type="PackedScene" uid="uid://ddhuc1vj0bkkk" path="res://scenes/tennis_ball.tscn" id="5_vcsgt"]
-[ext_resource type="PackedScene" uid="uid://dp4kaefds5tx3" path="res://scenes/pingpong.tscn" id="7_jlsqs"]
-[ext_resource type="PackedScene" uid="uid://db210h5k2vfdb" path="res://scenes/baseball.tscn" id="7_nxtc6"]
-[ext_resource type="PackedScene" uid="uid://dcmyog85pwc64" path="res://scenes/volleyball.tscn" id="9_q8u5g"]
+[ext_resource type="PackedScene" uid="uid://cy5241v818q86" path="res://scenes/ui/joystick.tscn" id="1_yvcut"]
+[ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/sprites/ui/Pixel Heart Sprite Sheet 16x16.png" id="2_thnqr"]
+[ext_resource type="Script" uid="uid://ccu33m72jiaud" path="res://scripts/timer.gd" id="3_gl1th"]
+[ext_resource type="PackedScene" uid="uid://bkcgh8avstrjh" path="res://scenes/entities/player.tscn" id="4_upid4"]
+[ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/entities/spawner.tscn" id="5_umypx"]
+[ext_resource type="PackedScene" uid="uid://dhn1ygmy2wrm" path="res://scenes/balls/basketball.tscn" id="6_te6ad"]
+[ext_resource type="PackedScene" uid="uid://ddhuc1vj0bkkk" path="res://scenes/balls/tennis_ball.tscn" id="7_i8jtn"]
+[ext_resource type="PackedScene" uid="uid://dp4kaefds5tx3" path="res://scenes/balls/pingpong.tscn" id="8_4ca1i"]
+[ext_resource type="PackedScene" uid="uid://db210h5k2vfdb" path="res://scenes/balls/baseball.tscn" id="9_3nd05"]
+[ext_resource type="PackedScene" uid="uid://dcmyog85pwc64" path="res://scenes/balls/volleyball.tscn" id="10_acbhb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcsgt"]
 bg_color = Color(0.648663, 0.49473, 0.961565, 1)
@@ -39,7 +39,7 @@ size = Vector2(1152, 3)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Joystick" parent="CanvasLayer" instance=ExtResource("3_vcsgt")]
+[node name="Joystick" parent="CanvasLayer" instance=ExtResource("1_yvcut")]
 offset_left = 50.0
 offset_top = 450.0
 offset_right = 90.0
@@ -55,19 +55,19 @@ offset_bottom = 40.0
 
 [node name="Life1" type="Sprite2D" parent="CanvasLayer/LifeContainer"]
 position = Vector2(536, 100)
-texture = ExtResource("2_0bbpv")
+texture = ExtResource("2_thnqr")
 region_enabled = true
 region_rect = Rect2(0, 0, 16.0393, 16.0078)
 
 [node name="Life2" type="Sprite2D" parent="CanvasLayer/LifeContainer"]
 position = Vector2(576, 100)
-texture = ExtResource("2_0bbpv")
+texture = ExtResource("2_thnqr")
 region_enabled = true
 region_rect = Rect2(0, 0, 16.0624, 16)
 
 [node name="Life3" type="Sprite2D" parent="CanvasLayer/LifeContainer"]
 position = Vector2(616, 100)
-texture = ExtResource("2_0bbpv")
+texture = ExtResource("2_thnqr")
 region_enabled = true
 region_rect = Rect2(0, 0, 16.1547, 16)
 
@@ -137,7 +137,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("3_lhr70")
+script = ExtResource("3_gl1th")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Timer"]
 layout_mode = 0
@@ -162,24 +162,24 @@ layout_mode = 2
 text = "000"
 horizontal_alignment = 2
 
-[node name="Player" parent="." instance=ExtResource("2_rarhs")]
+[node name="Player" parent="." instance=ExtResource("4_upid4")]
 position = Vector2(581, 306)
 
-[node name="basketball_spawner" parent="." instance=ExtResource("1_rarhs")]
-projectile_scene = ExtResource("5_c01mt")
+[node name="basketball_spawner" parent="." instance=ExtResource("5_umypx")]
+projectile_scene = ExtResource("6_te6ad")
 
-[node name="tennis_spawner" parent="." instance=ExtResource("1_rarhs")]
+[node name="tennis_spawner" parent="." instance=ExtResource("5_umypx")]
 position = Vector2(111, 434)
-projectile_scene = ExtResource("5_vcsgt")
+projectile_scene = ExtResource("7_i8jtn")
 
-[node name="pingpong_spawner" parent="." instance=ExtResource("1_rarhs")]
-projectile_scene = ExtResource("7_jlsqs")
+[node name="pingpong_spawner" parent="." instance=ExtResource("5_umypx")]
+projectile_scene = ExtResource("8_4ca1i")
 
-[node name="baseball_spawner" parent="." instance=ExtResource("1_rarhs")]
-projectile_scene = ExtResource("7_nxtc6")
+[node name="baseball_spawner" parent="." instance=ExtResource("5_umypx")]
+projectile_scene = ExtResource("9_3nd05")
 
-[node name="volleyball_spawner" parent="." instance=ExtResource("1_rarhs")]
-projectile_scene = ExtResource("9_q8u5g")
+[node name="volleyball_spawner" parent="." instance=ExtResource("5_umypx")]
+projectile_scene = ExtResource("10_acbhb")
 
 [node name="Wall" type="Node2D" parent="."]
 

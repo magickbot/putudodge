@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhn1ygmy2wrm"]
 
-[ext_resource type="Texture2D" uid="uid://6cmwahapid7k" path="res://assets/ball.png" id="1_al20g"]
-[ext_resource type="Script" uid="uid://d088dxeemvqlk" path="res://scenes/basketball.gd" id="2_wa7ic"]
+[ext_resource type="Texture2D" uid="uid://6cmwahapid7k" path="res://assets/sprites/projectiles/basketball.png" id="1_al20g"]
+[ext_resource type="Script" uid="uid://d088dxeemvqlk" path="res://scripts/basketball.gd" id="2_wa7ic"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wa7ic"]
 radius = 16.0
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D2" type="Area2D"]
 script = ExtResource("2_wa7ic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
