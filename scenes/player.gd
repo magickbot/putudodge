@@ -11,7 +11,8 @@ var is_invulnerable := false
 @onready var life_container = get_node("/root/Main/CanvasLayer/LifeContainer")
 @onready var camera = get_node("/root/Main/Camera2D")
 @onready var sprite = $Sprite2D 
-
+@onready var TimerClock = get_node("/root/Main/CanvasLayer/Timer")
+@onready var FinalTimeMsg = get_node("/root/Main/CanvasLayer/DeathPopup/Panel/VBoxContainer/FinalTimeMsg")
 
 signal health_changed(new_health)
 signal player_died
@@ -45,8 +46,12 @@ func start_invulnerability():
 	is_invulnerable = false
 	
 func _on_player_died():
+	TimerClock.stop()
+	var FinalScore = TimerClock.get_time_formatted()
+	FinalTimeMsg.text = FinalScore
 	set_process_input(false)
 	set_physics_process(false)
+	
 	
 	print("Player died! Restarting game...")
 	
@@ -103,3 +108,7 @@ func shake_camera(duration := 0.2, magnitude := 5.0):
 
 func _on_button_pressed() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_Quit_To_Main_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
