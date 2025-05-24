@@ -13,11 +13,11 @@ func _ready():
 func _gui_input(event):
 	if event is InputEventScreenTouch:
 		if event.pressed:
-			_handle_joystick(event.position)
+			_handle_joystick(event.position * 2)
 		else:
 			_reset_joystick()
 	elif event is InputEventScreenDrag:
-		_handle_joystick(event.position)
+		_handle_joystick(event.position * 2)
 
 func _handle_joystick(local_pos: Vector2):
 	var center = base.get_size() / 2
