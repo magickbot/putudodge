@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:scenes/Main.tscn
 [gd_scene load_steps=12 format=3 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/spawner.tscn" id="1_rarhs"]
@@ -9,6 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://dp4kaefds5tx3" path="res://scenes/pingpong.tscn" id="7_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://db210h5k2vfdb" path="res://scenes/baseball.tscn" id="7_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://dcmyog85pwc64" path="res://scenes/volleyball.tscn" id="9_q8u5g"]
+=======
+[gd_scene load_steps=11 format=3 uid="uid://c7aer2gm3ia2k"]
+
+[ext_resource type="PackedScene" uid="uid://cy5241v818q86" path="res://scenes/ui/joystick.tscn" id="1_yvcut"]
+[ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/sprites/ui/Pixel Heart Sprite Sheet 16x16.png" id="2_thnqr"]
+[ext_resource type="Script" uid="uid://ccu33m72jiaud" path="res://scripts/timer.gd" id="3_gl1th"]
+[ext_resource type="PackedScene" uid="uid://bkcgh8avstrjh" path="res://scenes/entities/player.tscn" id="4_upid4"]
+[ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/entities/spawner.tscn" id="5_umypx"]
+>>>>>>> Stashed changes:scenes/ui/Main.tscn
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcsgt"]
 bg_color = Color(0.648663, 0.49473, 0.961565, 1)
@@ -108,6 +118,7 @@ text = "Restart your misery"
 [node name="Player" parent="." instance=ExtResource("2_rarhs")]
 position = Vector2(581, 306)
 
+<<<<<<< Updated upstream:scenes/Main.tscn
 [node name="basketball_spawner" parent="." instance=ExtResource("1_rarhs")]
 projectile_scene = ExtResource("5_c01mt")
 
@@ -123,6 +134,9 @@ projectile_scene = ExtResource("7_nxtc6")
 
 [node name="volleyball_spawner" parent="." instance=ExtResource("1_rarhs")]
 projectile_scene = ExtResource("9_q8u5g")
+=======
+[node name="spawner" parent="." instance=ExtResource("5_umypx")]
+>>>>>>> Stashed changes:scenes/ui/Main.tscn
 
 [node name="Wall" type="Node2D" parent="."]
 

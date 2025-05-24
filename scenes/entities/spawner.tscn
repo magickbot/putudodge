@@ -1,0 +1,16 @@
+[gd_scene load_steps=7 format=3 uid="uid://ytm16td4s2ss"]
+
+[ext_resource type="Script" uid="uid://kwd84bagdhbc" path="res://scripts/spawner.gd" id="1_2vbf6"]
+[ext_resource type="PackedScene" uid="uid://dhn1ygmy2wrm" path="res://scenes/balls/basketball.tscn" id="2_h1oqt"]
+[ext_resource type="PackedScene" uid="uid://dcmyog85pwc64" path="res://scenes/balls/volleyball.tscn" id="3_0ioao"]
+[ext_resource type="PackedScene" uid="uid://db210h5k2vfdb" path="res://scenes/balls/baseball.tscn" id="4_m47l7"]
+[ext_resource type="PackedScene" uid="uid://ddhuc1vj0bkkk" path="res://scenes/balls/tennis_ball.tscn" id="5_vyfs0"]
+[ext_resource type="PackedScene" uid="uid://dp4kaefds5tx3" path="res://scenes/balls/pingpong.tscn" id="6_541s8"]
+
+[node name="spawner" type="Node2D" groups=["spawner"]]
+script = ExtResource("1_2vbf6")
+basketball_scene = ExtResource("2_h1oqt")
+volleyball_scene = ExtResource("3_0ioao")
+baseball_scene = ExtResource("4_m47l7")
+tennis_ball_scene = ExtResource("5_vyfs0")
+ping_pong_ball_scene = ExtResource("6_541s8")
