@@ -2,7 +2,21 @@
 extends Node2D
 
 var default_distance := 1200
-@export var projectile_scene: PackedScene
+
+# Ball type definitions
+@export var basketball_scene: PackedScene
+@export var volleyball_scene: PackedScene
+@export var baseball_scene: PackedScene
+@export var tennis_ball_scene: PackedScene
+@export var ping_pong_ball_scene: PackedScene
+
+# Ball type weights (higher = more likely to spawn)
+@export var basketball_weight := 1.0
+@export var volleyball_weight := 1.0
+@export var baseball_weight := 1.0
+@export var tennis_ball_weight := 1.0
+@export var ping_pong_ball_weight := 1.0
+
 @export var initial_min_spawn_interval := 1.2  # Starting minimum seconds between spawns
 @export var initial_max_spawn_interval := 2.5  # Starting maximum seconds between spawns
 @export var min_possible_spawn_interval := 0.3  # Fastest spawn rate we'll ever reach
@@ -26,11 +40,18 @@ var current_projectile_max_speed
 var game_time := 0.0
 var difficulty_level := 1
 
+# Array to store ball scenes and their weights
+var ball_types := []
+var total_weight := 0.0
+
 # Signal for UI updates
 signal game_time_updated(time_seconds)
 signal difficulty_increased(new_level)
 
 func _ready():
+	# Initialize ball types array
+	setup_ball_types()
+	
 	# Initialize difficulty settings
 	current_min_spawn_interval = initial_min_spawn_interval
 	current_max_spawn_interval = initial_max_spawn_interval
@@ -55,6 +76,50 @@ func _ready():
 	# Start spawning
 	spawn_projectile()
 	start_spawning()
+
+func setup_ball_types():
+	# Clear existing ball types
+	ball_types.clear()
+	total_weight = 0.0
+	
+	# Add each ball type if it has a scene assigned
+	if basketball_scene != null:
+		ball_types.append({"scene": basketball_scene, "weight": basketball_weight, "name": "Basketball"})
+		total_weight += basketball_weight
+		
+	if volleyball_scene != null:
+		ball_types.append({"scene": volleyball_scene, "weight": volleyball_weight, "name": "Volleyball"})
+		total_weight += volleyball_weight
+		
+	if baseball_scene != null:
+		ball_types.append({"scene": baseball_scene, "weight": baseball_weight, "name": "Baseball"})
+		total_weight += baseball_weight
+		
+	if tennis_ball_scene != null:
+		ball_types.append({"scene": tennis_ball_scene, "weight": tennis_ball_weight, "name": "Tennis Ball"})
+		total_weight += tennis_ball_weight
+		
+	if ping_pong_ball_scene != null:
+		ball_types.append({"scene": ping_pong_ball_scene, "weight": ping_pong_ball_weight, "name": "Ping Pong Ball"})
+		total_weight += ping_pong_ball_weight
+	
+	if ball_types.is_empty():
+		print("Warning: No ball scenes assigned to spawner!")
+
+func get_random_ball_scene() -> PackedScene:
+	if ball_types.is_empty() or total_weight <= 0:
+		return null
+		
+	var random_value = randf() * total_weight
+	var cumulative_weight = 0.0
+	
+	for ball_type in ball_types:
+		cumulative_weight += ball_type.weight
+		if random_value <= cumulative_weight:
+			return ball_type.scene
+	
+	# Fallback to first ball type
+	return ball_types[0].scene
 
 func create_game_timer():
 	# Create timer to track game time
@@ -131,13 +196,19 @@ func on_timer_timeout():
 func spawn_projectile():
 	if !is_active or not is_instance_valid(brown_dog):
 		return
+	
+	# Get a random ball scene
+	var selected_ball_scene = get_random_ball_scene()
+	if selected_ball_scene == null:
+		print("No ball scene available to spawn!")
+		return
 		
 	var angle_degrees = randf_range(0, 360)
 	var angle_radians = deg_to_rad(angle_degrees)
 	var spawn_distance = default_distance
 	var spawn_offset = Vector2.RIGHT.rotated(angle_radians) * spawn_distance
 	var spawn_pos = brown_dog.global_position + spawn_offset
-	var projectile = projectile_scene.instantiate()
+	var projectile = selected_ball_scene.instantiate()
 	
 	# Set custom speed range based on current difficulty
 	if projectile.has_method("set_speed_range"):
@@ -150,6 +221,28 @@ func spawn_projectile():
 		projectile.set_direction_to_target(brown_dog.global_position)
 		
 	get_tree().current_scene.add_child(projectile)
+
+# Helper function to change ball weights during runtime
+func set_ball_weight(ball_name: String, new_weight: float):
+	match ball_name.to_lower():
+		"basketball":
+			basketball_weight = new_weight
+		"volleyball":
+			volleyball_weight = new_weight
+		"baseball":
+			baseball_weight = new_weight
+		"tennis ball", "tennis":
+			tennis_ball_weight = new_weight
+		"ping pong ball", "ping pong":
+			ping_pong_ball_weight = new_weight
+	
+	# Recalculate ball types
+	setup_ball_types()
+
+# Helper function to disable/enable specific ball types
+func set_ball_enabled(ball_name: String, enabled: bool):
+	var weight = 1.0 if enabled else 0.0
+	set_ball_weight(ball_name, weight)
 
 func _on_player_died():
 	print("Player died - stopping spawner")
