@@ -13,6 +13,7 @@ var is_invulnerable := false
 @onready var sprite = $Sprite2D 
 @onready var TimerClock = get_node("/root/Main/CanvasLayer/Timer")
 @onready var FinalTimeMsg = get_node("/root/Main/CanvasLayer/DeathPopup/Panel/VBoxContainer/FinalTimeMsg")
+@onready var treat_counter_label = get_node("/root/Main/CanvasLayer/TreatDisplay/DogTreatCounter")
 
 signal health_changed(new_health)
 signal player_died
@@ -25,6 +26,7 @@ func _ready():
 	
 	# Add player to group for easy identification
 	add_to_group("player")
+	update_treat_ui()
 
 func take_damage():
 	if is_invulnerable:
@@ -178,3 +180,11 @@ func is_at_full_health() -> bool:
 
 func can_restore_health() -> bool:
 	return current_health < max_health
+
+func update_treat_ui():
+	treat_counter_label.text = str(GameData.dog_treats_collected)
+
+func _on_treat_collected():
+	GameData.dog_treats_collected += 1
+	update_treat_ui()
+	

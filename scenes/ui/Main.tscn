@@ -1,12 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=17 format=3 uid="uid://c7aer2gm3ia2k"]
 
+[ext_resource type="Script" uid="uid://68p23hujomqj" path="res://scenes/ui/main.gd" id="1_thnqr"]
 [ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
 [ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/sprites/ui/Pixel Heart Sprite Sheet 16x16.png" id="2_thnqr"]
 [ext_resource type="Script" uid="uid://ccu33m72jiaud" path="res://scripts/timer.gd" id="3_gl1th"]
 [ext_resource type="PackedScene" uid="uid://s8a0rs2vx5ca" path="res://scenes/touchinput.tscn" id="3_jy5xg"]
 [ext_resource type="PackedScene" uid="uid://bkcgh8avstrjh" path="res://scenes/entities/player.tscn" id="4_upid4"]
 [ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/entities/spawner.tscn" id="5_umypx"]
+[ext_resource type="Texture2D" uid="uid://bkymipsttjv5a" path="res://assets/sprites/characters/FreeDemo.png" id="6_gl1th"]
 [ext_resource type="PackedScene" uid="uid://1tm74bkji7y6" path="res://scenes/entities/hp_bubble.tscn" id="6_jy5xg"]
+[ext_resource type="Script" uid="uid://d1erd2blhoeoh" path="res://scripts/dog_treat_spawner.gd" id="8_x5f0r"]
+[ext_resource type="PackedScene" uid="uid://dmkk20t53h1ux" path="res://scenes/DogTreat.tscn" id="9_fss6w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcsgt"]
 bg_color = Color(0.648663, 0.49473, 0.961565, 1)
@@ -33,6 +37,9 @@ size = Vector2(3, 648)
 size = Vector2(1152, 3)
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_thnqr")
+metadata/_edit_horizontal_guides_ = [649.0]
+metadata/_edit_vertical_guides_ = [1157.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -154,6 +161,22 @@ layout_mode = 2
 text = "000"
 horizontal_alignment = 2
 
+[node name="TreatDisplay" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 1070.0
+offset_top = 20.0
+offset_right = 1110.0
+offset_bottom = 60.0
+alignment = 1
+
+[node name="TreatIcon" type="Sprite2D" parent="CanvasLayer/TreatDisplay"]
+position = Vector2(-1, 20)
+texture = ExtResource("6_gl1th")
+region_enabled = true
+region_rect = Rect2(130.669, 143.803, 26.9869, 16.7669)
+
+[node name="DogTreatCounter" type="Label" parent="CanvasLayer/TreatDisplay"]
+layout_mode = 2
+
 [node name="Player" parent="." instance=ExtResource("4_upid4")]
 position = Vector2(581, 306)
 
@@ -188,6 +211,14 @@ shape = SubResource("RectangleShape2D_jlsqs")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+
+[node name="DogTreatSpawner" type="Node2D" parent="."]
+script = ExtResource("8_x5f0r")
+treat_scene = ExtResource("9_fss6w")
+
+[node name="Timer" type="Timer" parent="DogTreatSpawner"]
+wait_time = 3.0
+autostart = true
 
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]
