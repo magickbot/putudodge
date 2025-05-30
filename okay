@@ -1,0 +1,41 @@
+[33m9051de2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev1[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/dev1[m[33m, [m[1;32mmain[m[33m)[m HEAD@{0}: merge main: Fast-forward
+[33m990ea11[m HEAD@{1}: checkout: moving from main to dev1
+[33m9051de2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev1[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/dev1[m[33m, [m[1;32mmain[m[33m)[m HEAD@{2}: pull origin main: Fast-forward
+[33m990ea11[m HEAD@{3}: merge dev1: Fast-forward
+[33mbcd8573[m HEAD@{4}: checkout: moving from dev1 to main
+[33m990ea11[m HEAD@{5}: commit: fix project.godot
+[33mbcd8573[m HEAD@{6}: merge main: Fast-forward
+[33mfe58aaa[m HEAD@{7}: checkout: moving from main to dev1
+[33mbcd8573[m HEAD@{8}: commit (merge): flip and screenshake
+[33mb9a8032[m HEAD@{9}: pull origin main: Fast-forward
+[33m4408e35[m HEAD@{10}: checkout: moving from dev1 to main
+[33mfe58aaa[m HEAD@{11}: commit: left right flip of sprite
+[33m7ecc281[m HEAD@{12}: commit: added screenshake for hits
+[33m4408e35[m HEAD@{13}: merge main: Fast-forward
+[33md260a73[m HEAD@{14}: checkout: moving from main to dev1
+[33m4408e35[m HEAD@{15}: checkout: moving from dev1 to main
+[33md260a73[m HEAD@{16}: reset: moving to d260a73
+[33m4408e35[m HEAD@{17}: reset: moving to ORIG_HEAD
+[33m4408e35[m HEAD@{18}: reset: moving to ORIG_HEAD
+[33m4408e35[m HEAD@{19}: reset: moving to ORIG_HEAD
+[33m4408e35[m HEAD@{20}: reset: moving to ORIG_HEAD
+[33m4408e35[m HEAD@{21}: merge main: Fast-forward
+[33md260a73[m HEAD@{22}: checkout: moving from main to dev1
+[33m4408e35[m HEAD@{23}: pull origin main: Fast-forward
+[33md260a73[m HEAD@{24}: checkout: moving from dev1 to main
+[33md260a73[m HEAD@{25}: checkout: moving from main to dev1
+[33md260a73[m HEAD@{26}: merge dev1: Fast-forward
+[33m4ff1668[m HEAD@{27}: checkout: moving from dev1 to main
+[33md260a73[m HEAD@{28}: commit: death message
+[33m47d63fa[m HEAD@{29}: commit: game area restrictions
+[33m4ff1668[m HEAD@{30}: checkout: moving from main to dev1
+[33m4ff1668[m HEAD@{31}: commit: ui hearts reflect the current hp
+[33mad15b5e[m HEAD@{32}: reset: moving to ORIG_HEAD
+[33mad15b5e[m HEAD@{33}: reset: moving to ORIG_HEAD
+[33mad15b5e[m HEAD@{34}: reset: moving to ORIG_hEAD
+[33mad15b5e[m HEAD@{35}: pull origin main: Fast-forward
+[33ma3667ae[m HEAD@{36}: commit: putu lives
+[33m0fe6ad9[m HEAD@{37}: commit: Joystick Update
+[33me139fcb[m HEAD@{38}: commit (merge): merge with unrelated histories
+[33m12fb625[m HEAD@{39}: checkout: moving from main to main
+[33m12fb625[m HEAD@{40}: commit (initial): joystick controls
