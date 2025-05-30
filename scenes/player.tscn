@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://but5fo8vc4tt3"]
+[gd_scene load_steps=5 format=3 uid="uid://but5fo8vc4tt3"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" path="res://assets/Dogs.png" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://ds83evwqs2qlf" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://bnhcgraf46nxv" path="res://assets/sprites/characters/Dogs.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/sprites/ui/Pixel Heart Sprite Sheet 16x16.png" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(48, 29)
@@ -15,3 +16,22 @@ texture = ExtResource("2_qhqgy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="LifeContainer" type="Node2D" parent="."]
+
+[node name="Life1" type="Sprite2D" parent="LifeContainer"]
+position = Vector2(-25, 0)
+texture = ExtResource("3_qhqgy")
+region_enabled = true
+region_rect = Rect2(0, 0, 16.0393, 16.0078)
+
+[node name="Life2" type="Sprite2D" parent="LifeContainer"]
+texture = ExtResource("3_qhqgy")
+region_enabled = true
+region_rect = Rect2(0, 0, 16.0624, 16)
+
+[node name="Life3" type="Sprite2D" parent="LifeContainer"]
+position = Vector2(25, 0)
+texture = ExtResource("3_qhqgy")
+region_enabled = true
+region_rect = Rect2(0, 0, 16.1547, 16)

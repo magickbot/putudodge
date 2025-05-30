@@ -8,7 +8,7 @@ var is_invulnerable := false
 @export var invulnerability_time := 1.0
 
 @onready var touch = get_node("/root/Main/CanvasLayer/TouchInput")
-@onready var life_container = get_node("/root/Main/CanvasLayer/LifeContainer")
+@onready var life_container = $LifeContainer
 @onready var camera = get_node("/root/Main/Camera2D")
 @onready var sprite = $Sprite2D 
 @onready var TimerClock = get_node("/root/Main/CanvasLayer/Timer")
@@ -27,22 +27,41 @@ func _ready():
 	# Add player to group for easy identification
 	add_to_group("player")
 	update_treat_ui()
+	life_container.visible = false
+	$LifeContainer.position = Vector2(0, 30)
 
 func take_damage():
 	if is_invulnerable:
 		return
-		
+
 	current_health -= 1
 	health_changed.emit(current_health)
 	print("Player hit! Health: " + str(current_health))
-	shake_camera()
-	
+
+	# Show lives temporarily
+	life_container.visible = true
+	_on_health_changed(current_health)  # Update hearts
+
+	# Animate blinking
+	blink_lives()
+
 	if current_health <= 0:
 		player_died.emit()
 		_on_player_died()
 		return
-		
+
 	start_invulnerability()
+
+func blink_lives():
+	for i in range(2):
+		life_container.visible = false
+		await get_tree().create_timer(0.2).timeout
+		life_container.visible = true
+		await get_tree().create_timer(0.2).timeout
+
+	# Hide again after blinking
+	await get_tree().create_timer(1.0).timeout
+	life_container.visible = false
 
 func restore_health(amount: int = 1):
 	"""Restore player health by the specified amount"""
