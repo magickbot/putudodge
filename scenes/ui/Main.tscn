@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=13 format=3 uid="uid://c7aer2gm3ia2k"]
 
-[ext_resource type="PackedScene" uid="uid://cy5241v818q86" path="res://scenes/ui/joystick.tscn" id="1_yvcut"]
+[ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
 [ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/sprites/ui/Pixel Heart Sprite Sheet 16x16.png" id="2_thnqr"]
 [ext_resource type="Script" uid="uid://ccu33m72jiaud" path="res://scripts/timer.gd" id="3_gl1th"]
+[ext_resource type="PackedScene" uid="uid://s8a0rs2vx5ca" path="res://scenes/touchinput.tscn" id="3_jy5xg"]
 [ext_resource type="PackedScene" uid="uid://bkcgh8avstrjh" path="res://scenes/entities/player.tscn" id="4_upid4"]
 [ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/entities/spawner.tscn" id="5_umypx"]
 [ext_resource type="PackedScene" uid="uid://1tm74bkji7y6" path="res://scenes/entities/hp_bubble.tscn" id="6_jy5xg"]
@@ -35,13 +36,8 @@ size = Vector2(1152, 3)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Joystick" parent="CanvasLayer" instance=ExtResource("1_yvcut")]
-offset_left = 50.0
-offset_top = 450.0
-offset_right = 90.0
-offset_bottom = 490.0
-size_flags_horizontal = 0
-size_flags_vertical = 8
+[node name="TouchInput" parent="CanvasLayer" instance=ExtResource("3_jy5xg")]
+script = ExtResource("2_s0uuu")
 
 [node name="LifeContainer" type="Control" parent="CanvasLayer"]
 layout_mode = 3

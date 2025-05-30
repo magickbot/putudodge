@@ -7,7 +7,7 @@ var current_health := 3
 var is_invulnerable := false
 @export var invulnerability_time := 1.0
 
-@onready var joystick = get_node("/root/Main/CanvasLayer/Joystick")
+@onready var touch = get_node("/root/Main/CanvasLayer/TouchInput")
 @onready var life_container = get_node("/root/Main/CanvasLayer/LifeContainer")
 @onready var camera = get_node("/root/Main/Camera2D")
 @onready var sprite = $Sprite2D 
@@ -108,7 +108,7 @@ func _on_player_died():
 func get_combined_input_direction() -> Vector2:
 	# Get input from both WASD and joystick, then combine them
 	var wasd_input = Vector2.ZERO
-	var joystick_input = Vector2.ZERO
+	var touch_input = Vector2.ZERO
 	
 	# WASD input
 	if Input.is_action_pressed("ui_left"):
@@ -125,11 +125,11 @@ func get_combined_input_direction() -> Vector2:
 		wasd_input = wasd_input.normalized()
 	
 	# Joystick input
-	if joystick:
-		joystick_input = joystick.get_input_direction()
+	if touch:
+		touch_input = touch.get_input_direction()
 	
 	# Combine both inputs - if both are active, they add together
-	var combined_input = wasd_input + joystick_input
+	var combined_input = wasd_input + touch_input
 	
 	# Clamp the combined input to prevent super-speed when using both
 	if combined_input.length() > 1.0:
