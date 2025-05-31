@@ -11,16 +11,13 @@ size = Vector2(48, 29)
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
 texture = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
-scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="LifeContainer" type="Node2D" parent="."]
-scale = Vector2(3, 3)
 
 [node name="Life1" type="Sprite2D" parent="LifeContainer"]
 position = Vector2(-25, 0)
