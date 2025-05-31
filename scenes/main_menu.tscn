@@ -1,10 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://eoce83xri6x0"]
-
-[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_ekxnf"]
-[ext_resource type="Texture2D" path="res://assets/art/placeholderBG.jpg" id="1_l6cm7"]
+[gd_scene load_steps=6 format=3 uid="uid://eoce83xri6x0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
-texture = ExtResource("1_l6cm7")
 modulate_color = Color(0.655601, 0.655601, 0.655601, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6cm7"]
@@ -46,7 +42,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ekxnf")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
