@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bp7vuc42f74r0"
+path="res://.godot/imported/8-bit-dungeon-251388.mp3-64e72a198f69834d2a73a2168936c8c5.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/background music/8-bit-dungeon-251388.mp3"
+dest_files=["res://.godot/imported/8-bit-dungeon-251388.mp3-64e72a198f69834d2a73a2168936c8c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

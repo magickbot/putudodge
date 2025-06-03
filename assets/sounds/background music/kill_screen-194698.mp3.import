@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtqyk1rp1yp1v"
+path="res://.godot/imported/kill_screen-194698.mp3-87f20733f6832ce9da3270b91957e52c.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/background music/kill_screen-194698.mp3"
+dest_files=["res://.godot/imported/kill_screen-194698.mp3-87f20733f6832ce9da3270b91957e52c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
