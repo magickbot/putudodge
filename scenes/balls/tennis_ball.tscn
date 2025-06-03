@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddhuc1vj0bkkk"]
 
 [ext_resource type="Script" uid="uid://3psnddlhovmg" path="res://scripts/tennis_ball.gd" id="1_yv6bk"]
-[ext_resource type="Texture2D" uid="uid://bnonuco81qilk" path="res://assets/sprites/projectiles/tennis_ball.png" id="2_056kc"]
+[ext_resource type="Texture2D" uid="uid://c3ryj1j3glgnp" path="res://assets/sprites/projectiles/Sport-Balls-Asset-Pack-Pixel-Art/64x64/tennis.png" id="2_35hcc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w1a78"]
 radius = 8.0
@@ -13,4 +13,5 @@ script = ExtResource("1_yv6bk")
 shape = SubResource("CircleShape2D_w1a78")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_056kc")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_35hcc")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://db210h5k2vfdb"]
 
 [ext_resource type="Script" uid="uid://bous4d7qjyjxb" path="res://scripts/baseball.gd" id="1_me4rg"]
-[ext_resource type="Texture2D" uid="uid://dcaota6m5qaj5" path="res://assets/sprites/projectiles/baseball.png" id="1_uu2yc"]
+[ext_resource type="Texture2D" uid="uid://xfb1ywejivkr" path="res://assets/sprites/projectiles/Sport-Balls-Asset-Pack-Pixel-Art/64x64/baseball.png" id="2_8yxyb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_me4rg"]
 radius = 8.0
@@ -14,5 +14,5 @@ shape = SubResource("CircleShape2D_me4rg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.19209e-07, 1.19209e-07)
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("1_uu2yc")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_8yxyb")

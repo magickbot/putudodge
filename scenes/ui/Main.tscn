@@ -194,3 +194,6 @@ autostart = true
 
 [node name="Player" parent="." instance=ExtResource("10_yvcut")]
 position = Vector2(579, 322)
+
+[connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]

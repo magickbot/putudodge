@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcmyog85pwc64"]
 
 [ext_resource type="Script" uid="uid://x1q7pqva83jm" path="res://scripts/volleyball.gd" id="1_lfbie"]
-[ext_resource type="Texture2D" uid="uid://dpgn21k6poxrc" path="res://assets/sprites/projectiles/volleyball.png" id="1_usari"]
+[ext_resource type="Texture2D" uid="uid://c8rqoj0koh0yr" path="res://assets/sprites/projectiles/Sport-Balls-Asset-Pack-Pixel-Art/64x64/valleyball.png" id="2_3ylo6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lfbie"]
 radius = 16.0
@@ -13,4 +13,5 @@ script = ExtResource("1_lfbie")
 shape = SubResource("CircleShape2D_lfbie")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_usari")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_3ylo6")
