@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0ie84kfk6vlp"
+path="res://.godot/imported/digital-dreamscape-193900.mp3-bf0b6c5fd4135ec2f0c9a402e37a3d4d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/background music/digital-dreamscape-193900.mp3"
+dest_files=["res://.godot/imported/digital-dreamscape-193900.mp3-bf0b6c5fd4135ec2f0c9a402e37a3d4d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
