@@ -7,13 +7,13 @@ var current_health := 3
 var is_invulnerable := false
 @export var invulnerability_time := 1.0
 
-@onready var touch = get_node("/root/Main/CanvasLayer/TouchInput")
+@onready var touch = get_node("../CanvasLayer/TouchInput")
 @onready var life_container = $LifeContainer
-@onready var camera = get_node("/root/Main/Camera2D")
+@onready var camera = get_node("../Camera2D")
 @onready var sprite = $Sprite2D 
-@onready var TimerClock = get_node("/root/Main/CanvasLayer/Timer")
-@onready var FinalTimeMsg = get_node("/root/Main/CanvasLayer/DeathPopup/Panel/VBoxContainer/FinalTimeMsg")
-@onready var treat_counter_label = get_node("/root/Main/CanvasLayer/TreatDisplay/DogTreatCounter")
+@onready var TimerClock = get_node("../CanvasLayer/Timer")
+@onready var FinalTimeMsg = get_node("../CanvasLayer/DeathPopup/Panel/VBoxContainer/FinalTimeMsg")
+@onready var treat_counter_label = get_node("../CanvasLayer/TreatDisplay/DogTreatCounter")
 
 signal health_changed(new_health)
 signal player_died
