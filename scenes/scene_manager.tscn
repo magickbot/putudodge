@@ -17,4 +17,5 @@ script = ExtResource("1_b81s6")
 visible = false
 
 [connection signal="play_pressed" from="CurrentScene/CanvasLayer/MainMenu" to="." method="_on_main_menu_play_pressed"]
+[connection signal="finished_fade" from="TransitionScreen" to="." method="_on_transition_screen_finished_fade"]
 [connection signal="transitioned" from="TransitionScreen" to="." method="_on_transition_screen_transitioned"]

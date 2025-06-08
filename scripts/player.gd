@@ -123,7 +123,7 @@ func _on_player_died():
 	
 	print("Player died! Restarting game...")
 	
-	var death_popup = get_node("/root/Main/CanvasLayer/DeathPopup")
+	var death_popup = get_node("../CanvasLayer/DeathPopup")
 	death_popup.visible = true
 
 func get_combined_input_direction() -> Vector2:

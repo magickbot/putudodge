@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal transitioned
+signal finished_fade
 
 func transition():
 	$AnimationPlayer.play("fade_to_black")
@@ -13,3 +14,4 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		$AnimationPlayer.play("fade_to_normal")
 	if anim_name == "fade_to_normal":
 		print("Finished fading")
+		emit_signal("finished_fade")

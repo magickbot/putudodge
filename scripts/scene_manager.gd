@@ -5,9 +5,11 @@ var scene_choice: PackedScene
 
 
 func _on_transition_screen_transitioned() -> void:
+	var transition_screen = get_node("/root/SceneManager/TransitionScreen")
+	
 	$CurrentScene.get_child(0).queue_free()
 	$CurrentScene.add_child(scene_choice.instantiate())
-	print("Swapped Scenes")
+	print("Scene Manager: Swapped Scenes")
 
 func _on_main_menu_play_pressed() -> void:
 	var transition_screen = get_node("/root/SceneManager/TransitionScreen")
@@ -15,3 +17,7 @@ func _on_main_menu_play_pressed() -> void:
 	scene_choice = level1
 	$TransitionScreen.transition()
 	print("Scene Manager: Received Signal!")
+
+func _on_transition_screen_finished_fade() -> void:
+	var transition_screen = get_node("/root/SceneManager/TransitionScreen")
+	transition_screen.visible = false
