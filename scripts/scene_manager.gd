@@ -39,7 +39,7 @@ func _on_main_menu_play_pressed() -> void:
 	print("Scene Manager: Received Signal!")
 	
 func _on_quit_to_main_requested():
-	scene_choice = preload("res://scenes/main_menu.tscn")
+	scene_choice = preload("res://scenes/ui/main_menu.tscn")
 	$TransitionScreen.visible = true
 	$TransitionScreen.transition()
 	print("Scene Manager: Quit signal received from Player!")
