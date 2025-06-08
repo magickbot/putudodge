@@ -18,6 +18,8 @@ var is_invulnerable := false
 signal health_changed(new_health)
 signal player_died
 signal health_restored(amount)
+signal quit_to_main
+
 
 func _ready():
 	current_health = max_health
@@ -121,7 +123,7 @@ func _on_player_died():
 	set_process_input(false)
 	set_physics_process(false)
 	
-	print("Player died! Restarting game...")
+	print("Player died!")
 	
 	var death_popup = get_node("../CanvasLayer/DeathPopup")
 	death_popup.visible = true
@@ -185,10 +187,13 @@ func shake_camera(duration := 0.2, magnitude := 5.0):
 	camera.offset = Vector2.ZERO
 
 func _on_button_pressed() -> void:
-	get_tree().reload_current_scene()
+	print("Restarting!")
+	Global.emit_signal("restart_level")
 
 func _on_Quit_To_Main_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	var death_popup = get_node("../CanvasLayer/DeathPopup")
+	Global.emit_signal("quit_to_main")
+	death_popup.visible = false
 
 # Utility functions
 func get_health_percentage() -> float:
