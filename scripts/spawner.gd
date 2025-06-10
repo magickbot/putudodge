@@ -1,4 +1,4 @@
-# Updated PHASE-BASED DIFFICULTY PROGRESSION SPAWNER with HP Bubbles
+# Updated PHASE-BASED DIFFICULTY PROGRESSION SPAWNER with HP Bubbles and Dog Treats
 extends Node2D
 
 var default_distance := 1200
@@ -21,6 +21,22 @@ var hp_bubble_base_interval := 3.0 if debug_hp_bubbles else 12.0  # Base interva
 var hp_bubble_interval_variation := 1.0 if debug_hp_bubbles else 6.0  # Variation in spawn timing
 var last_hp_bubble_spawn_time := 0.0
 var max_hp_bubbles_on_screen := 3  # Increased from 2
+
+# Dog Treat Currency system
+@export var dog_treat_scene: PackedScene
+var treat_spawn_timer: Timer
+var debug_treats := false  # Set to true for faster treat testing
+
+var treat_spawn_chances := [0.9, 0.95, 0.98, 0.99, 1.0] if debug_treats else [0.3, 0.4, 0.5, 0.6, 0.7]  # Higher chance than HP bubbles since they're currency
+var treat_base_interval := 2.0 if debug_treats else 8.0  # More frequent than HP bubbles
+var treat_interval_variation := 0.5 if debug_treats else 3.0
+var last_treat_spawn_time := 0.0
+var max_treats_on_screen := 5  # Allow more treats than HP bubbles
+var treat_despawn_time := 15.0  # Treats disappear after 15 seconds if not collected
+
+# Treat value system (varies by phase for progression)
+var treat_values_by_phase := [1, 1, 2, 2, 3]  # Base treat value increases in later phases
+var bonus_treat_chance := [0.05, 0.08, 0.12, 0.15, 0.2]  # Chance for bonus treats (worth 3x value)
 
 # Phase system variables
 var current_phase := 1
@@ -61,6 +77,7 @@ var game_time := 0.0
 signal game_time_updated(time_seconds)
 signal phase_changed(new_phase)
 signal hp_bubble_spawned
+signal dog_treat_spawned(treat_value: int, is_bonus: bool)
 
 func _ready():
 	# DEBUG: Print debug mode status
@@ -69,6 +86,11 @@ func _ready():
 		print("- Spawn chances: 80-100% per attempt")
 		print("- Spawn every 2-4 seconds")
 		print("- Will spawn even at full health")
+	
+	if debug_treats:
+		print("DEBUG MODE: Dog Treats will spawn very frequently for testing!")
+		print("- Spawn chances: 90-100% per attempt")
+		print("- Spawn every 1.5-2.5 seconds")
 	
 	# Try to find the player if direct path isn't working
 	if not is_instance_valid(brown_dog):
@@ -89,6 +111,9 @@ func _ready():
 	
 	# Start HP bubble system
 	create_hp_bubble_timer()
+	
+	# Start dog treat system
+	create_treat_timer()
 	
 	# Start spawning
 	start_spawning()
@@ -117,11 +142,25 @@ func create_hp_bubble_timer():
 	add_child(hp_bubble_spawn_timer)
 	hp_bubble_spawn_timer.timeout.connect(_on_hp_bubble_timer_timeout)
 
+func create_treat_timer():
+	treat_spawn_timer = Timer.new()
+	treat_spawn_timer.wait_time = get_next_treat_interval()
+	treat_spawn_timer.one_shot = true
+	treat_spawn_timer.autostart = true
+	add_child(treat_spawn_timer)
+	treat_spawn_timer.timeout.connect(_on_treat_timer_timeout)
+
 func get_next_hp_bubble_interval() -> float:
 	# Adjust interval based on current phase (more frequent in later phases)
 	var phase_multiplier = 1.0 - (current_phase - 1) * 0.1  # Slightly more frequent each phase
 	var base_interval = hp_bubble_base_interval * phase_multiplier
 	return base_interval + randf_range(-hp_bubble_interval_variation, hp_bubble_interval_variation)
+
+func get_next_treat_interval() -> float:
+	# Adjust interval based on current phase (more frequent in later phases)
+	var phase_multiplier = 1.0 - (current_phase - 1) * 0.05  # Slightly more frequent each phase
+	var base_interval = treat_base_interval * phase_multiplier
+	return base_interval + randf_range(-treat_interval_variation, treat_interval_variation)
 
 func _on_hp_bubble_timer_timeout():
 	if is_active:
@@ -129,6 +168,13 @@ func _on_hp_bubble_timer_timeout():
 		# Set next timer
 		hp_bubble_spawn_timer.wait_time = get_next_hp_bubble_interval()
 		hp_bubble_spawn_timer.start()
+
+func _on_treat_timer_timeout():
+	if is_active:
+		attempt_treat_spawn()
+		# Set next timer
+		treat_spawn_timer.wait_time = get_next_treat_interval()
+		treat_spawn_timer.start()
 
 func attempt_hp_bubble_spawn():
 	if not is_instance_valid(brown_dog) or not hp_bubble_scene:
@@ -153,13 +199,31 @@ func attempt_hp_bubble_spawn():
 	
 	spawn_hp_bubble()
 
+func attempt_treat_spawn():
+	if not is_instance_valid(brown_dog) or not dog_treat_scene:
+		return
+	
+	# Check spawn chance for current phase
+	var spawn_chance = treat_spawn_chances[current_phase - 1]
+	if randf() > spawn_chance:
+		print("Dog treat spawn chance failed (", spawn_chance * 100, "%)")
+		return
+	
+	# Check maximum treats on screen
+	var existing_treats = get_tree().get_nodes_in_group("dog_treats")
+	if existing_treats.size() >= max_treats_on_screen:
+		print("Too many dog treats on screen, skipping spawn")
+		return
+	
+	spawn_dog_treat()
+
 func spawn_hp_bubble():
 	if not hp_bubble_scene or not is_instance_valid(brown_dog):
 		print("Cannot spawn HP bubble: missing scene or player")
 		return
 	
 	# Find a safe spawn location (away from projectiles and player)
-	var spawn_position = find_safe_hp_bubble_spawn_position()
+	var spawn_position = find_safe_spawn_position("hp_bubble")
 	if spawn_position == Vector2.ZERO:
 		print("No safe spawn position found for HP bubble")
 		return
@@ -179,15 +243,55 @@ func spawn_hp_bubble():
 	
 	print("HP Bubble spawned at position: ", spawn_position)
 
-func find_safe_hp_bubble_spawn_position() -> Vector2:
+func spawn_dog_treat():
+	if not dog_treat_scene or not is_instance_valid(brown_dog):
+		print("Cannot spawn dog treat: missing scene or player")
+		return
+	
+	# Find a safe spawn location
+	var spawn_position = find_safe_spawn_position("dog_treat")
+	if spawn_position == Vector2.ZERO:
+		print("No safe spawn position found for dog treat")
+		return
+	
+	# Determine treat value and if it's a bonus treat
+	var base_value = treat_values_by_phase[current_phase - 1]
+	var is_bonus = randf() < bonus_treat_chance[current_phase - 1]
+	var treat_value = base_value * (3 if is_bonus else 1)
+	
+	# Create the dog treat
+	var dog_treat = dog_treat_scene.instantiate()
+	dog_treat.global_position = spawn_position
+	
+	# Set treat properties
+	if dog_treat.has_method("set_treat_value"):
+		dog_treat.set_treat_value(treat_value, is_bonus)
+	
+	# Set despawn timer
+	if dog_treat.has_method("set_despawn_time"):
+		dog_treat.set_despawn_time(treat_despawn_time)
+	
+	# Connect signals
+	if dog_treat.has_signal("treat_collected"):
+		dog_treat.connect("treat_collected", _on_treat_collected)
+	
+	get_tree().current_scene.add_child(dog_treat)
+	
+	last_treat_spawn_time = game_time
+	dog_treat_spawned.emit(treat_value, is_bonus)
+	
+	var bonus_text = " (BONUS!)" if is_bonus else ""
+	print("Dog Treat spawned at position: ", spawn_position, " - Value: ", treat_value, bonus_text)
+
+func find_safe_spawn_position(item_type: String) -> Vector2:
 	var max_attempts = 10
-	var safe_distance_from_player = 200.0
-	var safe_distance_from_projectiles = 150.0
+	var safe_distance_from_player = 150.0 if item_type == "dog_treat" else 200.0  # Treats can be closer
+	var safe_distance_from_projectiles = 100.0 if item_type == "dog_treat" else 150.0
 	
 	for attempt in range(max_attempts):
 		# Generate random position around the play area
 		var angle = randf_range(0, 360)
-		var distance = randf_range(300, 800)  # Medium distance from player
+		var distance = randf_range(200, 700) if item_type == "dog_treat" else randf_range(300, 800)
 		var candidate_pos = brown_dog.global_position + Vector2.RIGHT.rotated(deg_to_rad(angle)) * distance
 		
 		# Check distance from player
@@ -211,6 +315,10 @@ func find_safe_hp_bubble_spawn_position() -> Vector2:
 func _on_hp_bubble_collected(restore_amount: int):
 	print("HP Bubble collected! Player restored ", restore_amount, " health")
 	# Could add score bonus or other effects here
+
+func _on_treat_collected(treat_value: int, is_bonus: bool):
+	print("Dog Treat collected! Player earned ", treat_value, " treats", " (BONUS!)" if is_bonus else "")
+	# The actual currency addition should be handled by the player or game manager
 
 func _on_player_health_restored(amount: int):
 	print("Player health restored by ", amount, " points")
@@ -447,8 +555,10 @@ func _on_player_died():
 		phase_timer.stop()
 	if is_instance_valid(hp_bubble_spawn_timer):
 		hp_bubble_spawn_timer.stop()
+	if is_instance_valid(treat_spawn_timer):
+		treat_spawn_timer.stop()
 	
-	# Destroy existing projectiles and HP bubbles
+	# Destroy existing projectiles, HP bubbles, and treats
 	var existing_projectiles = get_tree().get_nodes_in_group("projectiles")
 	for projectile in existing_projectiles:
 		projectile.queue_free()
@@ -456,6 +566,10 @@ func _on_player_died():
 	var existing_hp_bubbles = get_tree().get_nodes_in_group("hp_bubbles")
 	for bubble in existing_hp_bubbles:
 		bubble.queue_free()
+		
+	var existing_treats = get_tree().get_nodes_in_group("dog_treats")
+	for treat in existing_treats:
+		treat.queue_free()
 
 # Helper functions for external control
 func get_current_phase() -> int:
@@ -491,3 +605,65 @@ func set_hp_bubble_spawn_rate(new_base_interval: float, new_variation: float = 1
 	"""Adjust HP bubble spawn rate (for difficulty tuning)"""
 	hp_bubble_base_interval = new_base_interval
 	hp_bubble_interval_variation = new_variation
+
+# Dog Treat system helper functions
+func force_spawn_dog_treat():
+	"""Force spawn a dog treat (useful for testing or special events)"""
+	spawn_dog_treat()
+
+func force_spawn_bonus_treat():
+	"""Force spawn a bonus dog treat"""
+	if not dog_treat_scene or not is_instance_valid(brown_dog):
+		return
+	
+	var spawn_position = find_safe_spawn_position("dog_treat")
+	if spawn_position == Vector2.ZERO:
+		return
+	
+	var base_value = treat_values_by_phase[current_phase - 1]
+	var treat_value = base_value * 3  # Force bonus
+	
+	var dog_treat = dog_treat_scene.instantiate()
+	dog_treat.global_position = spawn_position
+	
+	if dog_treat.has_method("set_treat_value"):
+		dog_treat.set_treat_value(treat_value, true)
+	
+	if dog_treat.has_method("set_despawn_time"):
+		dog_treat.set_despawn_time(treat_despawn_time)
+	
+	if dog_treat.has_signal("treat_collected"):
+		dog_treat.connect("treat_collected", _on_treat_collected)
+	
+	get_tree().current_scene.add_child(dog_treat)
+	dog_treat_spawned.emit(treat_value, true)
+	print("BONUS Dog Treat force spawned! Value: ", treat_value)
+
+func get_treat_stats() -> Dictionary:
+	var existing_treats = get_tree().get_nodes_in_group("dog_treats")
+	return {
+		"treats_on_screen": existing_treats.size(),
+		"max_treats": max_treats_on_screen,
+		"time_since_last_spawn": game_time - last_treat_spawn_time,
+		"spawn_chance_current_phase": treat_spawn_chances[current_phase - 1],
+		"bonus_chance_current_phase": bonus_treat_chance[current_phase - 1],
+		"base_treat_value": treat_values_by_phase[current_phase - 1]
+	}
+
+func set_treat_spawn_rate(new_base_interval: float, new_variation: float = 3.0):
+	"""Adjust dog treat spawn rate (for difficulty tuning)"""
+	treat_base_interval = new_base_interval
+	treat_interval_variation = new_variation
+
+func set_treat_values(new_values: Array):
+	"""Set custom treat values for each phase [phase1, phase2, phase3, phase4, phase5]"""
+	if new_values.size() == 5:
+		treat_values_by_phase = new_values
+
+func enable_debug_treats(enable: bool = true):
+	"""Enable/disable debug mode for treats"""
+	debug_treats = enable
+	if enable:
+		print("DEBUG MODE: Dog Treats enabled - frequent spawning!")
+	else:
+		print("DEBUG MODE: Dog Treats disabled - normal spawning")
