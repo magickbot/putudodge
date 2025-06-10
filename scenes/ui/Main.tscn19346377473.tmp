@@ -1,0 +1,191 @@
+[gd_scene load_steps=15 format=3 uid="uid://c7aer2gm3ia2k"]
+
+[ext_resource type="Script" uid="uid://68p23hujomqj" path="res://scenes/ui/main.gd" id="1_thnqr"]
+[ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
+[ext_resource type="Script" uid="uid://ccu33m72jiaud" path="res://scripts/timer.gd" id="3_gl1th"]
+[ext_resource type="PackedScene" uid="uid://s8a0rs2vx5ca" path="res://scenes/touchinput.tscn" id="3_jy5xg"]
+[ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/entities/spawner.tscn" id="5_umypx"]
+[ext_resource type="Texture2D" uid="uid://bkymipsttjv5a" path="res://assets/sprites/characters/FreeDemo.png" id="6_gl1th"]
+[ext_resource type="PackedScene" uid="uid://1tm74bkji7y6" path="res://scenes/entities/hp_bubble.tscn" id="6_jy5xg"]
+[ext_resource type="PackedScene" uid="uid://dmkk20t53h1ux" path="res://scenes/entities/DogTreat.tscn" id="9_fss6w"]
+[ext_resource type="PackedScene" uid="uid://but5fo8vc4tt3" path="res://scenes/player.tscn" id="10_yvcut"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcsgt"]
+bg_color = Color(0.648663, 0.49473, 0.961565, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94386, 0.747491, 0.707859, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcsgt"]
+size = Vector2(1152, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
+size = Vector2(3, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
+size = Vector2(3, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
+size = Vector2(1152, 3)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_thnqr")
+metadata/_edit_horizontal_guides_ = [649.0]
+metadata/_edit_vertical_guides_ = [1157.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TouchInput" parent="CanvasLayer" instance=ExtResource("3_jy5xg")]
+script = ExtResource("2_s0uuu")
+
+[node name="DeathPopup" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/DeathPopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -91.0
+offset_right = 128.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vcsgt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DeathPopup/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -58.0
+offset_right = 99.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="GameOverMsg" type="Label" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Game Over!"
+horizontal_alignment = 1
+
+[node name="FinalTimeMsg" type="Label" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
+text = "Restart your misery"
+
+[node name="Button2" type="Button" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Quit to Main Menu"
+
+[node name="Timer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_gl1th")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Timer"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 80.0
+offset_bottom = 33.0
+theme_override_constants/separation = 2
+
+[node name="Minutes" type="Label" parent="CanvasLayer/Timer/HBoxContainer"]
+layout_mode = 2
+text = "00:"
+horizontal_alignment = 2
+
+[node name="Seconds" type="Label" parent="CanvasLayer/Timer/HBoxContainer"]
+layout_mode = 2
+text = "00."
+horizontal_alignment = 2
+
+[node name="Msecs" type="Label" parent="CanvasLayer/Timer/HBoxContainer"]
+layout_mode = 2
+text = "000"
+horizontal_alignment = 2
+
+[node name="TreatDisplay" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 1070.0
+offset_top = 20.0
+offset_right = 1110.0
+offset_bottom = 60.0
+alignment = 1
+
+[node name="TreatIcon" type="Sprite2D" parent="CanvasLayer/TreatDisplay"]
+position = Vector2(-1, 20)
+texture = ExtResource("6_gl1th")
+region_enabled = true
+region_rect = Rect2(130.669, 143.803, 26.9869, 16.7669)
+
+[node name="DogTreatCounter" type="Label" parent="CanvasLayer/TreatDisplay"]
+layout_mode = 2
+
+[node name="spawner" parent="." instance=ExtResource("5_umypx")]
+hp_bubble_scene = ExtResource("6_jy5xg")
+dog_treat_scene = ExtResource("9_fss6w")
+
+[node name="Wall" type="Node2D" parent="."]
+
+[node name="WallTop" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallTop"]
+position = Vector2(576, -2)
+shape = SubResource("RectangleShape2D_vcsgt")
+
+[node name="WallLeft" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallLeft"]
+position = Vector2(-1.5, 324)
+shape = SubResource("RectangleShape2D_c01mt")
+
+[node name="WallRight" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallRight"]
+position = Vector2(1153.5, 324)
+shape = SubResource("RectangleShape2D_nxtc6")
+
+[node name="WallBottom" type="StaticBody2D" parent="Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallBottom"]
+position = Vector2(576, 649.5)
+shape = SubResource("RectangleShape2D_jlsqs")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Player" parent="." instance=ExtResource("10_yvcut")]
+position = Vector2(579, 322)
+
+[connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]
