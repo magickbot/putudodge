@@ -230,6 +230,7 @@ func spawn_hp_bubble():
 	
 	# Create the HP bubble
 	var hp_bubble = hp_bubble_scene.instantiate()
+	get_parent().add_child(hp_bubble)
 	hp_bubble.global_position = spawn_position
 	
 	# Connect signals
@@ -261,6 +262,7 @@ func spawn_dog_treat():
 	
 	# Create the dog treat
 	var dog_treat = dog_treat_scene.instantiate()
+	get_parent().add_child(dog_treat)
 	dog_treat.global_position = spawn_position
 	
 	# Set treat properties
@@ -509,6 +511,8 @@ func spawn_projectile_at_angle(angle_degrees: float, ball_type: String):
 	var spawn_offset = Vector2.RIGHT.rotated(angle_radians) * spawn_distance
 	var spawn_pos = brown_dog.global_position + spawn_offset
 	var projectile = ball_scene.instantiate()
+	get_parent().add_child(projectile)
+	
 	
 	# Set speed based on phase progression
 	if projectile.has_method("set_speed_range"):
@@ -624,6 +628,7 @@ func force_spawn_bonus_treat():
 	var treat_value = base_value * 3  # Force bonus
 	
 	var dog_treat = dog_treat_scene.instantiate()
+	get_parent().add_child(dog_treat)
 	dog_treat.global_position = spawn_position
 	
 	if dog_treat.has_method("set_treat_value"):
