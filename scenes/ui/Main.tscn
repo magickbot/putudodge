@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=11 format=3 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="Script" uid="uid://68p23hujomqj" path="res://scenes/ui/main.gd" id="1_thnqr"]
 [ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
@@ -21,18 +21,6 @@ corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcsgt"]
-size = Vector2(1152, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
-size = Vector2(3, 648)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
-size = Vector2(3, 648)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
-size = Vector2(1152, 3)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_thnqr")
@@ -154,32 +142,6 @@ layout_mode = 2
 [node name="spawner" parent="." instance=ExtResource("5_umypx")]
 hp_bubble_scene = ExtResource("6_jy5xg")
 dog_treat_scene = ExtResource("9_fss6w")
-
-[node name="Wall" type="Node2D" parent="."]
-
-[node name="WallTop" type="StaticBody2D" parent="Wall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallTop"]
-position = Vector2(576, -2)
-shape = SubResource("RectangleShape2D_vcsgt")
-
-[node name="WallLeft" type="StaticBody2D" parent="Wall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallLeft"]
-position = Vector2(-1.5, 324)
-shape = SubResource("RectangleShape2D_c01mt")
-
-[node name="WallRight" type="StaticBody2D" parent="Wall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallRight"]
-position = Vector2(1153.5, 324)
-shape = SubResource("RectangleShape2D_nxtc6")
-
-[node name="WallBottom" type="StaticBody2D" parent="Wall"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/WallBottom"]
-position = Vector2(576, 649.5)
-shape = SubResource("RectangleShape2D_jlsqs")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)

@@ -120,6 +120,13 @@ func _ready():
 	
 	print("Starting Phase 1: Learning Phase")
 
+# Add this function to calculate spawn distance dynamically
+func get_dynamic_spawn_distance() -> float:
+	var viewport_size = get_viewport().get_visible_rect().size
+	var max_viewport_dimension = max(viewport_size.x, viewport_size.y)
+	# Spawn outside the viewport by adding some buffer
+	return (max_viewport_dimension * 0.6) + 200  # 60% of viewport + 200 buffer
+
 func create_game_timer():
 	var timer = Timer.new()
 	timer.wait_time = 0.1
@@ -507,7 +514,7 @@ func spawn_projectile_at_angle(angle_degrees: float, ball_type: String):
 		return
 	
 	var angle_radians = deg_to_rad(angle_degrees)
-	var spawn_distance = default_distance
+	var spawn_distance = get_dynamic_spawn_distance()
 	var spawn_offset = Vector2.RIGHT.rotated(angle_radians) * spawn_distance
 	var spawn_pos = brown_dog.global_position + spawn_offset
 	var projectile = ball_scene.instantiate()
