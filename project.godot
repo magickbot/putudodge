@@ -24,6 +24,9 @@ Global="*res://scripts/AutoLoadScripts/Global.gd"
 
 [display]
 
+window/size/viewport_width=320
+window/size/viewport_height=180
+window/size/mode=3
 window/stretch/mode="2d"
 
 [gui]
