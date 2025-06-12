@@ -10,7 +10,7 @@ var is_invulnerable := false
 @onready var touch = get_node("../CanvasLayer/TouchInput")
 @onready var life_container = $LifeContainer
 @onready var camera = get_node("../Camera2D")
-@onready var sprite = $Sprite2D 
+@onready var sprite = $AnimatedSprite2D 
 @onready var TimerClock = get_node("../CanvasLayer/Timer")
 @onready var FinalTimeMsg = get_node("../CanvasLayer/DeathPopup/Panel/VBoxContainer/FinalTimeMsg")
 @onready var treat_counter_label = get_node("../CanvasLayer/TreatDisplay/DogTreatCounter")
@@ -150,7 +150,10 @@ func get_combined_input_direction() -> Vector2:
 	# Joystick input
 	if touch:
 		touch_input = touch.get_input_direction()
-	
+	if wasd_input:
+		sprite.play("run")
+	else:
+		sprite.play("idle")
 	# Combine both inputs - if both are active, they add together
 	var combined_input = wasd_input + touch_input
 	
