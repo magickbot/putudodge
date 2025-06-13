@@ -1,44 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://bi45xoblpw777"]
+[gd_scene load_steps=14 format=3 uid="uid://bi45xoblpw777"]
 
 [ext_resource type="Script" uid="uid://dj61tcoifg5a4" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://5um33jfpxvxr" path="res://assets/sprites/ui/placeholderBG.jpg" id="1_l6cm7"]
 [ext_resource type="AudioStream" uid="uid://h6l0jae3bl05" path="res://assets/sounds/background music/a-video-game-short-248442.mp3" id="3_1g8jr"]
+[ext_resource type="Texture2D" uid="uid://d1bwpbo76gde1" path="res://assets/sprites/ui/game UI.png" id="3_m1kxf"]
+[ext_resource type="FontFile" uid="uid://51atjq66dp7v" path="res://assets/fonts/joystix/joystix monospace.otf" id="3_x2yvf"]
+[ext_resource type="AudioStream" uid="uid://dw6ljyu4v5bo0" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_003.ogg" id="6_uhagc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
 texture = ExtResource("1_l6cm7")
 modulate_color = Color(0.655601, 0.655601, 0.655601, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6cm7"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1kxf"]
+texture = ExtResource("3_m1kxf")
+region_rect = Rect2(200, 752, 96, 24)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6cm7"]
-bg_color = Color(0.806161, 0.806161, 0.806161, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.439216)
-shadow_size = 5
-shadow_offset = Vector2(0, 1.105)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uhagc"]
+texture = ExtResource("3_m1kxf")
+region_rect = Rect2(32, 751, 96, 25)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
-bg_color = Color(0.29219, 0.29219, 0.29219, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.439216)
-shadow_size = 5
-shadow_offset = Vector2(0, 1.105)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x2yvf"]
+texture = ExtResource("3_m1kxf")
+region_rect = Rect2(200, 752, 96, 24)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.439216)
-shadow_size = 5
-shadow_offset = Vector2(0, 1.105)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q85j6"]
+texture = ExtResource("3_m1kxf")
+region_rect = Rect2(200, 752, 96, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_btxxm"]
+texture = ExtResource("3_m1kxf")
+region_rect = Rect2(32, 752, 96, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wb0q5"]
+texture = ExtResource("3_m1kxf")
+region_rect = Rect2(200, 752, 96, 24)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -76,29 +71,31 @@ theme_override_constants/separation = 12
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.894118, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.894118, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_x2yvf")
 theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l6cm7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_m1kxf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uhagc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_x2yvf")
 text = "START"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(0.894118, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.894118, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_x2yvf")
 theme_override_font_sizes/font_size = 40
-theme_override_styles/focus = SubResource("StyleBoxEmpty_l6cm7")
-theme_override_styles/hover = SubResource("StyleBoxFlat_l6cm7")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ekxnf")
-theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q85j6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_btxxm")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wb0q5")
 text = "QUIT
 "
 
@@ -109,14 +106,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -213.0
-offset_top = -159.0
-offset_right = 238.0
-offset_bottom = -18.0
+offset_left = -203.0
+offset_top = -264.0
+offset_right = 211.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "Putu Dodge"
+theme_override_fonts/font = ExtResource("3_x2yvf")
+theme_override_font_sizes/font_size = 100
+text = "Putu
+Dodge"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -124,6 +123,9 @@ vertical_alignment = 1
 stream = ExtResource("3_1g8jr")
 autoplay = true
 parameters/looping = false
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_uhagc")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
