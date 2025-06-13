@@ -122,7 +122,7 @@ vertical_alignment = 1
 [node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1g8jr")
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_uhagc")
