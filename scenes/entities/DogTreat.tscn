@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bkymipsttjv5a" path="res://assets/sprites/characters/FreeDemo.png" id="1_27mf4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_27mf4"]
+size = Vector2(40, 40)
 
 [node name="DogTreat" type="Area2D"]
 script = ExtResource("1_1caf2")
@@ -12,6 +13,7 @@ script = ExtResource("1_1caf2")
 shape = SubResource("RectangleShape2D_27mf4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("1_27mf4")
 region_enabled = true
 region_rect = Rect2(130, 143.5, 27.7875, 18)

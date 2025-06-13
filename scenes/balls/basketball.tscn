@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://d088dxeemvqlk" path="res://scripts/basketball.gd" id="2_wa7ic"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wa7ic"]
-radius = 16.0
+radius = 32.0
 
 [node name="Area2D2" type="Area2D"]
 script = ExtResource("2_wa7ic")
@@ -13,5 +13,4 @@ script = ExtResource("2_wa7ic")
 shape = SubResource("CircleShape2D_wa7ic")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_381p5")

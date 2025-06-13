@@ -1,9 +1,9 @@
-# Player.gd - Updated with HP restoration
+# Player.gd - Updated with HP restoration and compensated for 2x manual scaling
 extends CharacterBody2D
 
-@export var speed := 350.0
-@export var max_health := 3
-var current_health := 3
+@export var speed := 700.0  # Doubled to compensate for 2x scaled collision shapes
+@export var max_health := 999
+var current_health := 999
 var is_invulnerable := false
 @export var invulnerability_time := 1.0
 @onready var touch = get_node("../CanvasLayer/TouchInput")
@@ -14,12 +14,10 @@ var is_invulnerable := false
 @onready var FinalTimeMsg = get_node("../CanvasLayer/DeathPopup/Panel/VBoxContainer/FinalTimeMsg")
 @onready var treat_counter_label = get_node("../CanvasLayer/TreatDisplay/DogTreatCounter")
 
-
 signal health_changed(new_health)
 signal player_died
 signal health_restored(amount)
 signal quit_to_main
-
 
 func _ready():
 	current_health = max_health
@@ -30,7 +28,8 @@ func _ready():
 	add_to_group("player")
 	update_treat_ui()
 	life_container.visible = false
-	$LifeContainer.position = Vector2(0, 30)
+	# Position adjusted for manually scaled sprites
+	$LifeContainer.position = Vector2(0, 60)  # Adjusted for 2x scaled sprites
 
 func take_damage():
 	if is_invulnerable:
@@ -89,18 +88,22 @@ func restore_health(amount: int = 1):
 
 func create_heal_effect():
 	"""Visual effect when health is restored"""
+	# Create a temporary canvas layer for the flash
+	var canvas_layer = CanvasLayer.new()
+	canvas_layer.layer = 100  # High layer to ensure it's on top
+	get_tree().current_scene.add_child(canvas_layer)
+	
 	# Screen flash effect
 	var flash_overlay = ColorRect.new()
 	flash_overlay.color = Color(0, 1, 0, 0.3)  # Green flash
-	flash_overlay.size = get_viewport().get_visible_rect().size
-	flash_overlay.position = Vector2.ZERO
-	get_tree().current_scene.add_child(flash_overlay)
+	flash_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	canvas_layer.add_child(flash_overlay)
 	
 	# Fade out the flash
 	var tween = create_tween()
 	tween.tween_property(flash_overlay, "modulate:a", 0.0, 0.3)
 	await tween.finished
-	flash_overlay.queue_free()
+	canvas_layer.queue_free()
 
 func start_invulnerability():
 	is_invulnerable = true
@@ -181,7 +184,7 @@ func _on_health_changed(new_health):
 		var heart = life_container.get_child(i)
 		heart.visible = i < new_health
 
-func shake_camera(duration := 0.2, magnitude := 5.0):
+func shake_camera(duration := 0.2, magnitude := 10.0):  # Doubled magnitude for 2x scaled visuals
 	var time_elapsed := 0.0
 	while time_elapsed < duration:
 		var offset = Vector2(

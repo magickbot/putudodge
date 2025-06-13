@@ -193,21 +193,23 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(48, 29)
+size = Vector2(168, 101.5)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -19)
+scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_60mlk")
 animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(0, 42.5)
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="LifeContainer" type="Node2D" parent="."]
+position = Vector2(0, 112)
 
 [node name="Life1" type="Sprite2D" parent="LifeContainer"]
 position = Vector2(-25, 0)

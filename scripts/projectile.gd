@@ -1,13 +1,12 @@
-# UPDATED PROJECTILE
+# UPDATED PROJECTILE - Compensated for 2x manual scaling
 extends Area2D
 class_name Projectile
 
-var min_speed := 400.0
-var max_speed := 600.0
-var speed := 500.0
+var min_speed := 800.0  # Doubled to compensate for 2x collision shapes
+var max_speed := 1200.0  # Doubled to compensate for 2x collision shapes
+var speed := 1000.0  # Doubled to compensate for 2x collision shapes
 var direction := Vector2.ZERO
 var projectile_type := "basic"
-
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 

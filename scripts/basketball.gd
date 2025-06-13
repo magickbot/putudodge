@@ -1,17 +1,16 @@
-# BASKETBALL.gd
-# Basketball - Zigzags left and right while moving toward player
+# BASKETBALL.gd - Compensated for 2x manual scaling
 extends Projectile
 
-var zigzag_amplitude := 200.0  # How far left/right it moves
-var zigzag_frequency := 10.0    # How often it changes direction
+var zigzag_amplitude := 400.0  # Doubled for 2x scale (was 200)
+var zigzag_frequency := 10.0    # Keep same frequency
 var travel_time := 0.0
 var base_direction := Vector2.ZERO
 
 func setup_projectile():
 	projectile_type = "basketball"
-	# Basketball has medium speed
-	min_speed = max(min_speed * 0.9, 350.0)
-	max_speed = max(max_speed * 0.9, 500.0)
+	# Basketball has medium speed - doubled for 2x scale
+	min_speed = max(min_speed * 0.9, 700.0)  # Doubled from 350
+	max_speed = max(max_speed * 0.9, 1000.0)  # Doubled from 500
 	speed = randf_range(min_speed, max_speed)
 	
 	# Set orange color for basketball
