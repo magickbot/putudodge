@@ -2,8 +2,8 @@
 extends CharacterBody2D
 
 @export var speed := 700.0  # Doubled to compensate for 2x scaled collision shapes
-@export var max_health := 999
-var current_health := 999
+@export var max_health := 3
+var current_health := 3
 var is_invulnerable := false
 @export var invulnerability_time := 1.0
 @onready var touch = get_node("../CanvasLayer/TouchInput")
