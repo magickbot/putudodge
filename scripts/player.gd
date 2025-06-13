@@ -118,6 +118,8 @@ func start_invulnerability():
 	sprite.modulate.a = 1.0  # Ensure full opacity
 
 func _on_player_died():
+	stop_BGM()
+	play_game_over()
 	sprite.play("die")
 	TimerClock.stop()
 	var FinalScore = TimerClock.get_time_formatted()
@@ -226,3 +228,11 @@ func play_hit_sound():
 func play_button_press():
 	var button_press = get_node("../SoundManager/ButtonPress")
 	button_press.play()
+
+func stop_BGM():
+	var BGM = get_node("../SoundManager/BGM")
+	BGM.playing = false
+
+func play_game_over():
+	var game_over_sound = get_node("../SoundManager/GameOver")
+	game_over_sound.play()
