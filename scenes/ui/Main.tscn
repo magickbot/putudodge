@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=14 format=3 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="Script" uid="uid://68p23hujomqj" path="res://scenes/ui/main.gd" id="1_thnqr"]
 [ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://ce2o7nmqayjg" path="res://assets/sounds/background music/my-8-bit-hero-301280.mp3" id="10_thnqr"]
 [ext_resource type="PackedScene" uid="uid://but5fo8vc4tt3" path="res://scenes/player.tscn" id="10_yvcut"]
 [ext_resource type="AudioStream" uid="uid://bur35p0ektjjm" path="res://assets/sounds/sfx/hurt.wav" id="11_thnqr"]
+[ext_resource type="AudioStream" uid="uid://dw6ljyu4v5bo0" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_003.ogg" id="12_gl1th"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcsgt"]
 bg_color = Color(0.648663, 0.49473, 0.961565, 1)
@@ -160,6 +161,9 @@ parameters/looping = false
 
 [node name="Hit" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("11_thnqr")
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("12_gl1th")
 
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]

@@ -14,6 +14,7 @@ var is_invulnerable := false
 @onready var FinalTimeMsg = get_node("../CanvasLayer/DeathPopup/Panel/VBoxContainer/FinalTimeMsg")
 @onready var treat_counter_label = get_node("../CanvasLayer/TreatDisplay/DogTreatCounter")
 
+
 signal health_changed(new_health)
 signal player_died
 signal health_restored(amount)
@@ -191,10 +192,12 @@ func shake_camera(duration := 0.2, magnitude := 5.0):
 	camera.offset = Vector2.ZERO
 
 func _on_button_pressed() -> void:
+	play_button_press()
 	print("Restarting!")
 	Global.emit_signal("restart_level")
 
 func _on_Quit_To_Main_pressed() -> void:
+	play_button_press()
 	var death_popup = get_node("../CanvasLayer/DeathPopup")
 	Global.emit_signal("quit_to_main")
 	death_popup.visible = false
@@ -219,3 +222,7 @@ func _on_treat_collected():
 func play_hit_sound():
 	var hit_sound = get_node("../SoundManager/Hit")
 	hit_sound.play()
+
+func play_button_press():
+	var button_press = get_node("../SoundManager/ButtonPress")
+	button_press.play()
