@@ -259,7 +259,7 @@ position = Vector2(579, 322)
 [node name="BGM" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("10_thnqr")
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [node name="Hit" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("11_thnqr")
