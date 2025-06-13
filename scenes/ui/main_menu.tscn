@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bi45xoblpw777"]
+[gd_scene load_steps=9 format=3 uid="uid://bi45xoblpw777"]
 
 [ext_resource type="Script" uid="uid://dj61tcoifg5a4" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://5um33jfpxvxr" path="res://assets/sprites/ui/placeholderBG.jpg" id="1_l6cm7"]
+[ext_resource type="AudioStream" uid="uid://h6l0jae3bl05" path="res://assets/sounds/background music/a-video-game-short-248442.mp3" id="3_1g8jr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ekxnf"]
 texture = ExtResource("1_l6cm7")
@@ -108,16 +109,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -225.5
-offset_top = -175.0
-offset_right = 225.5
-offset_bottom = -34.0
+offset_left = -213.0
+offset_top = -159.0
+offset_right = 238.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 80
 text = "Putu Dodge"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1g8jr")
+autoplay = true
+parameters/looping = false
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]

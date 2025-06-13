@@ -6,7 +6,6 @@ extends CharacterBody2D
 var current_health := 3
 var is_invulnerable := false
 @export var invulnerability_time := 1.0
-
 @onready var touch = get_node("../CanvasLayer/TouchInput")
 @onready var life_container = $LifeContainer
 @onready var camera = get_node("../Camera2D")
@@ -35,9 +34,10 @@ func _ready():
 func take_damage():
 	if is_invulnerable:
 		return
-
+	
 	current_health -= 1
 	health_changed.emit(current_health)
+	play_hit_sound()
 	print("Player hit! Health: " + str(current_health))
 
 	# Show lives temporarily
@@ -117,6 +117,7 @@ func start_invulnerability():
 	sprite.modulate.a = 1.0  # Ensure full opacity
 
 func _on_player_died():
+	sprite.play("die")
 	TimerClock.stop()
 	var FinalScore = TimerClock.get_time_formatted()
 	FinalTimeMsg.text = FinalScore
@@ -214,4 +215,7 @@ func update_treat_ui():
 func _on_treat_collected():
 	GameData.dog_treats_collected += 1
 	update_treat_ui()
-	
+
+func play_hit_sound():
+	var hit_sound = get_node("../SoundManager/Hit")
+	hit_sound.play()
