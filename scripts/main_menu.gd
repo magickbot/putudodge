@@ -8,6 +8,7 @@ signal play_pressed
 @onready var dog_container = $DogContainer/Dog  # Container to hold the animated dog
 @onready var left_button = $Button/LeftButton
 @onready var right_button = $Button/RightButton
+@onready var character_select: AudioStreamPlayer = $CharacterSelect
 
 var current_dog_instance = null
 
@@ -27,10 +28,8 @@ func _on_start_button_mouse_entered() -> void:
 func _on_quit_button_mouse_entered() -> void:
 	button_hover.play()
 
-
 func _on_main_menu_music_finished() -> void:
 	main_menu_music_2.play()
-
 
 func _on_main_menu_music_2_finished() -> void:
 	main_menu_music.play()
@@ -47,10 +46,12 @@ func _ready():
 func _on_left_button_pressed():
 	GameManager.previous_dog()
 	_update_dog_display()
+	character_select.play()
 
 func _on_right_button_pressed():
 	GameManager.next_dog()
 	_update_dog_display()
+	character_select.play()
 
 func _update_dog_display():
 	# Remove current dog instance if it exists
@@ -82,3 +83,11 @@ func _find_animated_sprite(node):
 			return result
 	
 	return null
+
+
+func _on_right_button_mouse_entered() -> void:
+	button_hover.play()
+
+
+func _on_left_button_mouse_entered() -> void:
+	button_hover.play()
