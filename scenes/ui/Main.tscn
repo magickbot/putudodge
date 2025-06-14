@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=28 format=4 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
 [ext_resource type="Script" uid="uid://ccu33m72jiaud" path="res://scripts/timer.gd" id="3_gl1th"]
@@ -12,11 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://d1bwpbo76gde1" path="res://assets/sprites/ui/game UI.png" id="7_i8jtn"]
 [ext_resource type="PackedScene" uid="uid://dmkk20t53h1ux" path="res://scenes/entities/DogTreat.tscn" id="9_fss6w"]
 [ext_resource type="AudioStream" uid="uid://ce2o7nmqayjg" path="res://assets/sounds/background music/my-8-bit-hero-301280.mp3" id="10_thnqr"]
-[ext_resource type="PackedScene" uid="uid://but5fo8vc4tt3" path="res://scenes/entities/player.tscn" id="10_yvcut"]
+[ext_resource type="PackedScene" uid="uid://bkcgh8avstrjh" path="res://scenes/entities/player.tscn" id="10_yvcut"]
 [ext_resource type="AudioStream" uid="uid://bur35p0ektjjm" path="res://assets/sounds/sfx/hurt.wav" id="11_thnqr"]
 [ext_resource type="AudioStream" uid="uid://dw6ljyu4v5bo0" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_003.ogg" id="12_gl1th"]
+[ext_resource type="Script" uid="uid://bxkip3o8wdga4" path="res://scenes/ui/sound_manager.gd" id="14_acbhb"]
 [ext_resource type="TileSet" uid="uid://djxh32mxao2ax" path="res://assets/sprites/map/ground.tres" id="17_3nd05"]
 [ext_resource type="AudioStream" uid="uid://dtqyk1rp1yp1v" path="res://assets/sounds/background music/kill_screen-194698.mp3" id="17_4ca1i"]
+[ext_resource type="AudioStream" uid="uid://c1ou7ptxcvede" path="res://assets/sounds/background music/fun-with-my-8-bit-game-301278.mp3" id="18_3nd05"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_umypx"]
 texture = ExtResource("4_upid4")
@@ -266,11 +268,11 @@ z_index = 1
 position = Vector2(579, 322)
 
 [node name="SoundManager" type="Node2D" parent="."]
+script = ExtResource("14_acbhb")
 
-[node name="BGM" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="BGM1" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("10_thnqr")
 autoplay = true
-parameters/looping = true
 
 [node name="Hit" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("11_thnqr")
@@ -282,5 +284,10 @@ stream = ExtResource("12_gl1th")
 stream = ExtResource("17_4ca1i")
 parameters/looping = true
 
+[node name="BGM2" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("18_3nd05")
+
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]
+[connection signal="finished" from="SoundManager/BGM1" to="SoundManager" method="_on_bgm_1_finished"]
+[connection signal="finished" from="SoundManager/BGM2" to="SoundManager" method="_on_bgm_2_finished"]
