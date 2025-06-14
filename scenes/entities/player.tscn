@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://but5fo8vc4tt3"]
+[gd_scene load_steps=33 format=3 uid="uid://but5fo8vc4tt3"]
 
 [ext_resource type="Script" uid="uid://ds83evwqs2qlf" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cmifgye8tewra" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/DogoArgentino/DogoArgentinoPaid/IdleDog.png" id="2_dqkch"]
@@ -192,8 +192,13 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(168, 101.5)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5u6hq"]
+radius = 30.0
+height = 106.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d4qa6"]
+radius = 21.0
+height = 62.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
@@ -205,8 +210,9 @@ sprite_frames = SubResource("SpriteFrames_60mlk")
 animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 42.5)
-shape = SubResource("RectangleShape2D_onrkg")
+position = Vector2(-10, 52)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5u6hq")
 
 [node name="LifeContainer" type="Node2D" parent="."]
 position = Vector2(0, 112)
@@ -227,3 +233,8 @@ position = Vector2(25, 0)
 texture = ExtResource("3_qhqgy")
 region_enabled = true
 region_rect = Rect2(0, 0, 16.1547, 16)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(40, 18)
+rotation = 0.785398
+shape = SubResource("CapsuleShape2D_d4qa6")

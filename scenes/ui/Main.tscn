@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=36 format=4 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=37 format=4 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="Script" uid="uid://tj55h5oymuxl" path="res://scenes/ui/main.gd" id="1_hb27l"]
 [ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
