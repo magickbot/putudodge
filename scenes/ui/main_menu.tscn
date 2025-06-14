@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=107 format=3 uid="uid://bi45xoblpw777"]
+[gd_scene load_steps=98 format=3 uid="uid://bi45xoblpw777"]
 
 [ext_resource type="Script" uid="uid://dj61tcoifg5a4" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://wkmilb8nfn10" path="res://assets/sprites/ui/J13sl2-ezgif.com-gif-to-sprite-converter.png" id="2_btxxm"]
@@ -528,6 +527,10 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_877pj"]
+resource_name = "pulsing_title"
+loop_mode = 1
+
 [sub_resource type="Animation" id="Animation_btxxm"]
 resource_name = "sliding"
 length = 60.0
@@ -569,15 +572,38 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_877pj"]
-resource_name = "pulsing_title"
-loop_mode = 1
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q85j6"]
 _data = {
 &"RESET": SubResource("Animation_wb0q5"),
 &"pulsing_title": SubResource("Animation_877pj"),
 &"sliding": SubResource("Animation_btxxm")
+}
+
+[sub_resource type="Animation" id="Animation_y2j7i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Title:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(514, 514)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(749, -20)]
 }
 
 [sub_resource type="Animation" id="Animation_ayp64"]
@@ -607,33 +633,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(749, -55), Vector2(724, -75)]
-}
-
-[sub_resource type="Animation" id="Animation_y2j7i"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Title:size")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(514, 514)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Title:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(749, -20)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y1h5l"]
@@ -826,7 +825,6 @@ stream = ExtResource("14_n4uci")
 [node name="MainMenuMusic2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_877pj")
 
-[connection signal="mouse_entered" from="VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
 [node name="Button" type="CanvasLayer" parent="."]
 
 [node name="LeftButton" type="Button" parent="Button"]
@@ -855,6 +853,7 @@ offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[connection signal="mouse_entered" from="VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]

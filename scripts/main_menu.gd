@@ -36,7 +36,7 @@ func _on_main_menu_music_2_finished() -> void:
 	main_menu_music.play()
 
 func _ready():
-  main_menu_music.play()
+	main_menu_music.play()
 	# Connect button signals
 	left_button.pressed.connect(_on_left_button_pressed)
 	right_button.pressed.connect(_on_right_button_pressed)
