@@ -13,6 +13,7 @@ var is_invulnerable := false
 @onready var TimerClock = get_node("../CanvasLayer/Timer")
 @onready var FinalTimeMsg = get_node("../CanvasLayer/DeathPopup/Panel/VBoxContainer/FinalTimeMsg")
 @onready var treat_counter_label = get_node("../CanvasLayer/TreatDisplay/DogTreatCounter")
+@onready var pick_up_sound: AudioStreamPlayer = $"../SoundManager/PickUpSound"
 
 signal health_changed(new_health)
 signal player_died
@@ -87,7 +88,9 @@ func restore_health(amount: int = 1):
 	return true  # Successfully restored health
 
 func create_heal_effect():
+	pick_up_sound.play()
 	"""Visual effect when health is restored"""
+	
 	# Create a temporary canvas layer for the flash
 	var canvas_layer = CanvasLayer.new()
 	canvas_layer.layer = 100  # High layer to ensure it's on top
@@ -221,6 +224,7 @@ func update_treat_ui():
 	treat_counter_label.text = str(GameData.dog_treats_collected)
 
 func _on_treat_collected():
+	pick_up_sound.play()
 	GameData.dog_treats_collected += 1
 	update_treat_ui()
 
