@@ -157,10 +157,7 @@ func get_combined_input_direction() -> Vector2:
 	# Joystick input
 	if touch:
 		touch_input = touch.get_input_direction()
-	if wasd_input:
-		sprite.play("run")
-	else:
-		sprite.play("idle")
+
 	# Combine both inputs - if both are active, they add together
 	var combined_input = wasd_input + touch_input
 	
@@ -174,7 +171,10 @@ func _physics_process(delta):
 	var input_vector = get_combined_input_direction()
 	velocity = input_vector * speed
 	move_and_slide()
-	
+	if input_vector.length() > 0:
+		sprite.play("run")
+	else:
+		sprite.play("idle")
 	if velocity.x != 0:
 		sprite.flip_h = velocity.x < 0
 
