@@ -1,4 +1,5 @@
-[gd_scene load_steps=31 format=4 uid="uid://c7aer2gm3ia2k"]
+
+[gd_scene load_steps=36 format=4 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="Script" uid="uid://tj55h5oymuxl" path="res://scenes/ui/main.gd" id="1_hb27l"]
 [ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
@@ -81,6 +82,30 @@ expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 region_rect = Rect2(200, 752, 96, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hb27l"]
+texture = ExtResource("7_i8jtn")
+region_rect = Rect2(200, 752, 96, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iujac"]
+texture = ExtResource("7_i8jtn")
+region_rect = Rect2(32, 752, 96, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5a72s"]
+texture = ExtResource("7_i8jtn")
+region_rect = Rect2(200, 752, 96, 24)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cau2q"]
+texture = ExtResource("7_i8jtn")
+region_rect = Rect2(192, 928, 15, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkaeb"]
+texture = ExtResource("7_i8jtn")
+region_rect = Rect2(192, 928, 15, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k2sfp"]
+texture = ExtResource("7_i8jtn")
+region_rect = Rect2(192, 928, 15, 16)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hb27l")
@@ -193,6 +218,101 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_acbhb")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kpu1v")
 text = "Quit to Main Menu"
 
+[node name="PausePopup" type="Control" parent="CanvasLayer"]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PausePopup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_umypx")
+
+[node name="PausedMsg" type="Label" parent="CanvasLayer/PausePopup/Panel"]
+layout_mode = 2
+offset_left = 105.0
+offset_top = 92.0
+offset_right = 701.0
+offset_bottom = 231.0
+theme_override_fonts/font = ExtResource("5_i8jtn")
+theme_override_font_sizes/font_size = 65
+theme_override_styles/normal = SubResource("StyleBoxTexture_i8jtn")
+text = "Paused!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PausePopup/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -108.0
+offset_right = 248.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="resume" type="Button" parent="CanvasLayer/PausePopup/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.661081, 0.661081, 0.661081, 1)
+theme_override_fonts/font = ExtResource("5_i8jtn")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/hover = SubResource("StyleBoxTexture_hb27l")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iujac")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5a72s")
+text = "RESUME GAME"
+
+[node name="Button" type="Button" parent="CanvasLayer/PausePopup/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.537011, 0.537011, 0.537011, 1)
+theme_override_fonts/font = ExtResource("5_i8jtn")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/hover = SubResource("StyleBoxTexture_tihu7")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4ca1i")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3nd05")
+text = "Restart your misery"
+
+[node name="Button2" type="Button" parent="CanvasLayer/PausePopup/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.537255, 0.537255, 0.537255, 1)
+theme_override_fonts/font = ExtResource("5_i8jtn")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/hover = SubResource("StyleBoxTexture_q7vri")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_acbhb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kpu1v")
+text = "Quit to Main Menu"
+
 [node name="Timer" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
@@ -249,7 +369,22 @@ theme_override_fonts/font = ExtResource("5_i8jtn")
 theme_override_font_sizes/font_size = 30
 text = "0"
 
+[node name="pausebutton" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -73.0
+offset_top = 7.0
+offset_right = -9.0
+offset_bottom = 71.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_cau2q")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pkaeb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k2sfp")
+
 [node name="spawner" parent="." instance=ExtResource("5_umypx")]
+process_mode = 1
 hp_bubble_scene = ExtResource("6_jy5xg")
 dog_treat_scene = ExtResource("9_fss6w")
 
@@ -257,10 +392,12 @@ dog_treat_scene = ExtResource("9_fss6w")
 position = Vector2(576, 324)
 
 [node name="Player" parent="." instance=ExtResource("10_yvcut")]
+process_mode = 1
 z_index = 1
 position = Vector2(579, 322)
 
 [node name="SoundManager" type="Node2D" parent="."]
+process_mode = 1
 script = ExtResource("14_acbhb")
 
 [node name="BGM1" type="AudioStreamPlayer" parent="SoundManager"]
@@ -292,5 +429,14 @@ pitch_scale = 2.0
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="SoundManager" method="_on_button_2_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/PausePopup/Panel/VBoxContainer/resume" to="SoundManager" method="_on_resume_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/PausePopup/Panel/VBoxContainer/resume" to="Player" method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button" to="SoundManager" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button2" to="SoundManager" method="_on_button_2_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/pausebutton" to="SoundManager" method="_on_pausebutton_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/pausebutton" to="Player" method="_on_pausebutton_pressed"]
+[connection signal="pressed" from="CanvasLayer/pausebutton" to="SoundManager" method="_on_pausebutton_pressed"]
 [connection signal="finished" from="SoundManager/BGM1" to="SoundManager" method="_on_bgm_1_finished"]
 [connection signal="finished" from="SoundManager/BGM2" to="SoundManager" method="_on_bgm_2_finished"]
