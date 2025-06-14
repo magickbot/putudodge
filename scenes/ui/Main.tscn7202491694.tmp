@@ -1,23 +1,36 @@
-
-[gd_scene load_steps=36 format=4 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=45 format=4 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="Script" uid="uid://tj55h5oymuxl" path="res://scenes/ui/main.gd" id="1_hb27l"]
+[ext_resource type="PackedScene" uid="uid://chjdlegeujdn2" path="res://scenes/entities/environment/cool_tree.tscn" id="2_q7vri"]
 [ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
 [ext_resource type="Script" uid="uid://ccu33m72jiaud" path="res://scripts/timer.gd" id="3_gl1th"]
 [ext_resource type="PackedScene" uid="uid://s8a0rs2vx5ca" path="res://scenes/touchinput.tscn" id="3_jy5xg"]
+[ext_resource type="PackedScene" uid="uid://b3qej4ubjqld6" path="res://scenes/entities/environment/warm_tree.tscn" id="4_iujac"]
 [ext_resource type="Texture2D" uid="uid://ck1b5tm2ngd46" path="res://assets/sprites/ui/tinyRPG_dragonRegaliaGUI_v1_0/20240707dragon9SlicesA.png" id="4_upid4"]
+[ext_resource type="PackedScene" uid="uid://c1lggsi137wo2" path="res://scenes/entities/environment/stone_1.tscn" id="5_76cd7"]
 [ext_resource type="FontFile" uid="uid://51atjq66dp7v" path="res://assets/fonts/joystix/joystix monospace.otf" id="5_i8jtn"]
 [ext_resource type="Texture2D" uid="uid://bwftcef2607so" path="res://assets/sprites/ui/tinyRPG_dragonRegaliaGUI_v1_0/20240707dragonHeaderA.png" id="5_te6ad"]
 [ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/entities/spawner.tscn" id="5_umypx"]
+[ext_resource type="PackedScene" uid="uid://bgi6vgp0noyj5" path="res://scenes/entities/environment/stone_2.tscn" id="6_ev0di"]
 [ext_resource type="Texture2D" uid="uid://bkymipsttjv5a" path="res://assets/sprites/characters/FreeDemo.png" id="6_gl1th"]
 [ext_resource type="PackedScene" uid="uid://1tm74bkji7y6" path="res://scenes/entities/hp_bubble.tscn" id="6_jy5xg"]
+[ext_resource type="PackedScene" uid="uid://bcno6hyefx5ga" path="res://scenes/entities/environment/stone_3.tscn" id="7_ak6ev"]
 [ext_resource type="Texture2D" uid="uid://d1bwpbo76gde1" path="res://assets/sprites/ui/game UI.png" id="7_i8jtn"]
+[ext_resource type="PackedScene" uid="uid://bk3y4renb78nq" path="res://scenes/entities/environment/grass_1.tscn" id="8_njkrf"]
 [ext_resource type="PackedScene" uid="uid://dmkk20t53h1ux" path="res://scenes/entities/DogTreat.tscn" id="9_fss6w"]
+[ext_resource type="PackedScene" uid="uid://cpbk3tnbc4g1t" path="res://scenes/entities/environment/grass_2.tscn" id="9_xdnxd"]
+[ext_resource type="PackedScene" uid="uid://ddhoj0xhbfqk8" path="res://scenes/entities/environment/grass_3.tscn" id="10_sp4cd"]
 [ext_resource type="AudioStream" uid="uid://ce2o7nmqayjg" path="res://assets/sounds/background music/my-8-bit-hero-301280.mp3" id="10_thnqr"]
 [ext_resource type="PackedScene" uid="uid://but5fo8vc4tt3" path="res://scenes/entities/player.tscn" id="10_yvcut"]
+[ext_resource type="PackedScene" uid="uid://d015k5ud3uiix" path="res://scenes/entities/environment/grass_4.tscn" id="11_tc1uw"]
 [ext_resource type="AudioStream" uid="uid://bur35p0ektjjm" path="res://assets/sounds/sfx/hurt.wav" id="11_thnqr"]
+[ext_resource type="PackedScene" uid="uid://cwi2djb1hyj0l" path="res://scenes/entities/environment/grass_5.tscn" id="12_apv3d"]
 [ext_resource type="AudioStream" uid="uid://dw6ljyu4v5bo0" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_003.ogg" id="12_gl1th"]
+[ext_resource type="PackedScene" uid="uid://cqntumrsd5iwx" path="res://scenes/entities/environment/grass_6.tscn" id="13_ei6jb"]
 [ext_resource type="Script" uid="uid://bxkip3o8wdga4" path="res://scenes/ui/sound_manager.gd" id="14_acbhb"]
+[ext_resource type="PackedScene" uid="uid://2girc7v3204" path="res://scenes/entities/environment/grass_7.tscn" id="14_k8qn3"]
+[ext_resource type="PackedScene" uid="uid://r2waoyjv3pmj" path="res://scenes/entities/environment/grass_8.tscn" id="15_thwd4"]
+[ext_resource type="PackedScene" uid="uid://dxy6eal3nnkpd" path="res://scenes/entities/environment/grass_9.tscn" id="16_44qpk"]
 [ext_resource type="TileSet" uid="uid://djxh32mxao2ax" path="res://assets/sprites/map/ground.tres" id="17_3nd05"]
 [ext_resource type="AudioStream" uid="uid://dtqyk1rp1yp1v" path="res://assets/sounds/background music/kill_screen-194698.mp3" id="17_4ca1i"]
 [ext_resource type="AudioStream" uid="uid://c1ou7ptxcvede" path="res://assets/sounds/background music/fun-with-my-8-bit-game-301278.mp3" id="18_3nd05"]
@@ -83,30 +96,6 @@ expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 region_rect = Rect2(200, 752, 96, 24)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hb27l"]
-texture = ExtResource("7_i8jtn")
-region_rect = Rect2(200, 752, 96, 24)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iujac"]
-texture = ExtResource("7_i8jtn")
-region_rect = Rect2(32, 752, 96, 24)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5a72s"]
-texture = ExtResource("7_i8jtn")
-region_rect = Rect2(200, 752, 96, 24)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cau2q"]
-texture = ExtResource("7_i8jtn")
-region_rect = Rect2(192, 928, 15, 16)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkaeb"]
-texture = ExtResource("7_i8jtn")
-region_rect = Rect2(192, 928, 15, 16)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k2sfp"]
-texture = ExtResource("7_i8jtn")
-region_rect = Rect2(192, 928, 15, 16)
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_hb27l")
 metadata/_edit_horizontal_guides_ = [649.0]
@@ -121,11 +110,38 @@ tile_set = ExtResource("17_3nd05")
 [node name="Environment" type="Node2D" parent="."]
 
 [node name="Trees" type="Node2D" parent="Environment"]
-z_index = 2
+
+[node name="ColdTree" parent="Environment/Trees" instance=ExtResource("2_q7vri")]
+
+[node name="WarmTree" parent="Environment/Trees" instance=ExtResource("4_iujac")]
 
 [node name="Stones" type="Node2D" parent="Environment"]
 
+[node name="Stone1" parent="Environment/Stones" instance=ExtResource("5_76cd7")]
+
+[node name="Stone2" parent="Environment/Stones" instance=ExtResource("6_ev0di")]
+
+[node name="Stone3" parent="Environment/Stones" instance=ExtResource("7_ak6ev")]
+
 [node name="DecorationGrass" type="Node2D" parent="Environment"]
+
+[node name="Grass1" parent="Environment/DecorationGrass" instance=ExtResource("8_njkrf")]
+
+[node name="Grass2" parent="Environment/DecorationGrass" instance=ExtResource("9_xdnxd")]
+
+[node name="Grass3" parent="Environment/DecorationGrass" instance=ExtResource("10_sp4cd")]
+
+[node name="Grass4" parent="Environment/DecorationGrass" instance=ExtResource("11_tc1uw")]
+
+[node name="Grass5" parent="Environment/DecorationGrass" instance=ExtResource("12_apv3d")]
+
+[node name="Grass6" parent="Environment/DecorationGrass" instance=ExtResource("13_ei6jb")]
+
+[node name="Grass7" parent="Environment/DecorationGrass" instance=ExtResource("14_k8qn3")]
+
+[node name="Grass8" parent="Environment/DecorationGrass" instance=ExtResource("15_thwd4")]
+
+[node name="Grass9" parent="Environment/DecorationGrass" instance=ExtResource("16_44qpk")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -218,101 +234,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_acbhb")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kpu1v")
 text = "Quit to Main Menu"
 
-[node name="PausePopup" type="Control" parent="CanvasLayer"]
-process_mode = 2
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/PausePopup"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -400.0
-offset_right = 400.0
-offset_bottom = 400.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_umypx")
-
-[node name="PausedMsg" type="Label" parent="CanvasLayer/PausePopup/Panel"]
-layout_mode = 2
-offset_left = 105.0
-offset_top = 92.0
-offset_right = 701.0
-offset_bottom = 231.0
-theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 65
-theme_override_styles/normal = SubResource("StyleBoxTexture_i8jtn")
-text = "Paused!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PausePopup/Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -248.0
-offset_top = -108.0
-offset_right = 248.0
-offset_bottom = 238.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 30
-
-[node name="resume" type="Button" parent="CanvasLayer/PausePopup/Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.661081, 0.661081, 0.661081, 1)
-theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/hover = SubResource("StyleBoxTexture_hb27l")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_iujac")
-theme_override_styles/normal = SubResource("StyleBoxTexture_5a72s")
-text = "RESUME GAME"
-
-[node name="Button" type="Button" parent="CanvasLayer/PausePopup/Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.537011, 0.537011, 0.537011, 1)
-theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/hover = SubResource("StyleBoxTexture_tihu7")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_4ca1i")
-theme_override_styles/normal = SubResource("StyleBoxTexture_3nd05")
-text = "Restart your misery"
-
-[node name="Button2" type="Button" parent="CanvasLayer/PausePopup/Panel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 0
-theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.537255, 0.537255, 0.537255, 1)
-theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 28
-theme_override_styles/hover = SubResource("StyleBoxTexture_q7vri")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_acbhb")
-theme_override_styles/normal = SubResource("StyleBoxTexture_kpu1v")
-text = "Quit to Main Menu"
-
 [node name="Timer" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
@@ -369,22 +290,7 @@ theme_override_fonts/font = ExtResource("5_i8jtn")
 theme_override_font_sizes/font_size = 30
 text = "0"
 
-[node name="pausebutton" type="Button" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -73.0
-offset_top = 7.0
-offset_right = -9.0
-offset_bottom = 71.0
-grow_horizontal = 0
-focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxTexture_cau2q")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_pkaeb")
-theme_override_styles/normal = SubResource("StyleBoxTexture_k2sfp")
-
 [node name="spawner" parent="." instance=ExtResource("5_umypx")]
-process_mode = 1
 hp_bubble_scene = ExtResource("6_jy5xg")
 dog_treat_scene = ExtResource("9_fss6w")
 
@@ -392,12 +298,10 @@ dog_treat_scene = ExtResource("9_fss6w")
 position = Vector2(576, 324)
 
 [node name="Player" parent="." instance=ExtResource("10_yvcut")]
-process_mode = 1
 z_index = 1
 position = Vector2(579, 322)
 
 [node name="SoundManager" type="Node2D" parent="."]
-process_mode = 1
 script = ExtResource("14_acbhb")
 
 [node name="BGM1" type="AudioStreamPlayer" parent="SoundManager"]
@@ -429,14 +333,5 @@ pitch_scale = 2.0
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="SoundManager" method="_on_button_2_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/PausePopup/Panel/VBoxContainer/resume" to="SoundManager" method="_on_resume_mouse_entered"]
-[connection signal="pressed" from="CanvasLayer/PausePopup/Panel/VBoxContainer/resume" to="Player" method="_on_resume_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button" to="SoundManager" method="_on_button_mouse_entered"]
-[connection signal="pressed" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button2" to="SoundManager" method="_on_button_2_mouse_entered"]
-[connection signal="pressed" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/pausebutton" to="SoundManager" method="_on_pausebutton_mouse_entered"]
-[connection signal="pressed" from="CanvasLayer/pausebutton" to="Player" method="_on_pausebutton_pressed"]
-[connection signal="pressed" from="CanvasLayer/pausebutton" to="SoundManager" method="_on_pausebutton_pressed"]
 [connection signal="finished" from="SoundManager/BGM1" to="SoundManager" method="_on_bgm_1_finished"]
 [connection signal="finished" from="SoundManager/BGM2" to="SoundManager" method="_on_bgm_2_finished"]
