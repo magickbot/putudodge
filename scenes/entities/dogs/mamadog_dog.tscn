@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://do1cya7b6c44m"]
+
+[ext_resource type="Texture2D" uid="uid://dvgp4vn81d6sc" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/Dalmatian/DalmatianPaid/IdleDog.png" id="1_xn73l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbhav"]
+atlas = ExtResource("1_xn73l")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3eso"]
+atlas = ExtResource("1_xn73l")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pchw7"]
+atlas = ExtResource("1_xn73l")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvykf"]
+atlas = ExtResource("1_xn73l")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmfic"]
+atlas = ExtResource("1_xn73l")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0r7k"]
+atlas = ExtResource("1_xn73l")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5xdf"]
+atlas = ExtResource("1_xn73l")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_easbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbhav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3eso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pchw7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvykf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmfic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0r7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5xdf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="MamadogDog" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_easbm")
+autoplay = "default"

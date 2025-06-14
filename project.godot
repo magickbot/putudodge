@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 
 GameData="*res://scripts/GameData.gd"
 Global="*res://scripts/AutoLoadScripts/Global.gd"
+GameManager="*res://scripts/AutoLoadScripts/GameManager.gd"
 
 [display]
 

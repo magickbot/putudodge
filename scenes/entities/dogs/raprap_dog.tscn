@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bky0feg1fpp44"]
+
+[ext_resource type="Texture2D" uid="uid://lkl5fo1o3ihr" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/Rottweiler/RottiePAID/RottweilerIdle.png" id="1_tdbfk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p7p1"]
+atlas = ExtResource("1_tdbfk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y58ac"]
+atlas = ExtResource("1_tdbfk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx27e"]
+atlas = ExtResource("1_tdbfk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8j1a"]
+atlas = ExtResource("1_tdbfk")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mmmpu"]
+atlas = ExtResource("1_tdbfk")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc288"]
+atlas = ExtResource("1_tdbfk")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q27kj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1p7p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y58ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx27e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8j1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mmmpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc288")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="RaprapDog" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_q27kj")
+autoplay = "default"

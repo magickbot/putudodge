@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://djj4add8magp6"]
+
+[ext_resource type="Texture2D" uid="uid://bd42v4efg77u7" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/Pharaoh Hound/Idle.png" id="1_280td"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onl8c"]
+atlas = ExtResource("1_280td")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62lwc"]
+atlas = ExtResource("1_280td")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8axk8"]
+atlas = ExtResource("1_280td")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwfyu"]
+atlas = ExtResource("1_280td")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8iaak"]
+atlas = ExtResource("1_280td")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r713d"]
+atlas = ExtResource("1_280td")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7oljx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onl8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62lwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8axk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwfyu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8iaak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r713d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="GoldieDog" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_7oljx")
+autoplay = "default"

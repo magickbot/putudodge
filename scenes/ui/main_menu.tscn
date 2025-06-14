@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://bi45xoblpw777"]
+[gd_scene load_steps=92 format=3 uid="uid://bi45xoblpw777"]
 
 [ext_resource type="Script" uid="uid://dj61tcoifg5a4" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://wkmilb8nfn10" path="res://assets/sprites/ui/J13sl2-ezgif.com-gif-to-sprite-converter.png" id="2_btxxm"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://x5r5g2yl2w1s" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/Rottweiler/RottiePAID/SleepDogg.png" id="5_7suek"]
 [ext_resource type="Texture2D" uid="uid://cpk3ew4y1rte" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/HuskyDog/HuskyPaid/HuskyRun.png" id="5_8g5eo"]
 [ext_resource type="AudioStream" uid="uid://dw6ljyu4v5bo0" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_003.ogg" id="6_uhagc"]
-[ext_resource type="Texture2D" uid="uid://cmifgye8tewra" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/DogoArgentino/DogoArgentinoPaid/IdleDog.png" id="9_8ekit"]
 [ext_resource type="Texture2D" uid="uid://o6ptb85452r3" path="res://assets/sprites/ui/tinyRPG_dragonRegaliaGUI_v1_0/20240707dragon9SlicesD.png" id="12_8ekit"]
 [ext_resource type="Texture2D" uid="uid://b2mc2fjhnfkre" path="res://assets/sprites/ui/20250614_1832_Retro Pixel Title_simple_compose_01jxpzxj41er6vke0wm1nkr1j9.png" id="12_otr3d"]
 
@@ -581,63 +580,6 @@ texture = ExtResource("12_8ekit")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ekit"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rx285"]
-atlas = ExtResource("9_8ekit")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jg1pe"]
-atlas = ExtResource("9_8ekit")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uibjs"]
-atlas = ExtResource("9_8ekit")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jsak6"]
-atlas = ExtResource("9_8ekit")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xwyt"]
-atlas = ExtResource("9_8ekit")
-region = Rect2(256, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sqcof"]
-atlas = ExtResource("9_8ekit")
-region = Rect2(320, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqict"]
-atlas = ExtResource("9_8ekit")
-region = Rect2(384, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fv10w"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rx285")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jg1pe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uibjs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jsak6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1xwyt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sqcof")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqict")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1kxf"]
 texture = ExtResource("3_m1kxf")
 region_rect = Rect2(200, 752, 96, 24)
@@ -742,20 +684,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -73.0
-offset_top = -73.0
-offset_right = 69.0
-offset_bottom = 69.0
+offset_top = -48.0
+offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3, 3)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8ekit")
-
-[node name="putu_select" type="AnimatedSprite2D" parent="DogContainer/Dog"]
-position = Vector2(72, 40)
-scale = Vector2(2.1875, 2.1875)
-sprite_frames = SubResource("SpriteFrames_fv10w")
-autoplay = "default"
-frame_progress = 0.307868
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -811,6 +745,34 @@ parameters/looping = true
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_uhagc")
+
+[node name="Button" type="CanvasLayer" parent="."]
+
+[node name="LeftButton" type="Button" parent="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = 7.0
+offset_right = -135.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RightButton" type="Button" parent="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 135.0
+offset_top = 7.0
+offset_right = 185.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
