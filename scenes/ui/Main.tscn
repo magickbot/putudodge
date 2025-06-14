@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=30 format=4 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
 [ext_resource type="Script" uid="uid://ccu33m72jiaud" path="res://scripts/timer.gd" id="3_gl1th"]
@@ -12,29 +12,29 @@
 [ext_resource type="Texture2D" uid="uid://d1bwpbo76gde1" path="res://assets/sprites/ui/game UI.png" id="7_i8jtn"]
 [ext_resource type="PackedScene" uid="uid://dmkk20t53h1ux" path="res://scenes/entities/DogTreat.tscn" id="9_fss6w"]
 [ext_resource type="AudioStream" uid="uid://ce2o7nmqayjg" path="res://assets/sounds/background music/my-8-bit-hero-301280.mp3" id="10_thnqr"]
-[ext_resource type="PackedScene" uid="uid://but5fo8vc4tt3" path="res://scenes/entities/player.tscn" id="10_yvcut"]
+[ext_resource type="PackedScene" uid="uid://bkcgh8avstrjh" path="res://scenes/entities/player.tscn" id="10_yvcut"]
 [ext_resource type="AudioStream" uid="uid://bur35p0ektjjm" path="res://assets/sounds/sfx/hurt.wav" id="11_thnqr"]
 [ext_resource type="AudioStream" uid="uid://dw6ljyu4v5bo0" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_003.ogg" id="12_gl1th"]
+[ext_resource type="Script" uid="uid://bxkip3o8wdga4" path="res://scenes/ui/sound_manager.gd" id="14_acbhb"]
 [ext_resource type="TileSet" uid="uid://djxh32mxao2ax" path="res://assets/sprites/map/ground.tres" id="17_3nd05"]
 [ext_resource type="AudioStream" uid="uid://dtqyk1rp1yp1v" path="res://assets/sounds/background music/kill_screen-194698.mp3" id="17_4ca1i"]
+[ext_resource type="AudioStream" uid="uid://c1ou7ptxcvede" path="res://assets/sounds/background music/fun-with-my-8-bit-game-301278.mp3" id="18_3nd05"]
+[ext_resource type="AudioStream" uid="uid://boe8rc4rmwn7p" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/select_005.ogg" id="20_kpu1v"]
+[ext_resource type="AudioStream" uid="uid://dfp1w7172gsd8" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_002.ogg" id="21_tihu7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_umypx"]
 texture = ExtResource("4_upid4")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i8jtn"]
 texture = ExtResource("5_te6ad")
-texture_margin_left = 43.0
-texture_margin_top = 10.0
-texture_margin_right = 43.0
-texture_margin_bottom = 15.0
+expand_margin_left = 148.0
+expand_margin_top = 10.0
+expand_margin_right = 148.0
+expand_margin_bottom = 50.0
 region_rect = Rect2(0, 1, 97, 31)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tihu7"]
 texture = ExtResource("7_i8jtn")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
@@ -43,10 +43,6 @@ region_rect = Rect2(200, 752, 96, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ca1i"]
 texture = ExtResource("7_i8jtn")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
@@ -55,10 +51,6 @@ region_rect = Rect2(32, 752, 96, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nd05"]
 texture = ExtResource("7_i8jtn")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
@@ -67,10 +59,6 @@ region_rect = Rect2(200, 752, 96, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q7vri"]
 texture = ExtResource("7_i8jtn")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
@@ -79,10 +67,6 @@ region_rect = Rect2(200, 752, 96, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_acbhb"]
 texture = ExtResource("7_i8jtn")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
@@ -91,10 +75,6 @@ region_rect = Rect2(32, 752, 96, 24)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kpu1v"]
 texture = ExtResource("7_i8jtn")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
 expand_margin_left = 5.0
 expand_margin_top = 5.0
 expand_margin_right = 5.0
@@ -130,25 +110,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -190.5
-offset_top = -162.0
-offset_right = 190.5
-offset_bottom = 162.0
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_umypx")
 
 [node name="GameOverMsg" type="Label" parent="CanvasLayer/DeathPopup/Panel"]
 layout_mode = 2
-offset_left = 4.0
-offset_top = 52.0
-offset_right = 376.0
-offset_bottom = 107.0
+offset_left = 105.0
+offset_top = 92.0
+offset_right = 701.0
+offset_bottom = 231.0
 theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 65
 theme_override_styles/normal = SubResource("StyleBoxTexture_i8jtn")
 text = "Game Over!"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DeathPopup/Panel"]
 layout_mode = 1
@@ -157,29 +138,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.5
-offset_top = -30.5
-offset_right = 99.5
-offset_bottom = 78.5
+offset_left = -248.0
+offset_top = -108.0
+offset_right = 248.0
+offset_bottom = 238.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 30
 
 [node name="FinalTimeMsg" type="Label" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 70
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 3
 focus_mode = 0
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.537011, 0.537011, 0.537011, 1)
 theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 28
 theme_override_styles/hover = SubResource("StyleBoxTexture_tihu7")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_4ca1i")
 theme_override_styles/normal = SubResource("StyleBoxTexture_3nd05")
@@ -187,12 +168,13 @@ text = "Restart your misery"
 
 [node name="Button2" type="Button" parent="CanvasLayer/DeathPopup/Panel/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_vertical = 3
 focus_mode = 0
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.537255, 0.537255, 0.537255, 1)
 theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 28
 theme_override_styles/hover = SubResource("StyleBoxTexture_q7vri")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_acbhb")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kpu1v")
@@ -216,33 +198,34 @@ theme_override_constants/separation = 2
 [node name="Minutes" type="Label" parent="CanvasLayer/Timer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 30
 text = "00:"
 horizontal_alignment = 2
 
 [node name="Seconds" type="Label" parent="CanvasLayer/Timer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 30
 text = "00."
 horizontal_alignment = 2
 
 [node name="Msecs" type="Label" parent="CanvasLayer/Timer/HBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 30
 text = "000"
 horizontal_alignment = 2
 
 [node name="TreatDisplay" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 1070.0
-offset_top = 20.0
-offset_right = 1110.0
-offset_bottom = 60.0
+offset_left = 48.0
+offset_top = 33.0
+offset_right = 88.0
+offset_bottom = 96.0
 alignment = 1
 
 [node name="TreatIcon" type="Sprite2D" parent="CanvasLayer/TreatDisplay"]
-position = Vector2(-9, 16)
+position = Vector2(-17, 32)
+scale = Vector2(1.90385, 1.8125)
 texture = ExtResource("6_gl1th")
 region_enabled = true
 region_rect = Rect2(130.669, 143.803, 26.9869, 16.7669)
@@ -250,9 +233,8 @@ region_rect = Rect2(130.669, 143.803, 26.9869, 16.7669)
 [node name="DogTreatCounter" type="Label" parent="CanvasLayer/TreatDisplay"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_i8jtn")
-theme_override_font_sizes/font_size = 25
-text = "0
-"
+theme_override_font_sizes/font_size = 30
+text = "0"
 
 [node name="spawner" parent="." instance=ExtResource("5_umypx")]
 hp_bubble_scene = ExtResource("6_jy5xg")
@@ -266,14 +248,15 @@ z_index = 1
 position = Vector2(579, 322)
 
 [node name="SoundManager" type="Node2D" parent="."]
+script = ExtResource("14_acbhb")
 
-[node name="BGM" type="AudioStreamPlayer" parent="SoundManager"]
+[node name="BGM1" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("10_thnqr")
 autoplay = true
-parameters/looping = true
 
 [node name="Hit" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("11_thnqr")
+volume_db = 10.0
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("12_gl1th")
@@ -282,5 +265,19 @@ stream = ExtResource("12_gl1th")
 stream = ExtResource("17_4ca1i")
 parameters/looping = true
 
+[node name="BGM2" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("18_3nd05")
+
+[node name="ButtonHover" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("20_kpu1v")
+
+[node name="PickUpSound" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("21_tihu7")
+pitch_scale = 2.0
+
+[connection signal="mouse_entered" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="SoundManager" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="SoundManager" method="_on_button_2_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]
+[connection signal="finished" from="SoundManager/BGM1" to="SoundManager" method="_on_bgm_1_finished"]
+[connection signal="finished" from="SoundManager/BGM2" to="SoundManager" method="_on_bgm_2_finished"]

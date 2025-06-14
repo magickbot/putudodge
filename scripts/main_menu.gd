@@ -2,12 +2,14 @@ extends Control
 
 signal play_pressed
 @onready var button_press: AudioStreamPlayer = $ButtonPress
+@onready var button_hover: AudioStreamPlayer = $ButtonHover
+@onready var main_menu_music: AudioStreamPlayer = $MainMenuMusic
+@onready var main_menu_music_2: AudioStreamPlayer = $MainMenuMusic2
 @onready var dog_container = $DogContainer/Dog  # Container to hold the animated dog
 @onready var left_button = $Button/LeftButton
 @onready var right_button = $Button/RightButton
 
 var current_dog_instance = null
-
 
 func _on_start_pressed() -> void:
 	print("Main Menu: Starting game . . . ")
@@ -19,7 +21,22 @@ func _on_quit_pressed() -> void:
 	button_press.play()
 	get_tree().quit()
 
+func _on_start_button_mouse_entered() -> void:
+	button_hover.play()
+
+func _on_quit_button_mouse_entered() -> void:
+	button_hover.play()
+
+
+func _on_main_menu_music_finished() -> void:
+	main_menu_music_2.play()
+
+
+func _on_main_menu_music_2_finished() -> void:
+	main_menu_music.play()
+
 func _ready():
+  main_menu_music.play()
 	# Connect button signals
 	left_button.pressed.connect(_on_left_button_pressed)
 	right_button.pressed.connect(_on_right_button_pressed)
