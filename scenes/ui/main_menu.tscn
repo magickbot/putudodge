@@ -487,47 +487,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_btxxm"]
-resource_name = "sliding"
-length = 60.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("stolen shit:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 30.0333, 60.0667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1033.98, 381.75), Vector2(329.978, 381.75), Vector2(1033.98, 381.75)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("daphne:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 20.6333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-100, 593), Vector2(2000, 593)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("daphne:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 23.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_wb0q5"]
 length = 0.001
 tracks/0/type = "value"
@@ -540,7 +499,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1033.98, 381.75)]
+"values": [Vector2(1213.32, 450.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -565,6 +524,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_btxxm"]
+resource_name = "sliding"
+length = 60.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("stolen shit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30.0333, 60.0667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1213.32, 449.5), Vector2(787.943, 449.5), Vector2(1213.32, 449.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("daphne:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 20.7667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-100, 700), Vector2(3000, 700)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("daphne:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 20.7333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q85j6"]
@@ -672,8 +672,8 @@ grow_vertical = 2
 script = ExtResource("1_ekxnf")
 
 [node name="stolen shit" type="AnimatedSprite2D" parent="."]
-position = Vector2(1033.98, 381.75)
-scale = Vector2(2.07259, 2.5593)
+position = Vector2(1213.32, 450.5)
+scale = Vector2(2.42689, 2.9968)
 sprite_frames = SubResource("SpriteFrames_qch7b")
 autoplay = "default"
 
@@ -682,7 +682,7 @@ position = Vector2(-165.001, -104.228)
 scale = Vector2(1.92053, 1.5553)
 sprite_frames = SubResource("SpriteFrames_lwoqm")
 autoplay = "default"
-frame_progress = 0.778659
+frame_progress = 0.617504
 
 [node name="roger" type="AnimatedSprite2D" parent="stolen shit"]
 position = Vector2(261.52, -48.3532)
@@ -693,10 +693,11 @@ flip_h = true
 
 [node name="daphne" type="AnimatedSprite2D" parent="."]
 position = Vector2(-429.887, 77.072)
-scale = Vector2(3.09879, 3.82649)
+scale = Vector2(3.6744, 4.53727)
 sprite_frames = SubResource("SpriteFrames_ks8yd")
 autoplay = "default"
-frame_progress = 0.0262754
+frame = 5
+frame_progress = 0.570357
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -727,9 +728,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -110.5
-offset_top = -88.5
+offset_top = -72.5
 offset_right = 110.5
-offset_bottom = 132.5
+offset_bottom = 148.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_8ekit")
@@ -754,7 +755,7 @@ position = Vector2(72, 40)
 scale = Vector2(2.1875, 2.1875)
 sprite_frames = SubResource("SpriteFrames_fv10w")
 autoplay = "default"
-frame_progress = 0.469023
+frame_progress = 0.307868
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
