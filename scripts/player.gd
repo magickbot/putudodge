@@ -1,6 +1,7 @@
 # Player.gd - Updated with HP restoration and compensated for 2x manual scaling
 extends CharacterBody2D
 
+@onready var animated_sprite = $AnimatedSprite2D  # Adjust path to your AnimatedSprite2D
 @export var speed := 700.0  # Doubled to compensate for 2x scaled collision shapes
 @export var max_health := 3
 var current_health := 3
@@ -21,6 +22,7 @@ signal health_restored(amount)
 signal quit_to_main
 
 func _ready():
+	_load_selected_dog_animations()
 	current_health = max_health
 	health_changed.connect(_on_health_changed)
 	_on_health_changed(current_health)  # Initialize UI on start
@@ -31,6 +33,17 @@ func _ready():
 	life_container.visible = false
 	# Position adjusted for manually scaled sprites
 	$LifeContainer.position = Vector2(0, 60)  # Adjusted for 2x scaled sprites
+	
+func _load_selected_dog_animations():
+	# Get the selected dog's sprite frames from GameManager
+	var selected_sprite_frames = GameManager.get_selected_dog_sprite_frames()
+	
+	if selected_sprite_frames and animated_sprite:
+		# Replace the current sprite frames with the selected dog's animations
+		animated_sprite.sprite_frames = selected_sprite_frames
+		print("Loaded animations for selected dog")
+	else:
+		print("Failed to load selected dog animations")
 
 func take_damage():
 	if is_invulnerable:

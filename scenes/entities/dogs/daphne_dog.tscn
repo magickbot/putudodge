@@ -1,6 +1,80 @@
-[gd_scene load_steps=9 format=3 uid="uid://bof1ukt4he7oe"]
+[gd_scene load_steps=35 format=3 uid="uid://bof1ukt4he7oe"]
 
 [ext_resource type="Texture2D" uid="uid://bmfp7a8ho0a6h" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/HuskyDog/HuskyPaid/HuskyIdle.png" id="1_ctb1w"]
+[ext_resource type="Texture2D" uid="uid://chjjpwg5orws2" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/HuskyDog/HuskyPaid/HuskyDie.png" id="1_jdiik"]
+[ext_resource type="Texture2D" uid="uid://cpk3ew4y1rte" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/HuskyDog/HuskyPaid/HuskyRun.png" id="2_fuh4l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01nd5"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqxya"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57lta"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7msy"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyr0b"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wrbq"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tk730"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji2p5"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcj7s"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkphq"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kccjl"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(640, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umr2c"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(704, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sqcx"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(768, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3766"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(832, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhd7s"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yec07"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xavni"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(1024, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd68q"]
+atlas = ExtResource("1_jdiik")
+region = Rect2(1088, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fuh4l"]
 atlas = ExtResource("1_ctb1w")
@@ -26,8 +100,91 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("1_ctb1w")
 region = Rect2(320, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jj7d"]
+atlas = ExtResource("2_fuh4l")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmy84"]
+atlas = ExtResource("2_fuh4l")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc1lq"]
+atlas = ExtResource("2_fuh4l")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nln6e"]
+atlas = ExtResource("2_fuh4l")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8i5s"]
+atlas = ExtResource("2_fuh4l")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpyln"]
+atlas = ExtResource("2_fuh4l")
+region = Rect2(320, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4jj7d"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01nd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqxya")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57lta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7msy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyr0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wrbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tk730")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji2p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcj7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkphq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kccjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umr2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1sqcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3766")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhd7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yec07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xavni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd68q")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fuh4l")
@@ -48,10 +205,34 @@ animations = [{
 "texture": SubResource("AtlasTexture_d2t8x")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jj7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmy84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc1lq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nln6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8i5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpyln")
+}],
+"loop": true,
+"name": &"run",
 "speed": 10.0
 }]
 
 [node name="DaphneDog" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_4jj7d")
-autoplay = "default"
+animation = &"die"
+autoplay = "idle"

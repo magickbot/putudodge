@@ -1,6 +1,40 @@
-[gd_scene load_steps=9 format=3 uid="uid://djj4add8magp6"]
+[gd_scene load_steps=25 format=3 uid="uid://djj4add8magp6"]
 
+[ext_resource type="Texture2D" uid="uid://boa8d4qhifgu" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/Pharaoh Hound/Die.png" id="1_62lwc"]
 [ext_resource type="Texture2D" uid="uid://bd42v4efg77u7" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/Pharaoh Hound/Idle.png" id="1_280td"]
+[ext_resource type="Texture2D" uid="uid://r7yk32v60ipt" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/Pharaoh Hound/Run.png" id="2_onl8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkrk1"]
+atlas = ExtResource("1_62lwc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdv8k"]
+atlas = ExtResource("1_62lwc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltykp"]
+atlas = ExtResource("1_62lwc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln00y"]
+atlas = ExtResource("1_62lwc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa4py"]
+atlas = ExtResource("1_62lwc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn51y"]
+atlas = ExtResource("1_62lwc")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nej5"]
+atlas = ExtResource("1_62lwc")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuupv"]
+atlas = ExtResource("1_62lwc")
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_onl8c"]
 atlas = ExtResource("1_280td")
@@ -26,8 +60,61 @@ region = Rect2(256, 0, 64, 64)
 atlas = ExtResource("1_280td")
 region = Rect2(320, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oljx"]
+atlas = ExtResource("2_onl8c")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l743"]
+atlas = ExtResource("2_onl8c")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_es6eo"]
+atlas = ExtResource("2_onl8c")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tc8p"]
+atlas = ExtResource("2_onl8c")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fln2y"]
+atlas = ExtResource("2_onl8c")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wdtn"]
+atlas = ExtResource("2_onl8c")
+region = Rect2(320, 0, 64, 64)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7oljx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkrk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdv8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ltykp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln00y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa4py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn51y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nej5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuupv")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_onl8c")
@@ -48,10 +135,34 @@ animations = [{
 "texture": SubResource("AtlasTexture_r713d")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7oljx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l743")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_es6eo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tc8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fln2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wdtn")
+}],
+"loop": true,
+"name": &"run",
 "speed": 10.0
 }]
 
 [node name="GoldieDog" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_7oljx")
-autoplay = "default"
+animation = &"die"
+autoplay = "idle"
