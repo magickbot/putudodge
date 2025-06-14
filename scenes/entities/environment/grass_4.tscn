@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d015k5ud3uiix"]
+
+[ext_resource type="Texture2D" uid="uid://4d8qptvoflat" path="res://assets/sprites/map/EnviromentPack/EnviromentPack/Decorations/Plants.png" id="1_i36p0"]
+
+[node name="Grass4" type="Sprite2D"]
+texture = ExtResource("1_i36p0")
+region_enabled = true
+region_rect = Rect2(98.0145, 30.9841, 14.0146, 16.0204)
