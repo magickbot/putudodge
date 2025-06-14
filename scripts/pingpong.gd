@@ -1,5 +1,4 @@
-# PING_PONG_BALL.gd
-# Ping Pong Ball - Bounces off walls a certain number of times then exits
+# PING_PONG_BALL.gd - Compensated for 2x manual scaling
 extends Projectile
 
 var max_bounces := 3  # Number of wall bounces before exiting
@@ -9,15 +8,14 @@ var has_bounds := false
 
 func setup_projectile():
 	projectile_type = "ping_pong"
-	# Ping pong balls are very fast
-	min_speed = max(min_speed * 1.4, 600.0)
-	max_speed = max(max_speed * 1.4, 850.0)
+	# Ping pong balls are very fast - doubled for 2x scale
+	min_speed = max(min_speed * 1.4, 1200.0)  # Doubled from 600
+	max_speed = max(max_speed * 1.4, 1700.0)  # Doubled from 850
 	speed = randf_range(min_speed, max_speed)
 	
-	# Set white color and make smaller
+	# Set white color - scale already handled manually
 	if sprite:
 		sprite.modulate = Color.WHITE
-	scale = Vector2(0.4, 0.4)
 	
 	# Get screen bounds
 	setup_screen_bounds()
@@ -83,7 +81,9 @@ func update_movement(delta: float):
 			queue_free()
 
 func create_bounce_effect():
-	# Visual feedback for bounce
+	# Visual feedback for bounce - adjusted for 2x scale
 	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2(0.6, 0.3), 0.1)
-	tween.tween_property(self, "scale", Vector2(0.4, 0.4), 0.1)
+	# Note: Since you manually scaled sprites, these scale values are relative to the new size
+	var current_scale = scale
+	tween.tween_property(self, "scale", current_scale * Vector2(1.2, 0.8), 0.1)
+	tween.tween_property(self, "scale", current_scale, 0.1)

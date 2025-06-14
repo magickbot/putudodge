@@ -1,16 +1,15 @@
-# Player.gd - Updated with HP restoration
+# Player.gd - Updated with HP restoration and compensated for 2x manual scaling
 extends CharacterBody2D
 
-@export var speed := 350.0
+@export var speed := 700.0  # Doubled to compensate for 2x scaled collision shapes
 @export var max_health := 3
 var current_health := 3
 var is_invulnerable := false
 @export var invulnerability_time := 1.0
-
 @onready var touch = get_node("../CanvasLayer/TouchInput")
 @onready var life_container = $LifeContainer
 @onready var camera = get_node("../Camera2D")
-@onready var sprite = $Sprite2D 
+@onready var sprite = $AnimatedSprite2D 
 @onready var TimerClock = get_node("../CanvasLayer/Timer")
 @onready var FinalTimeMsg = get_node("../CanvasLayer/DeathPopup/Panel/VBoxContainer/FinalTimeMsg")
 @onready var treat_counter_label = get_node("../CanvasLayer/TreatDisplay/DogTreatCounter")
@@ -19,7 +18,6 @@ signal health_changed(new_health)
 signal player_died
 signal health_restored(amount)
 signal quit_to_main
-
 
 func _ready():
 	current_health = max_health
@@ -30,14 +28,16 @@ func _ready():
 	add_to_group("player")
 	update_treat_ui()
 	life_container.visible = false
-	$LifeContainer.position = Vector2(0, 30)
+	# Position adjusted for manually scaled sprites
+	$LifeContainer.position = Vector2(0, 60)  # Adjusted for 2x scaled sprites
 
 func take_damage():
 	if is_invulnerable:
 		return
-
+	
 	current_health -= 1
 	health_changed.emit(current_health)
+	play_hit_sound()
 	print("Player hit! Health: " + str(current_health))
 
 	# Show lives temporarily
@@ -88,18 +88,22 @@ func restore_health(amount: int = 1):
 
 func create_heal_effect():
 	"""Visual effect when health is restored"""
+	# Create a temporary canvas layer for the flash
+	var canvas_layer = CanvasLayer.new()
+	canvas_layer.layer = 100  # High layer to ensure it's on top
+	get_tree().current_scene.add_child(canvas_layer)
+	
 	# Screen flash effect
 	var flash_overlay = ColorRect.new()
 	flash_overlay.color = Color(0, 1, 0, 0.3)  # Green flash
-	flash_overlay.size = get_viewport().get_visible_rect().size
-	flash_overlay.position = Vector2.ZERO
-	get_tree().current_scene.add_child(flash_overlay)
+	flash_overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	canvas_layer.add_child(flash_overlay)
 	
 	# Fade out the flash
 	var tween = create_tween()
 	tween.tween_property(flash_overlay, "modulate:a", 0.0, 0.3)
 	await tween.finished
-	flash_overlay.queue_free()
+	canvas_layer.queue_free()
 
 func start_invulnerability():
 	is_invulnerable = true
@@ -117,6 +121,9 @@ func start_invulnerability():
 	sprite.modulate.a = 1.0  # Ensure full opacity
 
 func _on_player_died():
+	stop_BGM()
+	play_game_over()
+	sprite.play("die")
 	TimerClock.stop()
 	var FinalScore = TimerClock.get_time_formatted()
 	FinalTimeMsg.text = FinalScore
@@ -150,7 +157,7 @@ func get_combined_input_direction() -> Vector2:
 	# Joystick input
 	if touch:
 		touch_input = touch.get_input_direction()
-	
+
 	# Combine both inputs - if both are active, they add together
 	var combined_input = wasd_input + touch_input
 	
@@ -164,7 +171,10 @@ func _physics_process(delta):
 	var input_vector = get_combined_input_direction()
 	velocity = input_vector * speed
 	move_and_slide()
-	
+	if input_vector.length() > 0:
+		sprite.play("run")
+	else:
+		sprite.play("idle")
 	if velocity.x != 0:
 		sprite.flip_h = velocity.x < 0
 
@@ -174,7 +184,7 @@ func _on_health_changed(new_health):
 		var heart = life_container.get_child(i)
 		heart.visible = i < new_health
 
-func shake_camera(duration := 0.2, magnitude := 5.0):
+func shake_camera(duration := 0.2, magnitude := 10.0):  # Doubled magnitude for 2x scaled visuals
 	var time_elapsed := 0.0
 	while time_elapsed < duration:
 		var offset = Vector2(
@@ -187,10 +197,12 @@ func shake_camera(duration := 0.2, magnitude := 5.0):
 	camera.offset = Vector2.ZERO
 
 func _on_button_pressed() -> void:
+	play_button_press()
 	print("Restarting!")
 	Global.emit_signal("restart_level")
 
 func _on_Quit_To_Main_pressed() -> void:
+	play_button_press()
 	var death_popup = get_node("../CanvasLayer/DeathPopup")
 	Global.emit_signal("quit_to_main")
 	death_popup.visible = false
@@ -211,4 +223,19 @@ func update_treat_ui():
 func _on_treat_collected():
 	GameData.dog_treats_collected += 1
 	update_treat_ui()
-	
+
+func play_hit_sound():
+	var hit_sound = get_node("../SoundManager/Hit")
+	hit_sound.play()
+
+func play_button_press():
+	var button_press = get_node("../SoundManager/ButtonPress")
+	button_press.play()
+
+func stop_BGM():
+	var BGM = get_node("../SoundManager/BGM")
+	BGM.playing = false
+
+func play_game_over():
+	var game_over_sound = get_node("../SoundManager/GameOver")
+	game_over_sound.play()

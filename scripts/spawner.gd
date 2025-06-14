@@ -513,28 +513,104 @@ func spawn_projectile_at_angle(angle_degrees: float, ball_type: String):
 	if ball_scene == null:
 		return
 	
-	var angle_radians = deg_to_rad(angle_degrees)
-	var spawn_distance = get_dynamic_spawn_distance()
-	var spawn_offset = Vector2.RIGHT.rotated(angle_radians) * spawn_distance
-	var spawn_pos = brown_dog.global_position + spawn_offset
-	var projectile = ball_scene.instantiate()
-	get_parent().add_child(projectile)
+	# Calculate spawn position based on screen edge, not fixed distance from player
+	var spawn_pos = get_spawn_position_outside_screen(angle_degrees)
 	
+	var projectile = ball_scene.instantiate()
+	
+	# Add to scene FIRST
+	get_tree().current_scene.add_child(projectile)
+	
+	# Set position AFTER adding to scene tree
+	projectile.global_position = spawn_pos
 	
 	# Set speed based on phase progression
 	if projectile.has_method("set_speed_range"):
-		var speed_multiplier = 1.0 + (current_phase - 1) * 0.15  # 15% speed increase per phase
+		var speed_multiplier = 1.0 + (current_phase - 1) * 0.15
 		var base_min_speed = 400.0 * speed_multiplier
 		var base_max_speed = 600.0 * speed_multiplier
 		projectile.set_speed_range(base_min_speed, base_max_speed)
 	
-	projectile.global_position = spawn_pos
-	
 	# Face toward player
 	if projectile.has_method("set_direction_to_target"):
 		projectile.set_direction_to_target(brown_dog.global_position)
-		
-	get_tree().current_scene.add_child(projectile)
+	
+	# Debug print
+	print("Spawned ", ball_type, " at position: ", projectile.global_position, " (distance from player: ", projectile.global_position.distance_to(brown_dog.global_position), ")")
+
+func get_spawn_position_outside_screen(angle_degrees: float) -> Vector2:
+	var camera = get_viewport().get_camera_2d()
+	if not camera:
+		# Fallback to old method if no camera
+		var angle_radians = deg_to_rad(angle_degrees)
+		var spawn_distance = get_reliable_spawn_distance()
+		var spawn_offset = Vector2.RIGHT.rotated(angle_radians) * spawn_distance
+		return brown_dog.global_position + spawn_offset
+	
+	# Get camera bounds in world coordinates
+	var viewport_size = get_viewport().get_visible_rect().size
+	var camera_pos = camera.global_position
+	var screen_half_size = viewport_size * 0.5
+	
+	# Screen bounds in world coordinates
+	var screen_left = camera_pos.x - screen_half_size.x
+	var screen_right = camera_pos.x + screen_half_size.x
+	var screen_top = camera_pos.y - screen_half_size.y
+	var screen_bottom = camera_pos.y + screen_half_size.y
+	
+	# Calculate direction from angle
+	var angle_radians = deg_to_rad(angle_degrees)
+	var direction = Vector2.RIGHT.rotated(angle_radians)
+	
+	# Determine which screen edge to spawn from based on angle
+	var spawn_pos = Vector2.ZERO
+	var buffer = 200.0  # Distance outside screen edge
+	
+	# Find intersection with screen bounds
+	if abs(direction.x) > abs(direction.y):
+		# Horizontal dominant - spawn from left or right edge
+		if direction.x > 0:
+			# Spawn from left edge, moving right
+			spawn_pos.x = screen_left - buffer
+			# Calculate y position based on angle
+			var t = (spawn_pos.x - brown_dog.global_position.x) / direction.x
+			spawn_pos.y = brown_dog.global_position.y + direction.y * t
+		else:
+			# Spawn from right edge, moving left
+			spawn_pos.x = screen_right + buffer
+			# Calculate y position based on angle
+			var t = (spawn_pos.x - brown_dog.global_position.x) / direction.x
+			spawn_pos.y = brown_dog.global_position.y + direction.y * t
+	else:
+		# Vertical dominant - spawn from top or bottom edge
+		if direction.y > 0:
+			# Spawn from top edge, moving down
+			spawn_pos.y = screen_top - buffer
+			# Calculate x position based on angle
+			var t = (spawn_pos.y - brown_dog.global_position.y) / direction.y
+			spawn_pos.x = brown_dog.global_position.x + direction.x * t
+		else:
+			# Spawn from bottom edge, moving up
+			spawn_pos.y = screen_bottom + buffer
+			# Calculate x position based on angle
+			var t = (spawn_pos.y - brown_dog.global_position.y) / direction.y
+			spawn_pos.x = brown_dog.global_position.x + direction.x * t
+	
+	# Clamp to reasonable bounds to prevent extreme positions
+	var max_spawn_distance = max(viewport_size.x, viewport_size.y) * 2
+	var distance_from_player = spawn_pos.distance_to(brown_dog.global_position)
+	if distance_from_player > max_spawn_distance:
+		# Fallback to simpler method if calculation goes wrong
+		var simple_offset = Vector2.RIGHT.rotated(angle_radians) * (max_spawn_distance * 0.8)
+		spawn_pos = brown_dog.global_position + simple_offset
+	
+	return spawn_pos
+
+# Keep the reliable spawn distance as backup
+func get_reliable_spawn_distance() -> float:
+	var viewport_size = get_viewport().get_visible_rect().size
+	var max_dimension = max(viewport_size.x, viewport_size.y)
+	return max_dimension + 300
 
 func get_random_ball_type_for_phase() -> String:
 	var available_balls = phase_ball_types[current_phase]

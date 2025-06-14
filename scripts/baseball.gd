@@ -1,17 +1,16 @@
-# BASEBALL.gd
-# Baseball - Travels in a realistic arc with gravity
+# BASEBALL.gd - Compensated for 2x manual scaling
 extends Projectile
 
-var grav := 980.0
+var grav := 1960.0  # Doubled gravity to compensate for 2x scale
 var vertical_velocity := 0.0
 var horizontal_speed := 0.0
 var launch_angle := -15.0  # Degrees, negative for upward arc
 
 func setup_projectile():
 	projectile_type = "baseball"
-	# Baseball has good speed
-	min_speed = max(min_speed * 1.1, 450.0)
-	max_speed = max(max_speed * 1.1, 650.0)
+	# Baseball has good speed - doubled for 2x scale
+	min_speed = max(min_speed * 1.1, 900.0)  # Doubled from 450
+	max_speed = max(max_speed * 1.1, 1300.0)  # Doubled from 650
 	speed = randf_range(min_speed, max_speed)
 	
 	# Set white color for baseball
