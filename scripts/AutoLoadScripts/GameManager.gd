@@ -11,7 +11,7 @@ var dog_scenes = [
 	"res://scenes/entities/dogs/goldie_dog.tscn",
 	"res://scenes/entities/dogs/mamadog_dog.tscn",
 	"res://scenes/entities/dogs/roger_dog.tscn",
-	"res://scenes/entities/dogs/kiling_dog.tscn"
+	"res://scenes/entities/dogs/kiling_dog.tscn" 	
 	# Add more dog scene paths as needed
 ]
 
