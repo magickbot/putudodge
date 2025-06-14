@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://bi45xoblpw777"]
+[gd_scene load_steps=101 format=3 uid="uid://bi45xoblpw777"]
 
 [ext_resource type="Script" uid="uid://dj61tcoifg5a4" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://wkmilb8nfn10" path="res://assets/sprites/ui/J13sl2-ezgif.com-gif-to-sprite-converter.png" id="2_btxxm"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://x5r5g2yl2w1s" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/Rottweiler/RottiePAID/SleepDogg.png" id="5_7suek"]
 [ext_resource type="Texture2D" uid="uid://cpk3ew4y1rte" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/HuskyDog/HuskyPaid/HuskyRun.png" id="5_8g5eo"]
 [ext_resource type="AudioStream" uid="uid://dw6ljyu4v5bo0" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_003.ogg" id="6_uhagc"]
+[ext_resource type="Texture2D" uid="uid://cmifgye8tewra" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/DogoArgentino/DogoArgentinoPaid/IdleDog.png" id="9_8ekit"]
+[ext_resource type="Texture2D" uid="uid://o6ptb85452r3" path="res://assets/sprites/ui/tinyRPG_dragonRegaliaGUI_v1_0/20240707dragon9SlicesD.png" id="12_8ekit"]
 [ext_resource type="Texture2D" uid="uid://b2mc2fjhnfkre" path="res://assets/sprites/ui/20250614_1832_Retro Pixel Title_simple_compose_01jxpzxj41er6vke0wm1nkr1j9.png" id="12_otr3d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wb0q5"]
@@ -485,47 +487,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Animation" id="Animation_btxxm"]
-resource_name = "sliding"
-length = 60.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("stolen shit:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 30.0333, 60.0667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1033.98, 381.75), Vector2(329.978, 381.75), Vector2(1033.98, 381.75)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("daphne:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 20.6333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-100, 593), Vector2(2000, 593)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("daphne:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 23.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_wb0q5"]
 length = 0.001
 tracks/0/type = "value"
@@ -538,7 +499,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1033.98, 381.75)]
+"values": [Vector2(1213.32, 450.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -565,11 +526,117 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_btxxm"]
+resource_name = "sliding"
+length = 60.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("stolen shit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 30.0333, 60.0667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1213.32, 449.5), Vector2(787.943, 449.5), Vector2(1213.32, 449.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("daphne:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 20.7667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-100, 700), Vector2(3000, 700)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("daphne:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 20.7333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q85j6"]
 _data = {
 &"RESET": SubResource("Animation_wb0q5"),
 &"sliding": SubResource("Animation_btxxm")
 }
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7suek"]
+texture = ExtResource("12_otr3d")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ekit"]
+texture = ExtResource("12_8ekit")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ekit"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rx285"]
+atlas = ExtResource("9_8ekit")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg1pe"]
+atlas = ExtResource("9_8ekit")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uibjs"]
+atlas = ExtResource("9_8ekit")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsak6"]
+atlas = ExtResource("9_8ekit")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xwyt"]
+atlas = ExtResource("9_8ekit")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqcof"]
+atlas = ExtResource("9_8ekit")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqict"]
+atlas = ExtResource("9_8ekit")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fv10w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rx285")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg1pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uibjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsak6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xwyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqcof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqict")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m1kxf"]
 texture = ExtResource("3_m1kxf")
@@ -595,9 +662,6 @@ region_rect = Rect2(32, 752, 96, 24)
 texture = ExtResource("3_m1kxf")
 region_rect = Rect2(200, 752, 96, 24)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7suek"]
-texture = ExtResource("12_otr3d")
-
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -608,8 +672,8 @@ grow_vertical = 2
 script = ExtResource("1_ekxnf")
 
 [node name="stolen shit" type="AnimatedSprite2D" parent="."]
-position = Vector2(1033.98, 381.75)
-scale = Vector2(2.07259, 2.5593)
+position = Vector2(1213.32, 450.5)
+scale = Vector2(2.42689, 2.9968)
 sprite_frames = SubResource("SpriteFrames_qch7b")
 autoplay = "default"
 
@@ -618,7 +682,7 @@ position = Vector2(-165.001, -104.228)
 scale = Vector2(1.92053, 1.5553)
 sprite_frames = SubResource("SpriteFrames_lwoqm")
 autoplay = "default"
-frame_progress = 0.602097
+frame_progress = 0.617504
 
 [node name="roger" type="AnimatedSprite2D" parent="stolen shit"]
 position = Vector2(261.52, -48.3532)
@@ -629,10 +693,11 @@ flip_h = true
 
 [node name="daphne" type="AnimatedSprite2D" parent="."]
 position = Vector2(-429.887, 77.072)
-scale = Vector2(3.09879, 3.82649)
+scale = Vector2(3.6744, 4.53727)
 sprite_frames = SubResource("SpriteFrames_ks8yd")
 autoplay = "default"
-frame_progress = 0.849723
+frame = 5
+frame_progress = 0.570357
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -640,20 +705,73 @@ libraries = {
 }
 autoplay = "sliding"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Title" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -486.0
+offset_right = 257.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7suek")
+
+[node name="DogContainer" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -72.5
+offset_right = 110.5
+offset_bottom = 148.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_8ekit")
+
+[node name="Dog" type="Panel" parent="DogContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -73.0
+offset_right = 69.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8ekit")
+
+[node name="putu_select" type="AnimatedSprite2D" parent="DogContainer/Dog"]
+position = Vector2(72, 40)
+scale = Vector2(2.1875, 2.1875)
+sprite_frames = SubResource("SpriteFrames_fv10w")
+autoplay = "default"
+frame_progress = 0.307868
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.822
+anchor_right = 0.5
+anchor_bottom = 0.822
 offset_left = -152.0
-offset_top = -31.0
+offset_top = -88.96
 offset_right = 152.0
-offset_bottom = 159.0
+offset_bottom = 101.04
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
+metadata/_edit_use_anchors_ = true
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -693,21 +811,6 @@ parameters/looping = true
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_uhagc")
-
-[node name="Title" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -289.0
-offset_right = 160.0
-offset_bottom = 31.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_7suek")
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
