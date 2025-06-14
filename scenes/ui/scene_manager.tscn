@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bo8gbc01diagl"]
+
+[ext_resource type="Script" uid="uid://n0emulyqwh32" path="res://scripts/scene_manager.gd" id="1_b81s6"]
+[ext_resource type="PackedScene" uid="uid://bi45xoblpw777" path="res://scenes/ui/main_menu.tscn" id="2_h7lqg"]
+[ext_resource type="PackedScene" uid="uid://bev585007p8j6" path="res://scenes/ui/transition_screen.tscn" id="3_q7wi7"]
+
+[node name="SceneManager" type="Node2D"]
+script = ExtResource("1_b81s6")
+
+[node name="CurrentScene" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CurrentScene"]
+
+[node name="MainMenu" parent="CurrentScene/CanvasLayer" instance=ExtResource("2_h7lqg")]
+
+[node name="TransitionScreen" parent="." instance=ExtResource("3_q7wi7")]
+visible = false
+
+[connection signal="play_pressed" from="CurrentScene/CanvasLayer/MainMenu" to="." method="_on_main_menu_play_pressed"]
+[connection signal="finished_fade" from="TransitionScreen" to="." method="_on_transition_screen_finished_fade"]
+[connection signal="transitioned" from="TransitionScreen" to="." method="_on_transition_screen_transitioned"]

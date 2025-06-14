@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d1bwpbo76gde1" path="res://assets/sprites/ui/game UI.png" id="7_i8jtn"]
 [ext_resource type="PackedScene" uid="uid://dmkk20t53h1ux" path="res://scenes/entities/DogTreat.tscn" id="9_fss6w"]
 [ext_resource type="AudioStream" uid="uid://ce2o7nmqayjg" path="res://assets/sounds/background music/my-8-bit-hero-301280.mp3" id="10_thnqr"]
-[ext_resource type="PackedScene" uid="uid://but5fo8vc4tt3" path="res://scenes/player.tscn" id="10_yvcut"]
+[ext_resource type="PackedScene" uid="uid://but5fo8vc4tt3" path="res://scenes/entities/player.tscn" id="10_yvcut"]
 [ext_resource type="AudioStream" uid="uid://bur35p0ektjjm" path="res://assets/sounds/sfx/hurt.wav" id="11_thnqr"]
 [ext_resource type="AudioStream" uid="uid://dw6ljyu4v5bo0" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_003.ogg" id="12_gl1th"]
 [ext_resource type="TileSet" uid="uid://djxh32mxao2ax" path="res://assets/sprites/map/ground.tres" id="17_3nd05"]
