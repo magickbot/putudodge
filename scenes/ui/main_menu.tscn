@@ -18,6 +18,30 @@
 [ext_resource type="AudioStream" uid="uid://b4khwp5oa7bhp" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/drop_001.ogg" id="15_y2j7i"]
 [ext_resource type="Texture2D" uid="uid://c4hqday1j6ima" path="res://assets/sprites/ui/tinyRPG_dragonRegaliaGUI_v1_0/20240713dragonRightArrowButton-Sheet.png" id="16_y2j7i"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y2j7i"]
+texture = ExtResource("15_ayp64")
+region_rect = Rect2(18, 1, 12, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qilvv"]
+texture = ExtResource("15_ayp64")
+region_rect = Rect2(50, 3, 12, 13)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1h5l"]
+texture = ExtResource("15_ayp64")
+region_rect = Rect2(2, 1, 12, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ayp64"]
+texture = ExtResource("16_y2j7i")
+region_rect = Rect2(19, 1, 12, 15)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pw24t"]
+texture = ExtResource("16_y2j7i")
+region_rect = Rect2(51, 3, 12, 13)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dct7"]
+texture = ExtResource("16_y2j7i")
+region_rect = Rect2(3, 1, 12, 15)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wb0q5"]
 atlas = ExtResource("2_btxxm")
 region = Rect2(0, 0, 1012, 312)
@@ -676,30 +700,6 @@ region_rect = Rect2(32, 752, 96, 24)
 texture = ExtResource("3_m1kxf")
 region_rect = Rect2(200, 752, 96, 24)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y2j7i"]
-texture = ExtResource("15_ayp64")
-region_rect = Rect2(18, 1, 12, 15)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qilvv"]
-texture = ExtResource("15_ayp64")
-region_rect = Rect2(50, 3, 12, 13)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y1h5l"]
-texture = ExtResource("15_ayp64")
-region_rect = Rect2(2, 1, 12, 15)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ayp64"]
-texture = ExtResource("16_y2j7i")
-region_rect = Rect2(19, 1, 12, 15)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pw24t"]
-texture = ExtResource("16_y2j7i")
-region_rect = Rect2(51, 3, 12, 13)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dct7"]
-texture = ExtResource("16_y2j7i")
-region_rect = Rect2(3, 1, 12, 15)
-
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -708,6 +708,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ekxnf")
+
+[node name="Button" type="CanvasLayer" parent="."]
+
+[node name="LeftButton" type="Button" parent="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = 7.0
+offset_right = -135.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_y2j7i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qilvv")
+theme_override_styles/normal = SubResource("StyleBoxTexture_y1h5l")
+
+[node name="RightButton" type="Button" parent="Button"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 135.0
+offset_top = 7.0
+offset_right = 185.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxTexture_ayp64")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pw24t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5dct7")
 
 [node name="stolen shit" type="AnimatedSprite2D" parent="."]
 position = Vector2(1213.32, 450.5)
@@ -855,49 +891,13 @@ stream = ExtResource("15_877pj")
 [node name="CharacterSelect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_y2j7i")
 
-[node name="Button" type="CanvasLayer" parent="."]
-
-[node name="LeftButton" type="Button" parent="Button"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -185.0
-offset_top = 7.0
-offset_right = -135.0
-offset_bottom = 57.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxTexture_y2j7i")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_qilvv")
-theme_override_styles/normal = SubResource("StyleBoxTexture_y1h5l")
-
-[node name="RightButton" type="Button" parent="Button"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 135.0
-offset_top = 7.0
-offset_right = 185.0
-offset_bottom = 57.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxTexture_ayp64")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_pw24t")
-theme_override_styles/normal = SubResource("StyleBoxTexture_5dct7")
-
+[connection signal="mouse_entered" from="Button/LeftButton" to="." method="_on_left_button_mouse_entered"]
+[connection signal="pressed" from="Button/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="mouse_entered" from="Button/RightButton" to="." method="_on_right_button_mouse_entered"]
+[connection signal="pressed" from="Button/RightButton" to="." method="_on_right_button_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
 [connection signal="finished" from="MainMenuMusic" to="." method="_on_main_menu_music_finished"]
 [connection signal="finished" from="MainMenuMusic2" to="." method="_on_main_menu_music_2_finished"]
-[connection signal="mouse_entered" from="Button/LeftButton" to="." method="_on_left_button_mouse_entered"]
-[connection signal="pressed" from="Button/LeftButton" to="." method="_on_left_button_pressed"]
-[connection signal="mouse_entered" from="Button/RightButton" to="." method="_on_right_button_mouse_entered"]
-[connection signal="pressed" from="Button/RightButton" to="." method="_on_right_button_pressed"]

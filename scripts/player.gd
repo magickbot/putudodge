@@ -15,6 +15,7 @@ var is_invulnerable := false
 @onready var FinalTimeMsg = get_node("../CanvasLayer/DeathPopup/Panel/VBoxContainer/FinalTimeMsg")
 @onready var treat_counter_label = get_node("../CanvasLayer/TreatDisplay/DogTreatCounter")
 @onready var pick_up_sound: AudioStreamPlayer = $"../SoundManager/PickUpSound"
+@onready var pause_popup: Control = $"../CanvasLayer/PausePopup"
 
 signal health_changed(new_health)
 signal player_died
@@ -33,7 +34,12 @@ func _ready():
 	life_container.visible = false
 	# Position adjusted for manually scaled sprites
 	$LifeContainer.position = Vector2(0, 60)  # Adjusted for 2x scaled sprites
-	
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().paused = not get_tree().paused
+		pause_popup.visible = get_tree().paused
+
 func _load_selected_dog_animations():
 	# Get the selected dog's sprite frames from GameManager
 	var selected_sprite_frames = GameManager.get_selected_dog_sprite_frames()
@@ -213,15 +219,21 @@ func shake_camera(duration := 0.2, magnitude := 10.0):  # Doubled magnitude for 
 	camera.offset = Vector2.ZERO
 
 func _on_button_pressed() -> void:
+	stop_BGM()
+	get_tree().paused = false
 	play_button_press()
 	print("Restarting!")
 	Global.emit_signal("restart_level")
+	pause_popup.visible = false
 
 func _on_Quit_To_Main_pressed() -> void:
+	stop_BGM()
+	get_tree().paused = false
 	play_button_press()
 	var death_popup = get_node("../CanvasLayer/DeathPopup")
 	Global.emit_signal("quit_to_main")
 	death_popup.visible = false
+	pause_popup.visible = false
 
 # Utility functions
 func get_health_percentage() -> float:
@@ -255,3 +267,17 @@ func stop_BGM():
 func play_game_over():
 	var game_over_sound = get_node("../SoundManager/GameOver")
 	game_over_sound.play()
+
+func _on_pausebutton_pressed() -> void:
+	var button_press = get_node("../SoundManager/ButtonPress")
+	button_press.play()
+	get_tree().paused = not get_tree().paused
+	pause_popup.visible = true
+	print("Paused!")
+
+func _on_resume_pressed() -> void:
+	var button_press = get_node("../SoundManager/ButtonPress")
+	button_press.play()
+	get_tree().paused = false
+	pause_popup.visible = false
+	print("Resumed!")
