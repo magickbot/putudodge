@@ -149,7 +149,7 @@ func _place_tree(x, y):
 	if tree_scene:
 		var tree = tree_scene.instantiate()
 		tree.position = Vector2(x, y) + Vector2(randf_range(-20, 20), randf_range(-20, 20))
-		tree.scale = Vector2.ONE * randf_range(2.0, 3.0)  # Random scale between 1.3x and 1.7x
+		tree.scale = Vector2.ONE * randf_range(2.5, 3.2)  # Random scale between 1.3x and 1.7x
 		trees_container.add_child(tree)
 
 func _place_stone(x, y):
@@ -167,5 +167,5 @@ func _place_decorative_grass(x, y):
 	if grass_scene:
 		var grass = grass_scene.instantiate()
 		grass.position = Vector2(x, y) + Vector2(randf_range(-25, 25), randf_range(-25, 25))
-		grass.scale = Vector2.ONE * randf_range(0.8, 1.2)
+		grass.scale = Vector2.ONE * randf_range(1.5, 2.2)
 		grass_container.add_child(grass)
