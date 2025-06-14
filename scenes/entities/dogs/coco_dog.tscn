@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://bo64v8hvltqip"]
+
+[ext_resource type="Texture2D" uid="uid://b2nwg8dr45nqd" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/GoldenDog/GoldenPaid/GoldenIdle.png" id="1_3pwhi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exvol"]
+atlas = ExtResource("1_3pwhi")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1vqf"]
+atlas = ExtResource("1_3pwhi")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wtjd"]
+atlas = ExtResource("1_3pwhi")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lt3h"]
+atlas = ExtResource("1_3pwhi")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmu57"]
+atlas = ExtResource("1_3pwhi")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0fl3"]
+atlas = ExtResource("1_3pwhi")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os72h"]
+atlas = ExtResource("1_3pwhi")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5q1v"]
+atlas = ExtResource("1_3pwhi")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74fxe"]
+atlas = ExtResource("1_3pwhi")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdhv5"]
+atlas = ExtResource("1_3pwhi")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h0wq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exvol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1vqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wtjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lt3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lmu57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0fl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os72h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5q1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74fxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdhv5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="CocoDog" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_h0wq8")
+autoplay = "default"

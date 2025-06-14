@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://dq5noy7wxmuwl"]
+
+[ext_resource type="Texture2D" uid="uid://cmifgye8tewra" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/DogoArgentino/DogoArgentinoPaid/IdleDog.png" id="1_5vkyj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ckqf"]
+atlas = ExtResource("1_5vkyj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58nc1"]
+atlas = ExtResource("1_5vkyj")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20708"]
+atlas = ExtResource("1_5vkyj")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r28t5"]
+atlas = ExtResource("1_5vkyj")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0koi1"]
+atlas = ExtResource("1_5vkyj")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqqyp"]
+atlas = ExtResource("1_5vkyj")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnq7l"]
+atlas = ExtResource("1_5vkyj")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2j48b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ckqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_58nc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20708")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r28t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0koi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqqyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnq7l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="PutuDog" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_2j48b")
+autoplay = "default"
