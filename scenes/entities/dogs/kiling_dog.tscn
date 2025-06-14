@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://fcwsojy3fv34"]
+
+[ext_resource type="Texture2D" uid="uid://4lvtrgqek4pm" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/CaneCorso/PixelDog/PNG/IdleDog.png" id="1_lsvax"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2ek1"]
+atlas = ExtResource("1_lsvax")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5meq"]
+atlas = ExtResource("1_lsvax")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykvc3"]
+atlas = ExtResource("1_lsvax")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wv86u"]
+atlas = ExtResource("1_lsvax")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e70b"]
+atlas = ExtResource("1_lsvax")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oe7t2"]
+atlas = ExtResource("1_lsvax")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6skn"]
+atlas = ExtResource("1_lsvax")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqes8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2ek1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5meq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykvc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wv86u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e70b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oe7t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6skn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="KilingDog" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_nqes8")
+autoplay = "default"

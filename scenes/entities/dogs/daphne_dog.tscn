@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://bof1ukt4he7oe"]
+
+[ext_resource type="Texture2D" uid="uid://bmfp7a8ho0a6h" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/HuskyDog/HuskyPaid/HuskyIdle.png" id="1_ctb1w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuh4l"]
+atlas = ExtResource("1_ctb1w")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdiik"]
+atlas = ExtResource("1_ctb1w")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s56sh"]
+atlas = ExtResource("1_ctb1w")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqs0s"]
+atlas = ExtResource("1_ctb1w")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdl3v"]
+atlas = ExtResource("1_ctb1w")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2t8x"]
+atlas = ExtResource("1_ctb1w")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jj7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuh4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdiik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s56sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqs0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdl3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2t8x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="DaphneDog" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_4jj7d")
+autoplay = "default"
