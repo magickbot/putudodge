@@ -47,11 +47,17 @@ func _on_left_button_pressed():
 	GameManager.previous_dog()
 	_update_dog_display()
 	character_select.play()
+	var focused = get_viewport().gui_get_focus_owner()
+	if focused:
+		focused.release_focus()
 
 func _on_right_button_pressed():
 	GameManager.next_dog()
 	_update_dog_display()
 	character_select.play()
+	var focused = get_viewport().gui_get_focus_owner()
+	if focused:
+		focused.release_focus()
 
 func _update_dog_display():
 	# Remove current dog instance if it exists
