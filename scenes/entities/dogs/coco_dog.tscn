@@ -1,21 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://bo64v8hvltqip"]
+[gd_scene load_steps=36 format=3 uid="uid://bo64v8hvltqip"]
 
 [ext_resource type="Texture2D" uid="uid://b2nwg8dr45nqd" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/GoldenDog/GoldenPaid/GoldenIdle.png" id="1_3pwhi"]
-[ext_resource type="Shader" uid="uid://bxc0lf8ae5r5c" path="res://assets/drop_shadow.gdshader" id="1_7wtjd"]
 [ext_resource type="Texture2D" uid="uid://dpgebj161hy67" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/GoldenDog/GoldenPaid/GoldenDie.png" id="1_p1vqf"]
 [ext_resource type="Texture2D" uid="uid://hfg6m7h863vr" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/GoldenDog/GoldenPaid/RunDog.png" id="2_exvol"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lt3h"]
-shader = ExtResource("1_7wtjd")
-shader_parameter/shadow_offset_x = 0.00599987
-shader_parameter/shadow_offset_y = -0.5
-shader_parameter/shadow_color = Color(0, 0, 0, 0.6)
-shader_parameter/shadow_scale_x = 1.0
-shader_parameter/shadow_scale_y = 0.5
-shader_parameter/use_original_alpha = false
-shader_parameter/enable_red_tint = false
-shader_parameter/red_intensity = 0.7
-shader_parameter/red_color = Color(1, 0.3, 0.3, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o2wgw"]
 atlas = ExtResource("1_p1vqf")
@@ -253,7 +240,6 @@ animations = [{
 }]
 
 [node name="CocoDog" type="AnimatedSprite2D"]
-material = SubResource("ShaderMaterial_8lt3h")
 sprite_frames = SubResource("SpriteFrames_h0wq8")
 animation = &"run"
 autoplay = "idle"
