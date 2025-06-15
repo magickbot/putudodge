@@ -18,7 +18,6 @@ func _input(event):
 		var offset = event.position - start_pos
 		if offset.length() > 0:
 			direction = offset.normalized()
-			direction *= min(offset.length(), max_distance) / max_distance
 		else:
 			direction = Vector2.ZERO
 
