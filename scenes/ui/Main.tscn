@@ -431,6 +431,7 @@ pitch_scale = 2.0
 [connection signal="mouse_entered" from="CanvasLayer/PausePopup/Panel/VBoxContainer/resume" to="SoundManager" method="_on_resume_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/PausePopup/Panel/VBoxContainer/resume" to="Player" method="_on_resume_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button" to="SoundManager" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button" to="spawner" method="_on_player_died"]
 [connection signal="pressed" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button2" to="SoundManager" method="_on_button_2_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/PausePopup/Panel/VBoxContainer/Button2" to="Player" method="_on_Quit_To_Main_pressed"]
