@@ -388,12 +388,12 @@ hp_bubble_scene = ExtResource("6_jy5xg")
 dog_treat_scene = ExtResource("9_fss6w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(1000, 450)
 
 [node name="Player" parent="." instance=ExtResource("10_yvcut")]
 process_mode = 1
 z_index = 1
-position = Vector2(579, 322)
+position = Vector2(1000, 450)
 
 [node name="SoundManager" type="Node2D" parent="."]
 process_mode = 1
