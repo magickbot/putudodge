@@ -22,6 +22,7 @@ config/icon="uid://bl8ra73bocse5"
 GameData="*res://scripts/GameData.gd"
 Global="*res://scripts/AutoLoadScripts/Global.gd"
 GameManager="*res://scripts/AutoLoadScripts/GameManager.gd"
+Highscoremanager="*res://scripts/AutoLoadScripts/highscoremanager.gd"
 
 [display]
 

@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var max_health := 3
 var current_health := 3
 var is_invulnerable := false
+
 @export var invulnerability_time := 1.0
 @onready var touch = get_node("../CanvasLayer/TouchInput")
 @onready var life_container = $LifeContainer
@@ -16,6 +17,8 @@ var is_invulnerable := false
 @onready var treat_counter_label = get_node("../CanvasLayer/TreatDisplay/DogTreatCounter")
 @onready var pick_up_sound: AudioStreamPlayer = $"../SoundManager/PickUpSound"
 @onready var pause_popup: Control = $"../CanvasLayer/PausePopup"
+@onready var high_score_msg: Label = $"../CanvasLayer/HighScoreMsg"
+@onready var high_score_label: Label = $"../CanvasLayer/HighScoreLabel"
 
 signal health_changed(new_health)
 signal player_died
@@ -34,6 +37,11 @@ func _ready():
 	life_container.visible = false
 	# Position adjusted for manually scaled sprites
 	$LifeContainer.position = Vector2(0, 60)  # Adjusted for 2x scaled sprites
+	var best_time = Highscoremanager.load_high_score()
+	if best_time == INF:
+		high_score_label.text = "Best Time: --:--.---"
+	else:
+		high_score_label.text = "Best Time: " + Highscoremanager.format_time(best_time)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -147,12 +155,23 @@ func _on_player_died():
 	play_game_over()
 	sprite.play("die")
 	TimerClock.stop()
-	var FinalScore = TimerClock.get_time_formatted()
-	FinalTimeMsg.text = FinalScore
+
+	var final_time = TimerClock.time  # raw float time
+	var best = Highscoremanager.load_high_score()
+	print(final_time)
+	print(best)
+	if final_time > best:
+		Highscoremanager.save_high_score(final_time)
+		print("New High Score: ", TimerClock.get_time_formatted())
+		high_score_msg.visible = true
+	else:
+		print("Final: ", Highscoremanager.format_time(final_time))
+		print("Best: ", Highscoremanager.format_time(best))
+	
+	FinalTimeMsg.text = TimerClock.get_time_formatted()
+	
 	set_process_input(false)
 	set_physics_process(false)
-	
-	print("Player died!")
 	
 	var death_popup = get_node("../CanvasLayer/DeathPopup")
 	death_popup.visible = true
@@ -225,6 +244,7 @@ func _on_button_pressed() -> void:
 	print("Restarting!")
 	Global.emit_signal("restart_level")
 	pause_popup.visible = false
+	high_score_msg.visible = false
 
 func _on_Quit_To_Main_pressed() -> void:
 	stop_BGM()
@@ -234,6 +254,7 @@ func _on_Quit_To_Main_pressed() -> void:
 	Global.emit_signal("quit_to_main")
 	death_popup.visible = false
 	pause_popup.visible = false
+	high_score_msg.visible = false
 
 # Utility functions
 func get_health_percentage() -> float:
@@ -246,12 +267,9 @@ func can_restore_health() -> bool:
 	return current_health < max_health
 
 func update_treat_ui():
+	play_pick_up_2()
 	treat_counter_label.text = str(GameData.dog_treats_collected)
 
-func _on_treat_collected():
-	pick_up_sound.play()
-	GameData.dog_treats_collected += 1
-	update_treat_ui()
 
 func play_hit_sound():
 	var hit_sound = get_node("../SoundManager/Hit")
@@ -260,6 +278,10 @@ func play_hit_sound():
 func play_button_press():
 	var button_press = get_node("../SoundManager/ButtonPress")
 	button_press.play()
+
+func play_pick_up_2():
+	var pickup_sound = get_node("../SoundManager/PickUpSound2")
+	pickup_sound.play()
 
 func stop_BGM():
 	get_node("../SoundManager/BGM1").playing = false
