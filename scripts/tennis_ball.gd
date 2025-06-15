@@ -11,6 +11,9 @@ func setup_projectile():
 	max_speed = max(max_speed * 1.3, 1600.0)  # Doubled from 800
 	speed = randf_range(min_speed, max_speed)
 	
+	# Set medium spin speed for tennis ball
+	spin_speed = randf_range(6.0, 10.0)  # Consistent with tennis ball physics
+	
 	# Set yellow-green color for tennis ball
 	if sprite:
 		sprite.modulate = Color.YELLOW_GREEN
@@ -24,9 +27,9 @@ func update_movement(delta: float):
 	# Simple, direct movement - no tricks
 	position += direction * speed * delta
 	
-	# Consistent spin
+	# Use the inherited spinning from base class
 	if sprite:
-		sprite.rotation += 8.0 * delta
+		sprite.rotation += spin_speed * delta
 
 func _draw():
 	# Draw simple trail effect - doubled line width for 2x scale

@@ -13,6 +13,9 @@ func setup_projectile():
 	max_speed = max(max_speed * 1.4, 1700.0)  # Doubled from 850
 	speed = randf_range(min_speed, max_speed)
 	
+	# Set very fast spin for ping pong ball
+	spin_speed = randf_range(15.0, 20.0)  # Much faster than default
+	
 	# Set white color - scale already handled manually
 	if sprite:
 		sprite.modulate = Color.WHITE
@@ -70,9 +73,9 @@ func update_movement(delta: float):
 	# Update position
 	position = next_position
 	
-	# Spinning animation
+	# Use the inherited spinning from base class (now using spin_speed)
 	if sprite:
-		sprite.rotation += 12.0 * delta
+		sprite.rotation += spin_speed * delta
 	
 	# Remove if we've exceeded max bounces and are off screen
 	if current_bounces >= max_bounces:

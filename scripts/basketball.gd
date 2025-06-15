@@ -5,6 +5,7 @@ var zigzag_amplitude := 400.0  # Doubled for 2x scale (was 200)
 var zigzag_frequency := 10.0    # Keep same frequency
 var travel_time := 0.0
 var base_direction := Vector2.ZERO
+var basketball_spin_speed := 8.0  # Faster spin for basketball
 
 func setup_projectile():
 	projectile_type = "basketball"
@@ -12,6 +13,9 @@ func setup_projectile():
 	min_speed = max(min_speed * 0.9, 700.0)  # Doubled from 350
 	max_speed = max(max_speed * 0.9, 1000.0)  # Doubled from 500
 	speed = randf_range(min_speed, max_speed)
+	
+	# Set faster spin speed for basketball
+	spin_speed = randf_range(6.0, 12.0)
 	
 	# Set orange color for basketball
 	if sprite:
@@ -36,6 +40,10 @@ func update_movement(delta: float):
 	
 	position += movement + zigzag_movement
 	
-	# Rotate sprite to show bouncing effect
+	# Spin in the direction of movement (like a real basketball)
 	if sprite:
-		sprite.rotation = sin(travel_time * zigzag_frequency * 2) * 0.2
+		# Calculate actual movement direction including zigzag
+		var actual_direction = (movement + zigzag_movement).normalized()
+		# Spin based on the actual direction of travel
+		var spin_direction = 1.0 if actual_direction.x > 0 else -1.0
+		sprite.rotation += spin_speed * spin_direction * delta

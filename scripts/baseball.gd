@@ -13,6 +13,9 @@ func setup_projectile():
 	max_speed = max(max_speed * 1.1, 1300.0)  # Doubled from 650
 	speed = randf_range(min_speed, max_speed)
 	
+	# Set custom spin speed for baseball (slower than default)
+	spin_speed = randf_range(2.0, 4.0)  # Slower spin for realistic baseball
+	
 	# Set white color for baseball
 	if sprite:
 		sprite.modulate = Color.WHITE
@@ -34,7 +37,6 @@ func update_movement(delta: float):
 	position.x += horizontal_speed * delta
 	position.y += vertical_velocity * delta
 	
-	# Rotate sprite based on trajectory
+	# Add spinning motion (replaces the trajectory-based rotation)
 	if sprite:
-		var trajectory_angle = atan2(vertical_velocity, horizontal_speed)
-		sprite.rotation = trajectory_angle
+		sprite.rotation += spin_speed * delta
