@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://vefhg2stnbur"]
+
+[ext_resource type="Texture2D" uid="uid://ds7bbut2be5su" path="res://assets/sprites/projectiles/Sport-Balls-Asset-Pack-Pixel-Art/64x64/bowling.png" id="1_1dh67"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1xxe"]
+radius = 32.0
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n1xxe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1dh67")
