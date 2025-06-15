@@ -26,9 +26,9 @@ func _ready():
 	_update_dog_display()
 	var best_time = Highscoremanager.load_high_score()
 	if best_time == INF:
-		high_score_label.text = "Best Time: --:--.---"
+		high_score_label.text = "HI-SCORE: --:--.---"
 	else:
-		high_score_label.text = "Best Time: " + Highscoremanager.format_time(best_time)
+		high_score_label.text = "HI-SCORE: " + Highscoremanager.format_time(best_time)
 
 func is_touchscreen_device() -> bool:
 	var os_name := OS.get_name()
