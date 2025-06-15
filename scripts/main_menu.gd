@@ -39,10 +39,12 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_start_button_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func _on_quit_button_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func _on_main_menu_music_finished() -> void:
 	main_menu_music_2.play()
@@ -101,10 +103,12 @@ func _find_animated_sprite(node):
 	return null
 
 func _on_right_button_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func _on_left_button_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func disable_hover_style(button: Button):
 	var normal_style = button.get_theme_stylebox("normal")

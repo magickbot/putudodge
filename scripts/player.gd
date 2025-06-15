@@ -264,6 +264,7 @@ func play_button_press():
 func stop_BGM():
 	get_node("../SoundManager/BGM1").playing = false
 	get_node("../SoundManager/BGM2").playing = false
+	
 func play_game_over():
 	var game_over_sound = get_node("../SoundManager/GameOver")
 	game_over_sound.play()
