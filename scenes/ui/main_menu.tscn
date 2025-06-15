@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://bi45xoblpw777"]
+[gd_scene load_steps=111 format=3 uid="uid://bi45xoblpw777"]
 
 [ext_resource type="Script" uid="uid://dj61tcoifg5a4" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://wkmilb8nfn10" path="res://assets/sprites/ui/J13sl2-ezgif.com-gif-to-sprite-converter.png" id="2_btxxm"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://x5r5g2yl2w1s" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/Rottweiler/RottiePAID/SleepDogg.png" id="5_7suek"]
 [ext_resource type="Texture2D" uid="uid://cpk3ew4y1rte" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/HuskyDog/HuskyPaid/HuskyRun.png" id="5_8g5eo"]
 [ext_resource type="AudioStream" uid="uid://dw6ljyu4v5bo0" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_003.ogg" id="6_uhagc"]
+[ext_resource type="Shader" uid="uid://bxc0lf8ae5r5c" path="res://assets/drop_shadow.gdshader" id="8_y1h5l"]
 [ext_resource type="Texture2D" uid="uid://o6ptb85452r3" path="res://assets/sprites/ui/tinyRPG_dragonRegaliaGUI_v1_0/20240707dragon9SlicesD.png" id="12_8ekit"]
 [ext_resource type="Texture2D" uid="uid://b2mc2fjhnfkre" path="res://assets/sprites/ui/20250614_1832_Retro Pixel Title_simple_compose_01jxpzxj41er6vke0wm1nkr1j9.png" id="12_otr3d"]
 [ext_resource type="AudioStream" uid="uid://boe8rc4rmwn7p" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/select_005.ogg" id="14_n4uci"]
@@ -161,6 +162,18 @@ animations = [{
 "name": &"default",
 "speed": 10.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1h5l"]
+shader = ExtResource("8_y1h5l")
+shader_parameter/shadow_offset_x = 0.00599987
+shader_parameter/shadow_offset_y = -0.5
+shader_parameter/shadow_color = Color(0, 0, 0, 0.6)
+shader_parameter/shadow_scale_x = 1.0
+shader_parameter/shadow_scale_y = 0.5
+shader_parameter/use_original_alpha = false
+shader_parameter/enable_red_tint = false
+shader_parameter/red_intensity = 0.7
+shader_parameter/red_color = Color(1, 0.3, 0.3, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qch7b"]
 atlas = ExtResource("3_q85j6")
@@ -401,6 +414,18 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dct7"]
+shader = ExtResource("8_y1h5l")
+shader_parameter/shadow_offset_x = 0.00599987
+shader_parameter/shadow_offset_y = -0.5
+shader_parameter/shadow_color = Color(0, 0, 0, 0.6)
+shader_parameter/shadow_scale_x = 1.0
+shader_parameter/shadow_scale_y = 0.5
+shader_parameter/use_original_alpha = false
+shader_parameter/enable_red_tint = false
+shader_parameter/red_intensity = 0.7
+shader_parameter/red_color = Color(1, 0.3, 0.3, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ks8yd"]
 atlas = ExtResource("5_7suek")
 region = Rect2(0, 0, 64, 64)
@@ -464,6 +489,18 @@ animations = [{
 "name": &"default",
 "speed": 10.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pw24t"]
+shader = ExtResource("8_y1h5l")
+shader_parameter/shadow_offset_x = 0.00599987
+shader_parameter/shadow_offset_y = -0.5
+shader_parameter/shadow_color = Color(0, 0, 0, 0.6)
+shader_parameter/shadow_scale_x = 1.0
+shader_parameter/shadow_scale_y = 0.5
+shader_parameter/use_original_alpha = false
+shader_parameter/enable_red_tint = false
+shader_parameter/red_intensity = 0.7
+shader_parameter/red_color = Color(1, 0.3, 0.3, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lwoqm"]
 atlas = ExtResource("5_8g5eo")
@@ -752,6 +789,7 @@ sprite_frames = SubResource("SpriteFrames_qch7b")
 autoplay = "default"
 
 [node name="putu" type="AnimatedSprite2D" parent="stolen shit"]
+material = SubResource("ShaderMaterial_y1h5l")
 position = Vector2(-165.001, -104.228)
 scale = Vector2(1.92053, 1.5553)
 sprite_frames = SubResource("SpriteFrames_lwoqm")
@@ -759,6 +797,7 @@ autoplay = "default"
 frame_progress = 0.617504
 
 [node name="roger" type="AnimatedSprite2D" parent="stolen shit"]
+material = SubResource("ShaderMaterial_5dct7")
 position = Vector2(261.52, -48.3532)
 scale = Vector2(2.05119, 2.05119)
 sprite_frames = SubResource("SpriteFrames_rx285")
@@ -766,6 +805,7 @@ autoplay = "default"
 flip_h = true
 
 [node name="daphne" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pw24t")
 position = Vector2(-429.887, 77.072)
 scale = Vector2(3.6744, 4.53727)
 sprite_frames = SubResource("SpriteFrames_ks8yd")

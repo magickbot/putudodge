@@ -194,3 +194,5 @@ animations = [{
 sprite_frames = SubResource("SpriteFrames_2j48b")
 animation = &"idle"
 autoplay = "idle"
+frame = 2
+frame_progress = 0.379098

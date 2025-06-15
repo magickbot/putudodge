@@ -1,10 +1,23 @@
-[gd_scene load_steps=34 format=3 uid="uid://but5fo8vc4tt3"]
+[gd_scene load_steps=36 format=3 uid="uid://but5fo8vc4tt3"]
 
 [ext_resource type="Script" uid="uid://ds83evwqs2qlf" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Shader" uid="uid://bxc0lf8ae5r5c" path="res://assets/drop_shadow.gdshader" id="2_d4qa6"]
 [ext_resource type="Texture2D" uid="uid://cmifgye8tewra" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/DogoArgentino/DogoArgentinoPaid/IdleDog.png" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cyxq6issk68na" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/DogoArgentino/DogoArgentinoPaid/DieDogo.png" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://dq84vfhmuqjf7" path="res://assets/sprites/ui/Pixel Heart Sprite Sheet 16x16.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://dwge7xm262edj" path="res://assets/sprites/characters/DogPackPaid/DogPackPaid/Dogs/DogoArgentino/DogoArgentinoPaid/RunDogo.png" id="3_qlg0r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4qa6"]
+shader = ExtResource("2_d4qa6")
+shader_parameter/shadow_offset_x = 0.00599987
+shader_parameter/shadow_offset_y = -0.5
+shader_parameter/shadow_color = Color(0, 0, 0, 0.6)
+shader_parameter/shadow_scale_x = 1.0
+shader_parameter/shadow_scale_y = 0.5
+shader_parameter/use_original_alpha = false
+shader_parameter/enable_red_tint = false
+shader_parameter/red_intensity = 0.7
+shader_parameter/red_color = Color(1, 0.3, 0.3, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
 atlas = ExtResource("2_qlg0r")
@@ -207,22 +220,26 @@ height = 93.0141
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_d4qa6")
 position = Vector2(5.96046e-08, -19)
 scale = Vector2(3.5, 3.5)
 sprite_frames = SubResource("SpriteFrames_60mlk")
-animation = &"die"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(2, 47)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5u6hq")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(43, 28)
 rotation = 0.174533
 shape = SubResource("CapsuleShape2D_d4qa6")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(14, 20)
 rotation = 1.0472
 shape = SubResource("CapsuleShape2D_ss7kx")
