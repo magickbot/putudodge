@@ -12,10 +12,10 @@ config_version=5
 
 [application]
 
-config/name="putudodge"
+config/name="Putu Dodge"
 run/main_scene="res://scenes/ui/scene_manager.tscn"
 config/features=PackedStringArray("4.4")
-config/icon="res://icon.png"
+config/icon="uid://bl8ra73bocse5"
 
 [autoload]
 
