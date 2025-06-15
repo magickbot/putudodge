@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://c7aer2gm3ia2k"]
+[gd_scene load_steps=39 format=4 uid="uid://c7aer2gm3ia2k"]
 
 [ext_resource type="Script" uid="uid://tj55h5oymuxl" path="res://scenes/ui/main.gd" id="1_hb27l"]
 [ext_resource type="Script" uid="uid://bkoacbmxfxqo4" path="res://scripts/touch_input.gd" id="2_s0uuu"]
@@ -21,7 +21,9 @@
 [ext_resource type="AudioStream" uid="uid://dtqyk1rp1yp1v" path="res://assets/sounds/background music/kill_screen-194698.mp3" id="17_4ca1i"]
 [ext_resource type="AudioStream" uid="uid://c1ou7ptxcvede" path="res://assets/sounds/background music/fun-with-my-8-bit-game-301278.mp3" id="18_3nd05"]
 [ext_resource type="AudioStream" uid="uid://boe8rc4rmwn7p" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/select_005.ogg" id="20_kpu1v"]
+[ext_resource type="AudioStream" uid="uid://dm1ucyf0vo5o3" path="res://assets/sounds/background music/gaming-music-8-bit-console-play-background-intro-theme-278382.mp3" id="21_hb27l"]
 [ext_resource type="AudioStream" uid="uid://dfp1w7172gsd8" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_002.ogg" id="21_tihu7"]
+[ext_resource type="AudioStream" uid="uid://cve0oxvem3ywj" path="res://assets/sounds/background music/chiptune-hard-boss-mode-218071.mp3" id="23_hb27l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_umypx"]
 texture = ExtResource("4_upid4")
@@ -403,6 +405,15 @@ script = ExtResource("14_acbhb")
 stream = ExtResource("10_thnqr")
 autoplay = true
 
+[node name="BGM2" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("18_3nd05")
+
+[node name="BGM3" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("17_4ca1i")
+
+[node name="BGM4" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("23_hb27l")
+
 [node name="Hit" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("11_thnqr")
 volume_db = 10.0
@@ -411,11 +422,8 @@ volume_db = 10.0
 stream = ExtResource("12_gl1th")
 
 [node name="GameOver" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("17_4ca1i")
+stream = ExtResource("21_hb27l")
 parameters/looping = true
-
-[node name="BGM2" type="AudioStreamPlayer" parent="SoundManager"]
-stream = ExtResource("18_3nd05")
 
 [node name="ButtonHover" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("20_kpu1v")
@@ -440,3 +448,5 @@ pitch_scale = 2.0
 [connection signal="pressed" from="CanvasLayer/pausebutton" to="SoundManager" method="_on_pausebutton_pressed"]
 [connection signal="finished" from="SoundManager/BGM1" to="SoundManager" method="_on_bgm_1_finished"]
 [connection signal="finished" from="SoundManager/BGM2" to="SoundManager" method="_on_bgm_2_finished"]
+[connection signal="finished" from="SoundManager/BGM3" to="SoundManager" method="_on_bgm_3_finished"]
+[connection signal="finished" from="SoundManager/BGM4" to="SoundManager" method="_on_bgm_4_finished"]
