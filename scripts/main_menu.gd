@@ -12,6 +12,22 @@ signal play_pressed
 
 var current_dog_instance = null
 
+func _ready():
+	if is_touchscreen_device():
+		disable_hover_style(left_button)
+		disable_hover_style(right_button)
+	main_menu_music.play()
+	# Connect button signals
+	left_button.pressed.connect(_on_left_button_pressed)
+	right_button.pressed.connect(_on_right_button_pressed)
+	
+	# Load the initially selected dog
+	_update_dog_display()
+
+func is_touchscreen_device() -> bool:
+	var os_name := OS.get_name()
+	return os_name == "Android" or os_name == "iOS"
+
 func _on_start_pressed() -> void:
 	print("Main Menu: Starting game . . . ")
 	button_press.play()
@@ -23,10 +39,12 @@ func _on_quit_pressed() -> void:
 	get_tree().quit()
 
 func _on_start_button_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func _on_quit_button_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func _on_main_menu_music_finished() -> void:
 	main_menu_music_2.play()
@@ -34,24 +52,24 @@ func _on_main_menu_music_finished() -> void:
 func _on_main_menu_music_2_finished() -> void:
 	main_menu_music.play()
 
-func _ready():
-	main_menu_music.play()
-	# Connect button signals
-	left_button.pressed.connect(_on_left_button_pressed)
-	right_button.pressed.connect(_on_right_button_pressed)
+
 	
-	# Load the initially selected dog
-	_update_dog_display()
 
 func _on_left_button_pressed():
 	GameManager.previous_dog()
 	_update_dog_display()
 	character_select.play()
+	var focused = get_viewport().gui_get_focus_owner()
+	if focused:
+		focused.release_focus()
 
 func _on_right_button_pressed():
 	GameManager.next_dog()
 	_update_dog_display()
 	character_select.play()
+	var focused = get_viewport().gui_get_focus_owner()
+	if focused:
+		focused.release_focus()
 
 func _update_dog_display():
 	# Remove current dog instance if it exists
@@ -84,10 +102,14 @@ func _find_animated_sprite(node):
 	
 	return null
 
-
 func _on_right_button_mouse_entered() -> void:
-	button_hover.play()
-
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func _on_left_button_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
+
+func disable_hover_style(button: Button):
+	var normal_style = button.get_theme_stylebox("normal")
+	button.add_theme_stylebox_override("hover", normal_style)

@@ -17,16 +17,24 @@ func _on_bgm_2_finished() -> void:
 
 
 func _on_button_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func _on_button_2_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func _on_pausebutton_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func _on_resume_mouse_entered() -> void:
-	button_hover.play()
+	if not is_touchscreen_device():
+		button_hover.play()
 
 func _on_pausebutton_pressed() -> void:
 	button_press.play()
+
+func is_touchscreen_device() -> bool:
+	var os_name := OS.get_name()
+	return os_name == "Android" or os_name == "iOS"
