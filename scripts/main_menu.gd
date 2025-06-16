@@ -14,6 +14,10 @@ signal play_pressed
 var current_dog_instance = null
 
 func _ready():
+	print("Save path: ", ProjectSettings.globalize_path("user://high_score.save"))
+	# (Optional) Load and display high score on the menu
+	var best = Highscoremanager.load_high_score()
+	high_score_label.text = Highscoremanager.format_time(best)
 	if is_touchscreen_device():
 		disable_hover_style(left_button)
 		disable_hover_style(right_button)
