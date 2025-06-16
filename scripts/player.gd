@@ -160,7 +160,8 @@ func _on_player_died():
 	var best = Highscoremanager.load_high_score()
 	print(final_time)
 	print(best)
-	if final_time > best:
+	print(final_time > best)
+	if best == INF or final_time > best:
 		Highscoremanager.save_high_score(final_time)
 		print("New High Score: ", TimerClock.get_time_formatted())
 		high_score_msg.visible = true
