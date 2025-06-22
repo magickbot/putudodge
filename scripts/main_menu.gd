@@ -9,10 +9,15 @@ signal play_pressed
 @onready var left_button = $Button/LeftButton
 @onready var right_button = $Button/RightButton
 @onready var character_select: AudioStreamPlayer = $CharacterSelect
+@onready var high_score_label: Label = $HighScoreLabel
 
 var current_dog_instance = null
 
 func _ready():
+	print("Save path: ", ProjectSettings.globalize_path("user://high_score.save"))
+	# (Optional) Load and display high score on the menu
+	var best = Highscoremanager.load_high_score()
+	high_score_label.text = Highscoremanager.format_time(best)
 	if is_touchscreen_device():
 		disable_hover_style(left_button)
 		disable_hover_style(right_button)
@@ -23,6 +28,11 @@ func _ready():
 	
 	# Load the initially selected dog
 	_update_dog_display()
+	var best_time = Highscoremanager.load_high_score()
+	if best_time == INF:
+		high_score_label.text = "HI-SCORE: --:--.---"
+	else:
+		high_score_label.text = "HI-SCORE: " + Highscoremanager.format_time(best_time)
 
 func is_touchscreen_device() -> bool:
 	var os_name := OS.get_name()

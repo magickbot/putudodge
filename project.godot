@@ -15,13 +15,14 @@ config_version=5
 config/name="putudodge"
 run/main_scene="res://scenes/ui/scene_manager.tscn"
 config/features=PackedStringArray("4.4")
-config/icon="res://icon.png"
+config/icon="uid://bl8ra73bocse5"
 
 [autoload]
 
 GameData="*res://scripts/GameData.gd"
 Global="*res://scripts/AutoLoadScripts/Global.gd"
 GameManager="*res://scripts/AutoLoadScripts/GameManager.gd"
+Highscoremanager="*res://scripts/AutoLoadScripts/highscoremanager.gd"
 
 [display]
 

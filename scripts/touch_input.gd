@@ -16,9 +16,8 @@ func _input(event):
 			direction = Vector2.ZERO
 	elif event is InputEventScreenDrag and active:
 		var offset = event.position - start_pos
-		if offset.length() > 0:
+		if offset.length() > 10:  # 10 px dead zone
 			direction = offset.normalized()
-			direction *= min(offset.length(), max_distance) / max_distance
 		else:
 			direction = Vector2.ZERO
 

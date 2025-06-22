@@ -9,9 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bwftcef2607so" path="res://assets/sprites/ui/tinyRPG_dragonRegaliaGUI_v1_0/20240707dragonHeaderA.png" id="5_te6ad"]
 [ext_resource type="PackedScene" uid="uid://ytm16td4s2ss" path="res://scenes/entities/spawner.tscn" id="5_umypx"]
 [ext_resource type="Texture2D" uid="uid://bkymipsttjv5a" path="res://assets/sprites/characters/FreeDemo.png" id="6_gl1th"]
-[ext_resource type="PackedScene" uid="uid://1tm74bkji7y6" path="res://scenes/entities/hp_bubble.tscn" id="6_jy5xg"]
 [ext_resource type="Texture2D" uid="uid://d1bwpbo76gde1" path="res://assets/sprites/ui/game UI.png" id="7_i8jtn"]
-[ext_resource type="PackedScene" uid="uid://dmkk20t53h1ux" path="res://scenes/entities/DogTreat.tscn" id="9_fss6w"]
+[ext_resource type="Script" uid="uid://c6767mq884nf8" path="res://scenes/ui/bounds.gd" id="10_hb27l"]
 [ext_resource type="AudioStream" uid="uid://ce2o7nmqayjg" path="res://assets/sounds/background music/my-8-bit-hero-301280.mp3" id="10_thnqr"]
 [ext_resource type="PackedScene" uid="uid://but5fo8vc4tt3" path="res://scenes/entities/player.tscn" id="10_yvcut"]
 [ext_resource type="AudioStream" uid="uid://bur35p0ektjjm" path="res://assets/sounds/sfx/hurt.wav" id="11_thnqr"]
@@ -24,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://dm1ucyf0vo5o3" path="res://assets/sounds/background music/gaming-music-8-bit-console-play-background-intro-theme-278382.mp3" id="21_hb27l"]
 [ext_resource type="AudioStream" uid="uid://dfp1w7172gsd8" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/confirmation_002.ogg" id="21_tihu7"]
 [ext_resource type="AudioStream" uid="uid://cve0oxvem3ywj" path="res://assets/sounds/background music/chiptune-hard-boss-mode-218071.mp3" id="23_hb27l"]
+[ext_resource type="AudioStream" uid="uid://cpx1gyxa2emg8" path="res://assets/sounds/sfx/kenney_interface-sounds/Audio/drop_004.ogg" id="24_iujac"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_umypx"]
 texture = ExtResource("4_upid4")
@@ -204,6 +204,19 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_acbhb")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kpu1v")
 text = "Quit to Main Menu"
 
+[node name="HighScoreMsg" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 817.0
+offset_top = 293.0
+offset_right = 1190.0
+offset_bottom = 340.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("5_i8jtn")
+theme_override_font_sizes/font_size = 30
+text = "NEW HIGH SCORE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PausePopup" type="Control" parent="CanvasLayer"]
 process_mode = 2
 visible = false
@@ -336,10 +349,10 @@ text = "000"
 horizontal_alignment = 2
 
 [node name="TreatDisplay" type="HBoxContainer" parent="CanvasLayer"]
-offset_left = 48.0
-offset_top = 33.0
-offset_right = 88.0
-offset_bottom = 96.0
+offset_left = 49.0
+offset_top = 63.0
+offset_right = 89.0
+offset_bottom = 126.0
 alignment = 1
 
 [node name="TreatIcon" type="Sprite2D" parent="CanvasLayer/TreatDisplay"]
@@ -369,6 +382,18 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_cau2q")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_pkaeb")
 theme_override_styles/normal = SubResource("StyleBoxTexture_k2sfp")
 
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 9.0
+offset_top = 52.0
+offset_right = 339.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("5_i8jtn")
+theme_override_font_sizes/font_size = 20
+text = "HI-SCORE: "
+
+[node name="Bounds" type="Node2D" parent="."]
+script = ExtResource("10_hb27l")
+
 [node name="Background" type="Node2D" parent="."]
 
 [node name="ground" type="TileMapLayer" parent="Background"]
@@ -386,8 +411,6 @@ z_index = 2
 
 [node name="spawner" parent="." instance=ExtResource("5_umypx")]
 process_mode = 1
-hp_bubble_scene = ExtResource("6_jy5xg")
-dog_treat_scene = ExtResource("9_fss6w")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1000, 450)
@@ -431,6 +454,10 @@ stream = ExtResource("20_kpu1v")
 [node name="PickUpSound" type="AudioStreamPlayer" parent="SoundManager"]
 stream = ExtResource("21_tihu7")
 pitch_scale = 2.0
+
+[node name="PickUpSound2" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("24_iujac")
+volume_db = 5.0
 
 [connection signal="mouse_entered" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="SoundManager" method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/DeathPopup/Panel/VBoxContainer/Button" to="Player" method="_on_button_pressed"]

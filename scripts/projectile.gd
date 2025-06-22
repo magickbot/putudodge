@@ -1,18 +1,22 @@
 # UPDATED PROJECTILE - Compensated for 2x manual scaling
 extends Area2D
 class_name Projectile
-
 var min_speed := 800.0  # Doubled to compensate for 2x collision shapes
 var max_speed := 1200.0  # Doubled to compensate for 2x collision shapes
 var speed := 1000.0  # Doubled to compensate for 2x collision shapes
 var direction := Vector2.ZERO
 var projectile_type := "basic"
+var spin_speed := 5.0  # Radians per second for spinning
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 func _ready():
 	# Set a random speed
 	speed = randf_range(min_speed, max_speed)
+	
+	# Set random spin speed
+	spin_speed = randf_range(3.0, 8.0)
 	
 	# Connect the body_entered signal
 	body_entered.connect(_on_body_entered)
@@ -36,6 +40,10 @@ func set_direction_to_target(target_pos: Vector2):
 
 func update_movement(delta: float):
 	position += direction * speed * delta
+	
+	# Add spinning to the sprite
+	if sprite:
+		sprite.rotation += spin_speed * delta
 	
 func _physics_process(delta):
 	update_movement(delta)
